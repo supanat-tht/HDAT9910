@@ -1,0 +1,7 @@
+mimic_data/*.csv filter=lfs diff=lfs merge=lfs -text
+.RDataTmp filter=lfs diff=lfs merge=lfs -text
+.RDataTmp1 filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
+mimic_data/*.csv
+ filter=lfs diff=lfs merge=lfs -text
+mimic_data/** filter=lfs diff=lfs merge=lfs -text

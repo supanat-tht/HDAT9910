@@ -1,0 +1,53 @@
+Variable,OUTLIER_LOW,VALID_LOW,VALID_HIGH,OUTLIER_HIGH,NORMAL_LOW,NORMAL_HIGH
+Alanine aminotransferase,0,2,10000,11000,,
+Albumin,0,0.6,6,60,,
+Alkaline phosphate,0,20,3625,4000,,
+Anion Gap,0,5,50,55,,
+Asparate aminotransferase,0,6,20000,22000,,
+Basophils,0,0,100,100,,
+Bicarbonate,0,0,60,66,18.00,22.00
+Bilirubin,0,0.1,60,66,,
+Blood urea nitrogen,0,0,250,275,8.00,21.00
+Capillary refill rate,0,0,1,1,,
+Chloride,0,50,175,200,95.00,105.00
+Cholesterol,0,32,600,660,,
+Creatinine,0,0.1,60,66,0.80,1.30
+Diastolic blood pressure,0,0,375,375,60.00,80.00
+Eosinophils,0,0,100,100,,
+Fraction inspired oxygen,20,21,100,110,,
+Glascow coma scale eye opening,1,1,4,4,,
+Glascow coma scale motor response,1,1,6,6,,
+Glascow coma scale total,3,3,15,15,,
+Glascow coma scale verbal response,1,1,5,5,,
+Glucose,0,33,2000,2200,65.00,110.00
+Heart rate,0,0,350,390,60.00,100.00
+Height,120,120,240,275,,
+Hematocrit,0,0,75,100,36.00,52.00
+Hemoglobin,0,0,25,30,12.00,17.00
+Lactate,0,0.4,30,33,,
+Lactate dehydrogenase,0,54,33000,35000,,
+Lymphocytes,0,0,100,100,,
+Magnesium,0,0,20,22,,
+Mean blood pressure,0,14,330,375,67.00,100.00
+Oxygen saturation,0,0,100,150,96.00,100.00
+Monocytes,0,0,100,100,,
+Neutrophils,0,0,100,100,,
+Partial pressure of carbon dioxide,0,0,200,220,,
+Partial pressure of oxygen,0,32,700,770,,
+Partial thromboplastin time,0,18.8,150,150,,
+Peak inspiratory pressure,0,14,38,40,,
+pH,6.3,6.3,8.4,10,,
+Phosphate,0,0.5,20,22,,
+Platelets,0,0,2000,2200,150.00,400.00
+Positive end-expiratory pressure,0,0,25,30,,
+Potassium,0,0,12,15,,
+Prothrombin time,0,9.9,97.1,150,,
+Respiratory rate,0,0,300,330,12.00,18.00
+Sodium,0,50,225,250,135.00,145.00
+Systolic blood pressure,0,0,375,375,90.00,120.00
+Temperature,14.2,26,45,47,36.50,37.30
+Troponin-I,0,0.01,49.6,575,,
+Troponin-T,0,0.01,20.85,24,,
+Urine output,0,0,1200,2445,,
+Weight,30,30,250,250,,
+White blood cell count,0,0,1000,1100,4.00,10.00
