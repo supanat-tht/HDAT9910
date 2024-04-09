@@ -40,7 +40,7 @@ MIMIC-III is a large database containing deidentified health-related data associ
 
 This notebook aims to utilize data science procedures on the MIMIC-III data to 1) build a predictive algorithm based on data from the first 24 hours in the ICU and 2) to investigate whether admission to the ICU on weekends increases the risk of ICU mortality.
 
-# Data Cleaning and Exploration
+# Data Cleaning and Preparation
 
 ## Setup
 
