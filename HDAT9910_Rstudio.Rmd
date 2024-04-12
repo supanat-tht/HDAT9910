@@ -15,22 +15,26 @@ This notebook aims to utilize data science procedures on the MIMIC-III data to 1
 
 ## Characteristic of the MIMIC-III data
 
-The MIMIC-III database is a joint database from the CareVue and MetaVision systems. The data were collected during  routine care, not for research purposes. The data were deidentified by removing personally identifiable information. Further deidentification was done by offsetting dates into the future (2100-2200) and shifting the ages of patients older than 89 years to 91.4. The data do not only include adult patients, but also newborns.
+The MIMIC-III database is a joint database from the CareVue and MetaVision systems. The data were collected during routine care, not for research purposes. The data were deidentified by removing personally identifiable information. Further deidentification was done by offsetting dates into the future (2100-2200) and shifting the ages of patients older than 89 years to 91.4. The data do not only include adult patients, but also newborns.
 
 ## Research questions
-1. Is it possible to accurately predict mortality based on data from the first 24 hours in ICU?
-* Study population: Adult patients older than 18 years old admitted to the ICU from January 2006 to December 2014. Only the first ICU admission of each patient will be included. ICU stays with length of stay under 24 hours or unknown are not included.
-* Study outcome: ICU mortality
 
-1. Does admission to ICU over the weekend increase the risk of mortality?
-* Study population: Adult patients older than 18 years old admitted to the ICU from January 2006 to December 2014. Only the first ICU admission of each patient will be included. ICU stays with length of stay under 24 hours or unknown are not included.
-* Intervention: Admission to ICU over the weekend
-* Comparison: Admission to ICU over the weekdays
-* Study outcome: ICU mortality
+1.  Is it possible to accurately predict mortality based on data from the first 24 hours in ICU?
+
+-   Study population: Adult patients older than 18 years old admitted to the ICU from January 2006 to December 2014. Only the first ICU admission for each patient is included. ICU stays with length of stay under 24 hours or unknown are not included.
+-   Study outcome: ICU mortality
+
+1.  Does admission to ICU over the weekend increase the risk of mortality?
+
+-   Study population: Adult patients older than 18 years old admitted to the ICU from January 2006 to December 2014. Only the first ICU admission for each patient is included. ICU stays with length of stay under 24 hours or unknown are not included. Only data from the first 24 hours in ICU are included.
+-   Intervention: Admission to ICU over the weekend
+-   Comparison: Admission to ICU over the weekdays
+-   Study outcome: ICU mortality
 
 ## Structure of the report
-* Data cleaning and exploration, and Research Question 2 are done using R. Unrendered and rendered versions of the report are in R markdown and HTML files.
-* Research Question 1 is done using Python. Unrendered and rendered versions of the report are in Jupyter Notebook and PDF files.
+
+-   Data cleaning and exploration, and Research Question 2 are done using R. Unrendered and rendered versions of the report are in R markdown and HTML files.
+-   Research Question 1 is done using Python. Unrendered and rendered versions of the report are in Jupyter Notebook and PDF files.
 
 ## Introduction
 
@@ -42,12 +46,55 @@ This notebook aims to utilize data science procedures on the MIMIC-III data to 1
 
 # Data Cleaning and Preparation
 
+## Data dictionary
+
+* `var_ranges`: dataset containing variable ranges from the `variable_ranges.csv` file
+* `replace_out_of_range`: function for trimming out-of-range values
+* `replace_missing`: function for replacing missing values with 0, mean, or median
+* `cut_continuous`: function for categorizing continuous variables using predefined value ranges
+* `plot_boxplot`: function for plotting a boxplot
+* `pt_icu_outcome`: source data of the admission dates and outcome of the admissions
+* `pt_icu_outcome_clean`: cleaned version of `pt_icu_outcome`
+* `patients`: source data of patients' profile
+* `patients_2`: dataset subset from `patients` to the included patients and selected only the gender data
+* `admissions`: source data of the characteristics of admissions
+* `admissions_5`: `admissions` subset to the included patients and collapsed categories of the admission type and ethnicity
+* `icustays`: source data of characteristics of ICU stays
+* `icustays_2`: `icustays` subset to the included ICU stays and selected only the first care unit data
+* `vitals_hourly`: source data of the hourly bedside measurements
+* `vitals_hourly_24hr`: `vitals_hourly` subset to the included patients and subset to measurements in the first 24 hours
+* `vitals_hourly_24hr_minmax`: cleaned version of `vitals_hourly_24hr` and transformed from long format to one row per patient
+* `labs_hourly`: source data of the hourly laboratory tests
+* `labs_hourly_24hr`: `labs_hourly` subset to the included patients and subset to the tests in the first 24 hours
+* `labs_hourly_24hr_minmax`: cleaned version of `labs_hourly_24hr` and transformed from long format to one row per patient
+* `gcs_hourly`: source data of the hourly Glasgow Coma Scale score measurements
+* `gcs_hourly_24hr_minmax`: cleaned version of `gcs_hourly` and transformed from long format to one row per patient
+* `pt_weight`: source data containing repeated measurements of weight in kilograms
+* `pt_weight_summary`: cleaned version of `pt_weight` and transformed from long format to one row per patient
+* `output_hourly`: source data of the repeat measurements of uring output
+* `output_hourly_24hr_trimmed`: cleaned version of `output_hourly` and transformed from long format to one row per patient
+* `bloodculture`: source data of the blood culture data
+* `bloodculture_24hr_summary`: cleaned version of `bloodculture`, one row per ICU stay
+* `antibiotics`: source data of antibiotic administration
+* `antibiotics_24hr`: `antibiotics` data transformed into one row per patient and keeping only the antibiotic flag
+* `vasopressors`: source data of vasopressor administration
+* `vasopressors_24hr_flag`: `vasopressors` data transformed into one row per patient and keeping only the antibiotic flag
+* `pv_mechvent`: source data of mechanical ventilation
+* `pv_mechvent_24hr`: `pv_mechvent` data transformed into one row per patient and keeping only the mechanical ventilation flag
+* `icd9_diag`: source data of ICD-9 diagnoses
+* `icd9_diag_final_wide`: ICD-9 diagnoses categorized into 10 groups and present in wide format
+* `alldata_final`: analysis-ready dataset obtained by joining multiple datasets together
+* `alldata_q2`: analysis-ready dataset for Research Question 2 identical to `alldata_final`
+* `alldata_q1`: analysis-ready dataset for Research Question 1
+* `univariate`: univariate Cox proportional hazards models of all variables and ICU mortality
+* `multi_5`: the final multivariate Cox proportional hazards model of selected variables and ICU mortality with all Cox proportional hazards assumption violation addressed
+
 ## Setup
 
-CSV files were read and imported into data frames. Next, I will take a look at file by file.
+Source data come in multiple .csv files. The required files were read and imported into data frames.
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(include = FALSE)
 
 # Load libraries
 library(dplyr)
@@ -65,7 +112,7 @@ library(survival)
 library(forcats)
 ```
 
-```{r load_data}
+```{r load_data, include=FALSE}
 # Load all files and assign file names to variable names
 file_list <- c("patients", "admissions", "icustays", "pt_icu_outcome", "vitals_hourly", "labs_hourly", "gcs_hourly", "pt_weight", "output_hourly", "bloodculture", "antibiotics", "vasopressors", "pv_mechvent", "icd9_diag")
 for (i in 1:length(file_list)){
@@ -78,7 +125,8 @@ for (i in 1:length(file_list)){
 # Set the Variable column as row names
 var_ranges <- read.csv("variable_ranges.csv", na.strings=c(""), row.names="Variable")
 ```
-```{r functions}
+
+```{r functions, include=FALSE}
 # Define a function to replace values outside of the plausible ranges.
 # Values outside of outlier ranges will be marked missing.
 # Non-outlier values outside of physiologically valid ranges will be replaced with the nearest valid values.
@@ -138,27 +186,30 @@ plot_boxplot <- function(data, x, y, x_label, y_label) {
 
 ## `pt_icu_outcome` data
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 # Overview of the data frame
 # This data frame will be the backbone of the data
 Hmisc::describe(pt_icu_outcome)
 ```
 
-There are 61,533 ICU stays of 46,476 distinct patients because some patients had more than one ICU stays. The ICU stay ID should be unique each row. However, there is a duplicate ID (`icustay_id` count = `r nrow(pt_icu_outcome)`; distinct count = `r n_distinct(pt_icu_outcome$icustay_id)`). The age of patients older than 89 years old has been shifted to 91.4 as indicated [here](https://mimic.mit.edu/docs/iii/tables/patients/). The `icu_expire_flag` shows that `r sum(pt_icu_outcome$icu_expire_flag)` patients died during ICU stays.
+This dataset contains age, death flag, length of ICU stay, and time of hospital and ICU admission and discharge. There are `r nrow(pt_icu_outcome)` ICU stays of `r n_distinct(pt_icu_outcome$subject_id)` distinct patients. The ICU stay ID should be unique each row. However, there is a duplicate ID (`icustay_id` count = `r nrow(pt_icu_outcome)`; distinct count = `r n_distinct(pt_icu_outcome$icustay_id)`). The age of patients older than 89 years old has been shifted to 91.4 as indicated [here](https://mimic.mit.edu/docs/iii/tables/patients/).
 
-```{r}
+```{r include=FALSE}
 # Identify duplicated `icustay_id`
 pt_icu_outcome %>% filter(duplicated(icustay_id)) # The duplicated `icustay_id` is 229922.
+```
 
+```{r echo=FALSE}
 # Display observations where `icustay_id` = 229922
 pt_icu_outcome %>% filter(icustay_id == 229922)
 
 # Because the only difference between the two duplicated observations is the hospital admission time, and it is not possible to determine which one is correct, both of them will be excluded.
 pt_icu_outcome_nodup <- pt_icu_outcome %>% filter(icustay_id != 229922)
 ```
+
 Patient No. 5246 has duplicated ICU stay ID 229922. Because the only difference between the two duplicated observations is the hospital admission time, and it is not possible to determine which one is correct, both of the entries were excluded.
 
-```{r}
+```{r include=FALSE}
 # Keep only the first ICU stay of each patient
 # Keep only adult patients (age >= 18)
 pt_icu_outcome_adult <- pt_icu_outcome_nodup %>% 
@@ -166,15 +217,16 @@ pt_icu_outcome_adult <- pt_icu_outcome_nodup %>%
   filter(age_years >= 18)
 ```
 
-Only the first ICU stay of each patient that lasted at least 24 hours was kept, and patients younger than 18 years old were excluded. 
+Only the first ICU stay of each patient that lasted at least 24 hours was kept, and patients younger than 18 years old were excluded.
 
-```{r}
+```{r echo=TRUE}
 # count patients died in the ICU
 table(pt_icu_outcome_adult$icu_expire_flag)
 ```
-The ICU expire flag is yes to only `r round(216*100/(38293+216), 2)`% of patients, which is much lower than the [published ICU mortality rate](https://www.nature.com/articles/sdata201635/tables/2) of the data. I need to look more into it.
 
-```{r}
+The ICU expire flag is "yes" to only `r round(216*100/(38293+216), 2)`% of patients, which is much lower than the [published ICU mortality rate](https://www.nature.com/articles/sdata201635/tables/2) of the data. A new ICU expire flag was created based on the original expire flag and the recorded death time. Patients with death date occurring during the ICU stay were considered "yes" to the expire flag. A new weekend flag telling which ICU admissions occurred on weekends was also created.
+
+```{r include=FALSE}
 # Create my own ICU expire flag
 # Transform date variables to date_time variables and add "_d" to the variable names
 pt_icu_outcome_asdate <- pt_icu_outcome_adult %>% mutate(admittime_d = ymd_hms(admittime),
@@ -188,7 +240,7 @@ pt_icu_outcome_asdate <- pt_icu_outcome_adult %>% mutate(admittime_d = ymd_hms(a
 pt_icu_outcome_asdate_2 <- pt_icu_outcome_asdate %>%
   filter(outtime_d - intime_d >= 86400) %>% # filter out 5,951 patients with ICU duration <24 hr. 86,400 seconds = 24 hours.
   filter(!is.na(outtime_d)) %>% # filter out 2 patients whose ICU exit times were missing.
-  filter(subject_id != 10518) # filter out 1 patient (ID 10518) with date of date occurred before hospital admission date.
+  filter(subject_id != 10518) # filter out 1 patient (ID 10518) with date of death occurred before hospital admission date.
 
 # Check the ICU expire flag
 # First, confirm that `intime_d` and `outtime_d` are in chronological order.
@@ -218,11 +270,17 @@ pt_icu_outcome_wkndflag <- pt_icu_outcome_expflag %>%
 # I will use this flag as the outcome. Dropping unused variables.
 pt_icu_outcome_clean <- pt_icu_outcome_wkndflag %>% select(!c("admittime", "dischtime", "intime", "outtime", "hosp_deathtime", "dod", "icu_expire_flag", "ttd_days"))
 ```
-```{r}
+
+```{r eval=FALSE, include=FALSE}
 # sanity check
 Hmisc::describe(pt_icu_outcome_clean)
 ```
-There are a total of 32,556 patient aged 18 years old and older. The lowest length of stay is 1 day. The ICU mortality rate is `r round(2562*100/32556, 2)`%, comparable to the published rate. The rate here is different to the published rate because this is a subset of the published population.
+
+```{r echo=TRUE}
+head(pt_icu_outcome_clean)
+```
+
+As a result, `r nrow(pt_icu_outcome_clean)` patient aged 18 years old and older with their first ICU stay lasting at least 24 hours were included. The ICU mortality rate is `r round(2561*100/32555, 2)`%, comparable to the published rate. The rate here is different to the published rate because this is a subset of the published population.
 
 ## `patients` data
 
@@ -235,12 +293,18 @@ patients_2 <- patients %>%
 
 # see gender
 describe(patients_2$gender)
-# Of 32,556 patients, 56.8% of them are male. There are no missing values.
+# Of 32,555 patients, 56.8% of them are male. There are no missing values.
 ```
+
+```{r echo=TRUE}
+head(patients_2)
+```
+
+I obtained gender of the included patients from this dataset. 56.8% of them were male.
 
 ## `admissions` data
 
-```{r admissions}
+```{r admissions, include=FALSE}
 # Filter to the hospital admission IDs that I need
 admissions_2 <- admissions %>%
   filter(hadm_id %in% pt_icu_outcome_clean$hadm_id) %>%
@@ -263,8 +327,15 @@ admissions_5 <- admissions_4 %>% select(subject_id, hadm_id, admission_type_2, e
 
 # overview of the data
 describe(admissions_5)
-# Of 32,556 admissions included, 83.7% of them are emergency/urgent admissions. 71.3% of patients are white, while 7.5% of them are black.
+# Of 32,555 admissions included, 83.7% of them are emergency/urgent admissions. 71.3% of patients are white, while 7.5% of them are black.
 ```
+
+```{r}
+table(admissions_5$admission_type_2)
+table(admissions_5$ethnicity_2)
+```
+
+I obtained the admission type and ethnicity from this dataset. The admission type was collapse to elective and emergency/urgent. The ethnicity was collapse to white, black, and other/unknown.
 
 ## `icustays` data
 
@@ -275,12 +346,18 @@ icustays_2 <- icustays %>%
   select(subject_id, hadm_id, icustay_id, first_careunit)
 
 describe(icustays_2)
-# 32,556 ICU stays included. The majority of them (34.4%) were initially admitted to MICU.
+# 32,555 ICU stays included. The majority of them (34.4%) were initially admitted to MICU.
 ```
+
+```{r echo=TRUE}
+table(icustays_2$first_careunit)
+```
+
+I obtained the first care unit data from this dataset. Of the included patients, the majority of them (34.4%) were initially admitted to the Medical Intensive Care Unit (MICU).
 
 ## `vitals_hourly` data
 
-```{r vitals_hourly}
+```{r vitals_hourly, include=FALSE}
 # Filter to the ICU stay IDs that I need and limit the bedside measurements to the first 24 hours
 vitals_hourly_24hr <- vitals_hourly %>% 
   filter(icustay_id %in% pt_icu_outcome_clean$icustay_id) %>%
@@ -289,9 +366,14 @@ vitals_hourly_24hr <- vitals_hourly %>%
 # Overview of the file
 Hmisc::describe(vitals_hourly_24hr)
 ```
-32,556 selected ICU stays have vital signs data available. The spO2, temperature, respiratory rate, heart rate, systolic blood pressure, diastolic blood pressure, glucose, and mean arterial blood pressure have unrealistic values. 
+
+This dataset contains hourly data of the bedside measurements. The spO2, temperature, respiratory rate, heart rate, systolic blood pressure, diastolic blood pressure, glucose, and mean arterial blood pressure have unrealistic values. For example, glucose as low as `r min(vitals_hourly_24hr$glucose, na.rm=T)` and as high as 999999 `r max(vitals_hourly_24hr$glucose, na.rm=T)` are not possible using the blood glucose monitor.
 
 ```{r}
+summary(vitals_hourly_24hr$glucose)
+```
+
+```{r include=FALSE}
 # Clean values out of plausible ranges
 # FiO2 is already in the plausible range.
 vitals_hourly_24hr_trimmed <- vitals_hourly_24hr %>% 
@@ -311,16 +393,21 @@ vitals_hourly_24hr_minmax <- vitals_hourly_24hr_trimmed %>%
   group_by(icustay_id) %>%
   summarise_all(list(min = ~collapse::fmin(., na.rm = TRUE), max = ~collapse::fmax(., na.rm = TRUE)))
 ```
-```{r}
+
+```{r eval=FALSE, include=FALSE}
 # sanity check
 Hmisc::describe(vitals_hourly_24hr_minmax)
 ```
 
-All values are now summarized into min and max, and are in plausible ranges.
+I trimmed variables containing unrealistic values with a predefined ranges. Values outside of outlier ranges were marked missing. Non-outlier values outside of physiologically valid ranges were replaced with the nearest valid values. I then obtained maximum and minimum values of each measurement within the first 24 hours and transformed the dataset from a long format into one row per patient.
+
+```{r echo=TRUE}
+head(vitals_hourly_24hr_minmax)
+```
 
 ## `labs_hourly` data
 
-```{r labs_hourly}
+```{r labs_hourly, include=FALSE}
 # Filter to the ICU stay IDs that I need and limit the data to the first 24 hours
 labs_hourly_24hr <- labs_hourly %>% 
   filter(icustay_id %in% pt_icu_outcome_clean$icustay_id) %>%
@@ -329,9 +416,16 @@ labs_hourly_24hr <- labs_hourly %>%
 # overview of the data
 Hmisc::describe(labs_hourly_24hr)
 ```
-```{r}
+
+This dataset contains hourly measurement of laboratory tests. A large number of variables originally contained out-of-range values. For example, the minimum hemoglobin is `r min(labs_hourly_24hr$hemoglobin, na.rm=T)`, and the maximum hemoglobin is max(labs_hourly_24hr$hemoglobin, na.rm=T).
+
+```{r echo=TRUE}
+summary(labs_hourly_24hr$hemoglobin)
+```
+
+```{r include=FALSE}
 # Clean values out of plausible ranges
-# partialpressureo2, lactate, troponin, bloodureanitrogen, creatinine, alaninetransaminase, aspartatetransaminase, hemoglobin, platelets, albumin, chloride, glucose, sodium, and bilirubin need to be filtered.
+# partialpressureo2, lactate, troponin, bloodureanitrogen, creatinine, alaninetransaminase, aspartatetransaminase, hemoglobin, platelets, albumin, chloride, glucose, sodium, and bilirubin need to be trimmed
 labs_hourly_24hr_trimmed <- labs_hourly_24hr %>% 
   mutate(partialpressureo2 = replace_out_of_range(partialpressureo2, "Partial pressure of oxygen"),
          lactate = replace_out_of_range(lactate, "Lactate"),
@@ -355,16 +449,21 @@ labs_hourly_24hr_minmax <- labs_hourly_24hr_trimmed %>%
   group_by(icustay_id) %>%
   summarise_all(list(min = ~collapse::fmin(., na.rm = TRUE), max = ~collapse::fmax(., na.rm = TRUE)))
 ```
-```{r}
+
+```{r eval=FALSE, include=FALSE}
 # sanity check
 Hmisc::describe(labs_hourly_24hr_minmax)
 ```
 
-All variables are summarized into min and max values and are in plausible ranges.
+After value trimming, the dataset was transformed from a long format to one row per patient, containing maximum and minimum values within the first 24 hours of each patient. 
+
+```{r echo=TRUE}
+head(labs_hourly_24hr_minmax)
+```
 
 ## `gcs_hourly` data
 
-```{r gcs_hourly}
+```{r gcs_hourly, include=FALSE}
 # Filter to the ICU stay IDs that I need and limit the data to the first 24 hours
 gcs_hourly_24hr <- gcs_hourly %>% 
   filter(icustay_id %in% pt_icu_outcome_clean$icustay_id) %>%
@@ -375,10 +474,10 @@ Hmisc::describe(gcs_hourly_24hr)
 # GCS is in the expected range (3-15 scores).
 ```
 
-```{r}
+```{r include=FALSE}
 # Check if the gcs column is the summation of its components
 nrow(gcs_hourly_24hr %>% filter(gcs != gcseyes + gcsmotor + gcsverbal))
-# There are 93 rows where the gct column is not the summation of its components.
+# There are 93 rows where the gcs column is not the summation of its components.
 
 # If on endotrachial tube, the gcsverbal should be NA, and the maximum total GCS score should be 10.
 head(gcs_hourly_24hr %>% filter(endotrachflag == 1) %>% filter(gcs > 10))
@@ -402,15 +501,22 @@ gcs_hourly_24hr_minmax <- gcs_hourly_24hr_2 %>%
             gcs_max = collapse::fmax(gcs_2, na.rm = TRUE), # note that I removed the notation "2" from the summarized variable
             endotrachflag = collapse::fmax(endotrachflag, na.rm = TRUE)) # 1 if ever on endotrachial tube in the first 24 hours
 ```
-```{r}
+
+```{r eval=FALSE, include=FALSE}
 # sanity check
 Hmisc::describe(gcs_hourly_24hr_minmax)
 # GCS score can be as low as 2 if on endotrachial tube.
 ```
 
+This dataset contains data of the Glasgow Coma Scale (GCS) score measured during the admission in a long format. The GCS score was corrected by taking into account the endotrachial intubation. The dataset was summarized into one row per patient, containing minimum and maximum values of the GCS score in the first 24 hours and endotrachial intubation status.
+
+```{r echo=TRUE}
+head(gcs_hourly_24hr_minmax)
+```
+
 ## `pt_weight` file
 
-```{r pt_weight}
+```{r pt_weight, include=FALSE}
 # Filter to the ICU stay IDs that I need and limit the data to the first 24 hours
 pt_weight_adult <- pt_weight %>% 
   filter(icustay_id %in% pt_icu_outcome_clean$icustay_id)
@@ -433,15 +539,23 @@ pt_weight_summary <- pt_weight_trimmed %>%
                               dplyr::first(dailyweight, na_rm = TRUE), 
                               dplyr::first(previousweight, na_rm = TRUE)))
 ```
-```{r}
+
+```{r eval=FALSE, include=FALSE}
 # sanity check
 Hmisc::describe(pt_weight_summary)
-# There are 32,556 adult ICU stays with 2,244 missing weight data. Among the weight recorded, the median weight is 78.10 kg (IQR 65.81-92.30).
+# There are 32,555 adult ICU stays with 2,244 missing weight data. Among the weight recorded, the median weight is 78.10 kg (IQR 65.81-92.30).
 ```
+
+This dataset contains repeated weight measurements in kilograms. The out-of-range values were trimmed, and the first recorded weight was included in the cleaned dataset.
+
+```{r echo=TRUE}
+describe(pt_weight_summary$weight)
+```
+
 
 ## `output_hourly` data
 
-```{r output_hourly}
+```{r output_hourly, include=FALSE}
 # Filter to the ICU stay IDs that I need and limit the bedside measurements to the first 24 hours
 output_hourly_24hr <- output_hourly %>% 
   filter(icustay_id %in% pt_icu_outcome_clean$icustay_id) %>%
@@ -464,14 +578,22 @@ output_hourly_24hr_trimmed <- output_hourly_24hr_total24 %>%
   mutate(totalurine24 = replace_out_of_range(totalurine24, "Urine output")
          )
 ```
-```{r}
+
+```{r eval=FALSE, include=FALSE}
 # sanity check
 Hmisc::describe(output_hourly_24hr_trimmed)
 # There are a total of 31,831 ICU stays with valid 24-hour urine output entries.
 ```
 
+This dataset contains urine output measurements in a long format. The total 24-hour urine output was calculated from the available data, and the out-of-range values were trimmed. As a results, `r output_hourly_24hr_trimmed %>% filter(is.na(totalurine24)) %>% nrow()` out of `r output_hourly_24hr_trimmed %>% nrow()` patients do not have a valid uring output measurement.
+
+```{r}
+summary(output_hourly_24hr_trimmed$totalurine24)
+```
+
 ## `bloodculture` data
-```{r bloodculture}
+
+```{r bloodculture, include=FALSE}
 # Filter to the ICU stay IDs that I need and limit the bedside measurements to the first 24 hours
 bloodculture_24hr <- bloodculture %>% 
   filter(icustay_id %in% pt_icu_outcome_clean$icustay_id) %>%
@@ -479,9 +601,19 @@ bloodculture_24hr <- bloodculture %>%
 
 # Overview of the data
 Hmisc::describe(bloodculture_24hr)
-# Only 19,643 ICU stays have blood culture done in the first 24 hours. A lot of results are virus, which is unusual for result for blood cultures. I will mark viruses as missing.
+# Only 19,643 ICU stays had blood culture done in the first 24 hours. A lot of results were virus, which is unusual for result for blood cultures. I will mark viruses as missing.
 ```
-```{r}
+
+This dataset contains blood culter data and their results. 54 observations contains "virus", which is not a usual result of blood culture. I marked observations containing "virus" as missing.
+
+```{r echo=TRUE}
+bloodculture_24hr %>% 
+  select(org_name) %>%
+  filter(str_detect(org_name, "VIRUS")) %>%
+  describe()
+```
+
+```{r include=FALSE}
 # Mark strings containing the word virus as missing and correct the positiveculture flag accordingly.
 bloodculture_24hr_novirus <- bloodculture_24hr %>%
   mutate(org_name_2 = ifelse(str_detect(org_name, "VIRUS"), NA, org_name),
@@ -492,9 +624,10 @@ bloodculture_24hr_novirus <- bloodculture_24hr %>%
 
 # check the data again
 Hmisc::describe(bloodculture_24hr_novirus)
-# THe positive culture flag reduced from 29,538 to 29,484 entries.
+# The positive culture flag reduced from 29,538 to 29,484 entries.
 ```
-```{r}
+
+```{r include=FALSE}
 # Now, summarize the data by icustay_id.
 bloodculture_24hr_summary <- bloodculture_24hr_novirus %>%
   select(icustay_id, positiveculture_2, antibioticresistance_R) %>%
@@ -506,9 +639,15 @@ bloodculture_24hr_summary <- bloodculture_24hr_novirus %>%
 Hmisc::describe(bloodculture_24hr_summary)
 ```
 
+The final dataset summarizes each ICU stay, with one row per stay. Included data indicate whether the blood culture tested positive and whether there was antibiotic resistance.
+
+```{r echo=TRUE}
+head(bloodculture_24hr_summary)
+```
+
 ## `antibiotics` data
 
-```{r}
+```{r include=FALSE}
 # Join dataframes and keep only ICU stays that I need
 # To limit to the first 24 hours, I will have to join the ICU admission date from the `pt_icu_outcome_clean` data frame.
 antibiotics_joined <- merge(x = antibiotics, y = pt_icu_outcome_clean, by = "icustay_id") # inner join
@@ -533,6 +672,13 @@ describe(antibiotics_24hr)
 # 7,405 out of 8,758 patients received antibiotics within the first 24 hours of ICU admission. 
 ```
 
+This dataset contains information on antibiotics administered during admissions in a long format. I extracted data solely on antibiotic administration within the first 24 hours and restructured it to one row per patient.
+
+```{r echo=TRUE}
+head(antibiotics_24hr)
+```
+
+
 ## `vasopressors` data
 
 ```{r vasopressors}
@@ -547,7 +693,7 @@ vasopressors_joined_d <- vasopressors_joined %>%
   select(icustay_id, starttime_d, intime_d, norepinephrine_rate, epinephrine_rate, dopamine_rate, dobutamine_rate) # keep only variables that I'm going to use
 # 204,896 rows included
 
-# If received antibiotics in the first 24 hours, flag 1.
+# If received vasopressors in the first 24 hours, flag 1.
 # Filter to the first 24 hours
 vasopressors_24hr <- vasopressors_joined_d %>%
   filter((starttime_d >= intime_d) & (starttime_d - intime_d <= 86400))
@@ -572,12 +718,18 @@ vasopressors_24hr_flag <- vasopressors_24hr %>%
 
 # sanity check
 describe(vasopressors_24hr_flag)
-# Only a handful of patients received vasopressors. For example, 1,527 patients received norepinephrine during the first 24 hours of ICU stay.
+# Only a handful of patients received vasopressors. 1,527 patients received norepinephrine during the first 24 hours of ICU stay.
+```
+
+This dataset contains information on vasopressors administered during admissions in a long format. I extracted data solely on vasopressor administration within the first 24 hours and restructured it to one row per patient.
+
+```{r echo=TRUE}
+head(vasopressors_24hr_flag)
 ```
 
 ## `pv_mechvent` data
 
-```{r pv_mechvent}
+```{r pv_mechvent, include=FALSE}
 # Join dataframes and keep only ICU stays that I need
 # join the ICU admission date from the `pt_icu_outcome_clean` data frame.
 pv_mechvent_joined <- merge(x = pv_mechvent, y = pt_icu_outcome_clean %>% select(icustay_id, intime_d), by = "icustay_id") # inner join
@@ -626,6 +778,12 @@ describe(pv_mechvent_24hr)
 # Of all ICU stays included, there are 7,090 mechanical ventilation in the first 24 hours of ICU stay.
 ```
 
+This dataset contains details of mechanical ventilation in a long format. I extracted data solely on mechanical ventilation status within the first 24 hours and restructured it to one row per patient.
+
+```{r echo=TRUE}
+head(pv_mechvent_24hr)
+```
+
 ## `icd9_diag` data
 
 ```{r icd9_diag}
@@ -666,9 +824,17 @@ icd9_diag_final_wide <- icd9_diag_final %>%
 head(icd9_diag_final_wide)
 ```
 
+This dataset contains ICD-9 diagnoses of each admission. I categorized them into 10 groups and transformed the dataset into the wide format.
+
+```{r echo=TRUE}
+head(icd9_diag_final_wide)
+```
+
 ## Joining everything to a single data set
 
-```{r join}
+I joined all datasets above by either subject ID or ICU stay ID to create a single large dataset. I assigned 1 ("yes") to mechanical ventilation for patients who were on endotrachial tube. Percentages of missing values in each variable are shown below. 
+
+```{r join, include=FALSE}
 alldata <- pt_icu_outcome_clean %>%
   left_join(patients_2, by="subject_id") %>%
   left_join(admissions_5, by="subject_id") %>%
@@ -695,11 +861,16 @@ alldata_2 <- alldata %>%
 alldata_3 <- alldata_2 %>%
   mutate(endotrachflag = ifelse(mechvent_24hr == 1, 1, endotrachflag),
          endotrachflag = ifelse(is.na(endotrachflag), 0, endotrachflag)) # replace missing values with 0.
+```
 
+```{r echo=TRUE}
 # percentages of missing values in each variable
 colSums(is.na(alldata_3))/nrow(alldata_3)*100
+```
 
+I excluded variables with more than 10% missing values, replaced missing values of continuous variables with the median, and replaced missing values of binary variables with 0 ("No"). After excluding time variables and ID variables, all remaining variables were included in an analysis-ready dataset for Question 2. Meanwhile, the dataset for Question 1 was one-hot encoded and lacks variables that could not be obtained within the first 24 hours of ICU admission, including the length of stay, blood culture, and antibiotic resistance. Additionally, variables indicating diagnoses were also removed from the Question 1 dataset because it is difficult to distinguish between known diagnoses and those obtained at discharge. A rough idea of the reason for admission can be obtained from the type of admission and the first care unit. The dataset for Question 1 was exported as a .csv file for use with Google Colab.
 
+```{r include=FALSE}
 # Because many variables have extreme values, it's best to replace missing values with median.
 # Now, impute missing data.
 alldata_4 <- alldata_3 %>%
@@ -791,32 +962,20 @@ alldata_q1 <- data.frame(predict(dummy, newdata = alldata_q1_notonehot))
 write.csv(alldata_q1, "alldata_q1.csv", row.names=FALSE)
 ```
 
----
+------------------------------------------------------------------------
 
 # Exploratory Data Analysis
 
-The dataset provides data on 32,556 patients aged 18 years or older who were admitted to stayed in ICUs 24 hours or longer. The dataset contains only the first ICU admission of each patient. Age ranged from 18 to 91.4 years, with a median of 66 years (interquartile range (IQR): 52-77 years), and 56.8% of patients were men. Most patients (71.3%) were white. 5,739 patients (17.6%) were admitted on weekends. Most admissions (83.7%) were either emergency or urgent. Most patients were first admitted to medical ICUs ("MICU") (34.4%) and cardiac surgery recovery units ("CSRU") (21.4%). Most common groups of diagnoses were other (92.8%) and circulatory disorders (83.7%). 26.4% of patients were intubated within the first 24 hours. Length of stay ranged from 1 to 153.9 days with a median of 2.5 days (IQR: 1.6-4.8 days). 2,562 patients (7.87%) died in their first ICU admissions.
+The dataset provides data on `r nrow(alldata_final)` patients aged 18 years or older who were admitted to stayed in ICU 24 hours or longer. The dataset contains only the first ICU admission of each patient. As shown in Table 1, the age ranged from `r min(alldata_final$age_years)` to `r max(alldata_final$age_years)` years, with a median of `r median(alldata_final$age_years)` years (interquartile range (IQR): `r quantile(alldata_final$age_years, 0.25)`-`r quantile(alldata_final$age_years, 0.75)` years), and 56.8% of patients were men. Most patients (71.3%) were white. 6,897 patients (21.2%) were admitted to ICU on weekends. Most admissions (83.7%) were either emergency or urgent. Most patients were first admitted to medical ICUs (MICU) (34.4%) and cardiac surgery recovery units (CSRU) (21.4%). Most common groups of diagnoses were other (92.8%) and circulatory disorders (83.7%). 26.5% of patients were intubated within the first 24 hours. Length of stay ranged from 1 to 153.9 days with a median of 2.5 days (IQR: 1.6-4.8 days). 2,561 patients (7.87%) died in their first ICU admissions. Patients who died in their ICU stays tended to be older, stayed longer, be admitted to ICU for emergency or urgent conditions, and undergo endotracheal intubation compared to those those who did not die.
 
 ```{r EDA-1, eval=FALSE, include=FALSE}
 nrow(alldata_final)
 describe(alldata_final)
 ```
 
-```{r eda-table}
-alldata_final %>%
-    select(age_years:first_careunit, endotrachflag:mechvent_24hr) %>%
-    mutate(gender = factor(gender, levels = c("F", "M"), labels = c("Female", "Male")),
-           icu_expire_flag_2 = factor(icu_expire_flag_2, levels = c(0, 1), labels = c("No", "Yes"))
-           ) %>%
-    tbl_summary(                                                
-        statistic = list(all_continuous() ~ c("{N_nonmiss}",
-                                              "{median} ({p25} to {p75})", 
-                                              "{min} to {max}"),        # stats and format for continuous variables
-                         all_categorical() ~ "{n} ({p}%)"),          # stats and format for categorical variables
-        type = list(all_continuous() ~ "continuous2"),            
-        digits = list(all_continuous() ~ 1,                         # rounding for continuous columns
-                      all_categorical() ~ c(0,1)),                       # rounding for categorical columns
-        label = list(age_years ~ "Age (years)",
+```{r eda-table, echo=FALSE}
+# label list
+label_list <- list(age_years ~ "Age (years)",
                      los ~ "Length of stay (days)",
                      weekend ~ "Weekend admission",
                      gender ~ "Gender",
@@ -842,19 +1001,34 @@ alldata_final %>%
                      epinephrine_24hr ~ "Epinephrine in first 24 hr",
                      dopamine_24hr ~ "Dopamine in first 24 hr",
                      dobutamine_24hr ~ "Dobutamine in first 24 hr",
-                     mechvent_24hr ~ "Mechanical ventilation in first 24 hr"),
+                     mechvent_24hr ~ "Mechanical ventilation in first 24 hr")
+
+# characteristic table
+alldata_final %>%
+    select(age_years:first_careunit, endotrachflag:mechvent_24hr) %>%
+    mutate(gender = factor(gender, levels = c("F", "M"), labels = c("Female", "Male")),
+           icu_expire_flag_2 = factor(icu_expire_flag_2, levels = c(0, 1), labels = c("No", "Yes"))
+           ) %>%
+    tbl_summary(                                                
+        statistic = list(all_continuous() ~ c("{N_nonmiss}",
+                                              "{median} ({p25} to {p75})", 
+                                              "{min} to {max}"),        # stats and format for continuous variables
+                         all_categorical() ~ "{n} ({p}%)"),          # stats and format for categorical variables
+        type = list(all_continuous() ~ "continuous2"),            
+        digits = list(all_continuous() ~ 1,                         # rounding for continuous columns
+                      all_categorical() ~ c(0,1)),                       # rounding for categorical columns
+        label = label_list,
         by = icu_expire_flag_2,
         missing = "no"
     ) %>%
   #add_n %>%
   add_p(pvalue_fun = ~style_pvalue(.x, digits = 3)) %>% 
-  #add_overall() %>% 
+  add_overall() %>% 
   modify_spanning_header(c("stat_1", "stat_2") ~ "**ICU mortality**") %>%  # adding spanning header
-  modify_caption("**Table 1. Characteristics of 32,556 ICU patients**")  # add a caption
+  modify_caption("**Table 1. Characteristics of 32,555 ICU patients by ICU mortality**")  # add a caption
 ```
 
-
-```{r}
+```{r eval=FALSE, all_plots include=FALSE, include=FALSE}
 # Initialize an empty list to store the plots
 plots <- list()
 
@@ -871,41 +1045,71 @@ for (variable in variables) {
                                                          x_label = paste(variable), 
                                                          y_label = "ICU mortality")
 }
-```
 
-```{r}
-# Plot arrangement=
+# Plot arrangement
 ggpubr::ggarrange(plotlist = plots[1:9], labels = "AUTO")
 ggpubr::ggarrange(plotlist = plots[10:18], labels = "AUTO")
 ggpubr::ggarrange(plotlist = plots[19:27], labels = "AUTO")
 ggpubr::ggarrange(plotlist = plots[28:39], labels = "AUTO")
 ```
 
+From the Figure 1 below, age, length of stay, minimum blood urea nitrogen, minimum GSC score, and maximum GCS score (Fig. 1A-1C, 1E, 1F) seem to differ between patients who died and did not died during their ICU stays. However, the minimum hematocrit (Fig. 1D) seems to not differ between the two categories.
+
+*Figure 1. Box plots of selected variables stratified by ICU mortality*
+```{r selected_plots, echo=FALSE}
+# Initialize an empty list to store the plots
+plots <- list()
+
+# subset data to continuous variables
+alldata_forplots <- alldata_final %>% 
+  select(age_years, los, icu_expire_flag_2, bloodureanitrogen_min, hematocrit_min, gcs_min, gcs_max) %>%
+  mutate(icu_expire_flag_2 = as.factor(icu_expire_flag_2))
+
+# Loop to generate the plots and store them in the list
+variables <- colnames(alldata_forplots %>% select(-icu_expire_flag_2))
+
+for (variable in variables) {
+  plots[[variable]] <- alldata_forplots %>% plot_boxplot(x = !!sym(variable), y = icu_expire_flag_2, 
+                                                         x_label = paste(variable), 
+                                                         y_label = "ICU mortality")
+}
+
+# Plot arrangement
+ggpubr::ggarrange(plotlist = plots[1:6], labels = "AUTO")
+
+```
+
 ```{r remove_unused}
 # remove large unused datasets to save memory
-rm(admissions, admissions_2, admissions_3, admissions_4, alldata, alldata_2, alldata_3, alldata_4, alldata_5, antibiotics, bloodculture, gcs_hourly, icd9_diag, icd9_diag_2, icd9_diag_3, icd9_diag_4, icd9_diag_final, labs_hourly, labs_hourly_24hr, output_hourly, patients, pt_icu_outcome, pt_weight, pv_mechvent, read_file, vasopressors, vitals_hourly, vitals_hourly_24hr)
+#rm(admissions, admissions_2, admissions_3, admissions_4, alldata, alldata_2, alldata_3, alldata_4, alldata_5, antibiotics, bloodculture, gcs_hourly, icd9_diag, icd9_diag_2, icd9_diag_3, icd9_diag_4, icd9_diag_final, labs_hourly, labs_hourly_24hr, output_hourly, patients, pt_icu_outcome, pt_weight, pv_mechvent, read_file, vasopressors, vitals_hourly, vitals_hourly_24hr)
 ```
 
 ---
+# Question 1: ICU mortality prediction
 
-# Question 2: Weekend Effect in ICU 
+The solution to this question is demonstrated in the `HDAT9910_q1.ipynb` file.
 
-Task: To investigate whether admission to ICU at the weekend increases the risk of ICU mortality 
+------------------------------------------------------------------------
+# Question 2: Weekend effect in ICU
 
-Objective: To develop a statistical model to estimate the effect of weekend admission to ICU on the risk of ICU mortality. 
+Task: To investigate whether admission to ICU at the weekend increases the risk of ICU mortality
 
-Question: Does admission to ICU over the weekend increase the risk of ICU mortality? 
+Objective: To develop a statistical model to estimate the effect of weekend admission to ICU on the risk of ICU mortality.
+
+Question: Does admission to ICU over the weekend increase the risk of ICU mortality?
 
 Study Population: First ICU admissions of adults in the MIMIC-III dataset
 
-## Methods
+## Solution
 
-I will use multivariable Cox-proportional hazards regression model to evaluate the effect of weekend admission on ICU mortality.
+I have chosen specific variables for plotting survival curves. In Figure 2, the survival rates of ICU patients do not appear to differ between weekend and weekday admissions upon visual inspection. However, with a p-value of 0.018, there's a statistically significant distinction. In the same figure, patients admitted to the ICU electively evidently exhibited higher survival rates compared to those admitted on an emergency or urgent basis (p < 0.0001). While the survival curves for ICU patients stratified by endotracheal intubation seem to overlap, a p-value of 0.00021 indicates a statistically significant difference
 
-## Results
+*Figure 2. Survival plots of ICU patients stratified by weekend admission, types of admission, and endotracheal intubation*
+```{r survival_plot, echo=FALSE}
+# List of ggsurvplots
+splots <- list()
 
-```{r survival_plot}
-ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ weekend, data=alldata_q2), 
+splots[[1]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ weekend, data=alldata_q2), 
               data = alldata_q2,
               palette = "Set2",
               ggtheme = theme_minimal(),
@@ -914,12 +1118,31 @@ ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ weekend, data=alldata_q2),
               pval=TRUE,
               title = "Survival plot of ICU admissions stratified by weekend admission")
 
+splots[[2]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ admission_type_2, data=alldata_q2), 
+              data = alldata_q2,
+              palette = "Set2",
+              ggtheme = theme_minimal(),
+              xlab = "Survival (days)",
+              surv.median.line = 'hv',
+              pval=TRUE,
+              title = "Survival plot of ICU admissions stratified by types of admission")
+
+splots[[3]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ endotrachflag, data=alldata_q2), 
+              data = alldata_q2,
+              palette = "Set2",
+              ggtheme = theme_minimal(),
+              xlab = "Survival (days)",
+              surv.median.line = 'hv',
+              pval=TRUE,
+              title = "Survival plot of ICU admissions stratified by endotracheal intubation")
+
+# Plot arrangement
+arrange_ggsurvplots(splots, nrow = 2, ncol = 2)
 ```
-Survival of ICU patients does not seem to be different between weekend and weekday admissions from visual observation. However, p = 0.018 indicates a statistically significant difference. 
 
-Fit a univariable Cox model for each variables in the dataset. Then, fit a multivariable Cox model including all of the variables that were statistically significant in the univariable Cox models.
+To develop the best model explaining the effect of the weekend admission on the ICU survival, univariate Cox models for each variables in the dataset were fitted. A multivariable Cox model including all of the variables that were statistically significant in the univariable Cox models were consequently fitted. The univariate and multivariate models are shown in Table 2. Interestingly, patients admitted to ICU during weekends were 11% more likely to die in ICU (hazard ratio 1.11, 95% confidence interval 1.02-1.22). However, this association was not seen in the multivariate model (hazard ratio 0.96, 95% confidence interval 0.88-1.05).
 
-```{r}
+```{r include=FALSE}
 # univariate analyses on all variables
 univariate <- alldata_q2 %>%
   tbl_uvregression(
@@ -928,27 +1151,38 @@ univariate <- alldata_q2 %>%
     exponentiate = TRUE,
     pvalue_fun = ~ style_pvalue(.x, digits = 2)
   ) %>%
-  bold_p() # bold p-values under a given threshold (default 0.05)
+  bold_p() # bold p-values under a given threshold (default 0.05) add a caption
 ```
 
-```{r multivariable}
+```{r multivariable, include=FALSE}
 # multivariate analysis of variables with p<0.05 on univariate analyses
 multi_1 <- coxph(Surv(los, icu_expire_flag_2) ~ age_years + weekend + gender + admission_type_2 + ethnicity_2 + Genitourinary + Circulatory + Neoplasms + Trauma + first_careunit + spo2_min + temperature_min + resprate_min + sysbp_min + diasbp_min + glucose_min.x + meanarterialpressure_min + spo2_max + temperature_max + resprate_max + heartrate_max + sysbp_max + diasbp_max + glucose_max.x + whitebloodcell_min + bicarbonate_min + bloodureanitrogen_min + creatinine_min + chloride_min + hematocrit_min + whitebloodcell_max + bicarbonate_max + bloodureanitrogen_max + creatinine_max + sodium_max + hematocrit_max + gcs_min + gcs_max + endotrachflag + weight + positiveculture + antibioticresistance_R + norepinephrine_24hr + epinephrine_24hr + dopamine_24hr + dobutamine_24hr + mechvent_24hr, data = alldata_q2)
-multivariate <- tbl_regression(multi_1, exponentiate = TRUE) %>%
+multivariate <- tbl_regression(multi_1, 
+                               exponentiate = TRUE) %>%
   bold_p()
-
-# combine univariate and multevariate in one table
-tbl_merge(list(univariate, multivariate),
-          tab_spanner = c("**Univariable**", "**Multivariable**"))
 ```
 
-```{r multivariate_2}
+```{r uni_multi_table, echo=FALSE}
+# combine univariate and multevariate in one table
+tbl_merge(list(univariate, multivariate),
+          tab_spanner = c("**Univariate**", "**Multivariate**")) %>%
+  modify_caption("**Table 2. Univariate Cox proportional hazards regression of all variables and ICU mortality**")
+```
+
+Variables with significant p-values in the `multi_1` model (Table 2) were included in the `multi_2` model (Table 3).
+
+```{r multivariate_2, echo=FALSE}
 # Include variables with p<0.05 into a new multivariate model
 multi_2 <- coxph(Surv(los, icu_expire_flag_2) ~ weekend + age_years + admission_type_2 + ethnicity_2 + Genitourinary + Neoplasms + Trauma + first_careunit + spo2_min + temperature_min + sysbp_min + diasbp_min + glucose_min.x + meanarterialpressure_min + spo2_max + temperature_max + resprate_max + heartrate_max + whitebloodcell_min + bicarbonate_min + bloodureanitrogen_min + chloride_min + hematocrit_min + bloodureanitrogen_max + sodium_max + hematocrit_max + gcs_min + gcs_max + endotrachflag + weight + mechvent_24hr, data = alldata_q2)
 
-tbl_regression(multi_2, exponentiate = TRUE) %>%
-  bold_p()
+# Display table
+tbl_regression(multi_2, 
+               exponentiate = TRUE) %>%
+  bold_p() %>%
+  modify_caption("**Table 3. Multivariate Cox proportional hazards regression including variables with p < 0.05 from Table 2 model**")
+```
 
+```{r echo=TRUE}
 # model comparison with ANOVA test
 anova(multi_2, multi_1, test='Chisq')
 # A nonsignificant p-value (>0.05) indicates that the smaller model is preferred.
@@ -959,15 +1193,16 @@ extractAIC(multi_2)
 # The smaller model provides a smaller AIC value. Thus, the smaller model is preferred.
 ```
 
-```{r}
+Model comparison with ANOVA test showed a nonsignificant p-value (> 0.05) suggesting that the smaller model (`multi_2`, Table 3) is preferred. The smaller model also has a smaller AIC value (42985.95), suggesting that the smaller model is preferred.
+
+```{r echo=TRUE}
 # test for Cox proportional hazards assumption
 cox.zph(multi_2)
 ```
-The test indicates that the proportional hazards assumption is violated for a large portion of variables (p < 0.05). The global test also indicates the assumption is invalid (p < 0.001).
 
-I will categorize these continuous variables and stratify categorical variables.
+The test for Cox proportional hazards assumption indicates that the proportional hazards assumption is violated for a large portion of variables (p \< 0.05). The global test also indicates the assumption is invalid (p \< 0.05). To address these issues, continuous variables were categorized, and categorical variables were stratified (Table 4).
 
-```{r statification}
+```{r statification, echo=FALSE}
 alldata_q2_partialcat <- alldata_q2 %>%
   mutate(age_years = cut(age_years, breaks = c(min(age_years), quantile(age_years, 0.25), median(age_years), quantile(age_years, 0.75), max(age_years)), include.lowest = TRUE),
          spo2_min = cut_continuous(spo2_min, "Oxygen saturation"),
@@ -982,7 +1217,7 @@ alldata_q2_partialcat <- alldata_q2 %>%
          gcs_min = cut(gcs_min, breaks = c(min(gcs_min), 14, 15), include.lowest = TRUE),
          gcs_max = cut(gcs_max, breaks = c(min(gcs_max), 14, 15), include.lowest = TRUE)
   ) %>%
-  # collapse some categories that have too few patients
+  # collapse some categories that have too few observations
   mutate(diasbp_min = fct_collapse(diasbp_min,
                                   "<60" = "[0,59.99]",
                                   "≥60" = c("(59.99,80]", "(80,114]")),
@@ -999,23 +1234,47 @@ alldata_q2_partialcat <- alldata_q2 %>%
 
 multi_3 <- coxph(Surv(los, icu_expire_flag_2) ~ weekend + age_years + strata(admission_type_2) + ethnicity_2 + strata(Genitourinary) + strata(Neoplasms) + Trauma + strata(first_careunit) + spo2_min + temperature_min + sysbp_min + diasbp_min + glucose_min.x + meanarterialpressure_min + spo2_max + temperature_max + resprate_max + heartrate_max + whitebloodcell_min + bicarbonate_min + bloodureanitrogen_min + chloride_min + hematocrit_min + bloodureanitrogen_max + sodium_max + hematocrit_max + gcs_min + gcs_max + strata(endotrachflag) + weight + strata(mechvent_24hr), data = alldata_q2_partialcat)
 
-tbl_regression(multi_3, exponentiate = TRUE) %>%
-  bold_p()
+tbl_regression(multi_3, 
+               exponentiate = TRUE,
+               label = list(age_years ~ "Age (years)",
+                     weekend ~ "Weekend admission",
+                     ethnicity_2 ~ "Ethnicity",
+                     Trauma ~ "Diagnosis: Trauma",
+                     weight ~ "Weight (kg)")) %>%
+  bold_p() %>%
+  modify_caption("**Table 4. Multivariate Cox proportional hazards regression from Table 3 with categorization and stratification of selected variables**")
 ```
+
+After addressing Cox proportional hazards assumption violation for `multi_3` model in Table 4, p-values of `diasbp_min`, `hematocrit_min`, and `hematocrit_max` became nonsignificant. Excluding `diasbp_min` and `hematocrit_max` resulted in a lower AIC value (`multi_4` model, Table 5)
+
 ```{r}
 # After categorization, p-values of `diasbp_min`, `hematocrit_min`, and `hematocrit_max` became nonsignificant in the multivariate model. I will try excluding them from the model and see their impact on the AIC.
 multi_4 <- coxph(Surv(los, icu_expire_flag_2) ~ weekend + age_years + strata(admission_type_2) + ethnicity_2 + strata(Genitourinary) + strata(Neoplasms) + Trauma + strata(first_careunit) + spo2_min + temperature_min + sysbp_min  + glucose_min.x + meanarterialpressure_min + spo2_max + temperature_max + resprate_max + heartrate_max + whitebloodcell_min + bicarbonate_min + bloodureanitrogen_min + chloride_min + bloodureanitrogen_max + sodium_max + hematocrit_min + gcs_min + gcs_max + strata(endotrachflag) + weight + strata(mechvent_24hr), data = alldata_q2_partialcat)
 
-tbl_regression(multi_4, exponentiate = TRUE) %>%
-  bold_p()
+tbl_regression(multi_4, 
+               exponentiate = TRUE,
+               label = list(age_years ~ "Age (years)",
+                     weekend ~ "Weekend admission",
+                     ethnicity_2 ~ "Ethnicity",
+                     Trauma ~ "Diagnosis: Trauma",
+                     weight ~ "Weight (kg)")) %>%
+  bold_p() %>%
+  modify_caption("**Table 5. Multivariate Cox proportional hazards regression from Table 4 with exclusion of variables with nonsignificant variables**")
+```
 
+```{r echo=TRUE}
+# model comparison with AIC values
 extractAIC(multi_3)
 extractAIC(multi_4)
-# AIC became lower when keeping `hematocrit_min` in. The `multi_4` model is preferred.
+# AIC became lower when excluding `diasbp_min` and `hematocrit_max` but including `hematocrit_min`. The `multi_4` model is preferred.
 
 # test for Cox proportional hazards assumption
 cox.zph(multi_4)
 ```
+
+There are still some variables that violate the Cox proportional hazards assumption. These violations were addressed in `multi_5` model (Table 6).
+
+## Final model
 
 ```{r}
 # categorize continuous variables that violates the proportional hazards assumption
@@ -1028,9 +1287,27 @@ alldata_q2_partialcat_2 <- alldata_q2_partialcat %>%
 # stratify categorical variables that violates the proportional hazards assumption
 multi_5 <- coxph(Surv(los, icu_expire_flag_2) ~ weekend + age_years + strata(admission_type_2) + ethnicity_2 + strata(Genitourinary) + strata(Neoplasms) + strata(Trauma) + strata(first_careunit) + strata(spo2_min) + temperature_min + strata(sysbp_min)  + strata(glucose_min.x) + strata(meanarterialpressure_min) + spo2_max + strata(temperature_max) + resprate_max + strata(heartrate_max) + whitebloodcell_min + strata(bicarbonate_min) + bloodureanitrogen_min + chloride_min + bloodureanitrogen_max + sodium_max + hematocrit_min + strata(gcs_min) + strata(gcs_max) + strata(endotrachflag) + weight + strata(mechvent_24hr), data = alldata_q2_partialcat_2)
 
-tbl_regression(multi_5, exponentiate = TRUE) %>%
-  bold_p()
+tbl_regression(multi_5, 
+               exponentiate = TRUE,
+               label = list(age_years ~ "Age (years)",
+                     weekend ~ "Weekend admission",
+                     ethnicity_2 ~ "Ethnicity",
+                     weight ~ "Weight (kg)")) %>%
+  bold_p() %>%
+  modify_caption("**Table 6. Multivariate Cox proportional hazards regression from Table 5 without Cox proportional hazards assumption violations**")
+```
+
+```{r echo=TRUE}
+# model comparison with AIC values
+extractAIC(multi_4)
+extractAIC(multi_5)
 
 # test for Cox proportional hazards assumption
 cox.zph(multi_5)
 ```
+
+The AIC value of the final model (multi_5) notably decreased compared to that of the multi_4 model, down to 2591.418. The global test for Cox proportional hazards assumptions confirms no violations, with a p-value greater than 0.05. As shown in Table 6, this model suggests that weekend admission is not associated with ICU mortality (hazard ratio 0.88, 95% confidence interval 0.74-1.05).
+
+## Conclusion
+
+In conclusion, according to the univariate Cox proportional hazards model, patients admitted to the ICU on weekends were more likely to pass away in the ICU compared to those admitted on weekdays. However, in the multivariate Cox proportional hazards model, which included variable selection, categorization, and stratification, weekend admission was not found to be associated with ICU mortality.
