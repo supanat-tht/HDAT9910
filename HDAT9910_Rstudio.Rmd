@@ -48,53 +48,52 @@ This notebook aims to utilize data science procedures on the MIMIC-III data to 1
 
 ## Data dictionary
 
-* `var_ranges`: dataset containing variable ranges from the `variable_ranges.csv` file
-* `replace_out_of_range`: function for trimming out-of-range values
-* `replace_missing`: function for replacing missing values with 0, mean, or median
-* `cut_continuous`: function for categorizing continuous variables using predefined value ranges
-* `plot_boxplot`: function for plotting a boxplot
-* `pt_icu_outcome`: source data of the admission dates and outcome of the admissions
-* `pt_icu_outcome_clean`: cleaned version of `pt_icu_outcome`
-* `patients`: source data of patients' profile
-* `patients_2`: dataset subset from `patients` to the included patients and selected only the gender data
-* `admissions`: source data of the characteristics of admissions
-* `admissions_5`: `admissions` subset to the included patients and collapsed categories of the admission type and ethnicity
-* `icustays`: source data of characteristics of ICU stays
-* `icustays_2`: `icustays` subset to the included ICU stays and selected only the first care unit data
-* `vitals_hourly`: source data of the hourly bedside measurements
-* `vitals_hourly_24hr`: `vitals_hourly` subset to the included patients and subset to measurements in the first 24 hours
-* `vitals_hourly_24hr_minmax`: cleaned version of `vitals_hourly_24hr` and transformed from long format to one row per patient
-* `labs_hourly`: source data of the hourly laboratory tests
-* `labs_hourly_24hr`: `labs_hourly` subset to the included patients and subset to the tests in the first 24 hours
-* `labs_hourly_24hr_minmax`: cleaned version of `labs_hourly_24hr` and transformed from long format to one row per patient
-* `gcs_hourly`: source data of the hourly Glasgow Coma Scale score measurements
-* `gcs_hourly_24hr_minmax`: cleaned version of `gcs_hourly` and transformed from long format to one row per patient
-* `pt_weight`: source data containing repeated measurements of weight in kilograms
-* `pt_weight_summary`: cleaned version of `pt_weight` and transformed from long format to one row per patient
-* `output_hourly`: source data of the repeat measurements of uring output
-* `output_hourly_24hr_trimmed`: cleaned version of `output_hourly` and transformed from long format to one row per patient
-* `bloodculture`: source data of the blood culture data
-* `bloodculture_24hr_summary`: cleaned version of `bloodculture`, one row per ICU stay
-* `antibiotics`: source data of antibiotic administration
-* `antibiotics_24hr`: `antibiotics` data transformed into one row per patient and keeping only the antibiotic flag
-* `vasopressors`: source data of vasopressor administration
-* `vasopressors_24hr_flag`: `vasopressors` data transformed into one row per patient and keeping only the antibiotic flag
-* `pv_mechvent`: source data of mechanical ventilation
-* `pv_mechvent_24hr`: `pv_mechvent` data transformed into one row per patient and keeping only the mechanical ventilation flag
-* `icd9_diag`: source data of ICD-9 diagnoses
-* `icd9_diag_final_wide`: ICD-9 diagnoses categorized into 10 groups and present in wide format
-* `alldata_final`: analysis-ready dataset obtained by joining multiple datasets together
-* `alldata_q2`: analysis-ready dataset for Research Question 2 identical to `alldata_final`
-* `alldata_q1`: analysis-ready dataset for Research Question 1
-* `univariate`: univariate Cox proportional hazards models of all variables and ICU mortality
-* `multi_5`: the final multivariate Cox proportional hazards model of selected variables and ICU mortality with all Cox proportional hazards assumption violation addressed
+-   `var_ranges`: dataset containing variable ranges from the `variable_ranges.csv` file
+-   `replace_out_of_range`: function for trimming out-of-range values
+-   `replace_missing`: function for replacing missing values with 0, mean, or median
+-   `cut_continuous`: function for categorizing continuous variables using predefined value ranges
+-   `plot_boxplot`: function for plotting a boxplot
+-   `pt_icu_outcome`: source data of the admission dates and outcome of the admissions
+-   `pt_icu_outcome_clean`: cleaned version of `pt_icu_outcome`
+-   `patients`: source data of patients' profile
+-   `patients_2`: dataset subset from `patients` to the included patients and selected only the gender data
+-   `admissions`: source data of the characteristics of admissions
+-   `admissions_5`: `admissions` subset to the included patients and collapsed categories of the admission type and ethnicity
+-   `icustays`: source data of characteristics of ICU stays
+-   `icustays_2`: `icustays` subset to the included ICU stays and selected only the first care unit data
+-   `vitals_hourly`: source data of the hourly bedside measurements
+-   `vitals_hourly_24hr`: `vitals_hourly` subset to the included patients and subset to measurements in the first 24 hours
+-   `vitals_hourly_24hr_minmax`: cleaned version of `vitals_hourly_24hr` and transformed from long format to one row per patient
+-   `labs_hourly`: source data of the hourly laboratory tests
+-   `labs_hourly_24hr`: `labs_hourly` subset to the included patients and subset to the tests in the first 24 hours
+-   `labs_hourly_24hr_minmax`: cleaned version of `labs_hourly_24hr` and transformed from long format to one row per patient
+-   `gcs_hourly`: source data of the hourly Glasgow Coma Scale score measurements
+-   `gcs_hourly_24hr_minmax`: cleaned version of `gcs_hourly` and transformed from long format to one row per patient
+-   `pt_weight`: source data containing repeated measurements of weight in kilograms
+-   `pt_weight_summary`: cleaned version of `pt_weight` and transformed from long format to one row per patient
+-   `output_hourly`: source data of the repeat measurements of uring output
+-   `output_hourly_24hr_trimmed`: cleaned version of `output_hourly` and transformed from long format to one row per patient
+-   `bloodculture`: source data of the blood culture data
+-   `bloodculture_24hr_summary`: cleaned version of `bloodculture`, one row per ICU stay
+-   `antibiotics`: source data of antibiotic administration
+-   `antibiotics_24hr`: `antibiotics` data transformed into one row per patient and keeping only the antibiotic flag
+-   `vasopressors`: source data of vasopressor administration
+-   `vasopressors_24hr_flag`: `vasopressors` data transformed into one row per patient and keeping only the antibiotic flag
+-   `pv_mechvent`: source data of mechanical ventilation
+-   `pv_mechvent_24hr`: `pv_mechvent` data transformed into one row per patient and keeping only the mechanical ventilation flag
+-   `icd9_diag`: source data of ICD-9 diagnoses
+-   `icd9_diag_final_wide`: ICD-9 diagnoses categorized into 10 groups and present in wide format
+-   `alldata_final`: analysis-ready dataset obtained by joining multiple datasets together
+-   `alldata_q2`: analysis-ready dataset for Research Question 2 identical to `alldata_final`
+-   `alldata_q1`: analysis-ready dataset for Research Question 1
+-   `univariate`: univariate Cox proportional hazards models of all variables and ICU mortality
+-   `multi_5`: the final multivariate Cox proportional hazards model of selected variables and ICU mortality with all Cox proportional hazards assumption violation addressed
 
 ## Setup
 
 Source data come in multiple .csv files. The required files were read and imported into data frames.
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(include = FALSE)
 
 # Load libraries
 library(dplyr)
@@ -284,7 +283,7 @@ As a result, `r nrow(pt_icu_outcome_clean)` patient aged 18 years old and older 
 
 ## `patients` data
 
-```{r patients}
+```{r patients, include=FALSE}
 # I want to retrieve gender from this data set
 # Filter to the subject IDs that I need
 patients_2 <- patients %>% 
@@ -339,7 +338,7 @@ I obtained the admission type and ethnicity from this dataset. The admission typ
 
 ## `icustays` data
 
-```{r icustays}
+```{r icustays, include=FALSE}
 # Filter to the ICU stay IDs that I need
 icustays_2 <- icustays %>%
   filter(icustay_id %in% pt_icu_outcome_clean$icustay_id) %>%
@@ -367,7 +366,7 @@ vitals_hourly_24hr <- vitals_hourly %>%
 Hmisc::describe(vitals_hourly_24hr)
 ```
 
-This dataset contains hourly data of the bedside measurements. The spO2, temperature, respiratory rate, heart rate, systolic blood pressure, diastolic blood pressure, glucose, and mean arterial blood pressure have unrealistic values. For example, glucose as low as `r min(vitals_hourly_24hr$glucose, na.rm=T)` and as high as 999999 `r max(vitals_hourly_24hr$glucose, na.rm=T)` are not possible using the blood glucose monitor.
+This dataset contains hourly data of the bedside measurements. The spO2, temperature, respiratory rate, heart rate, systolic blood pressure, diastolic blood pressure, glucose, and mean arterial blood pressure have unrealistic values. For example, glucose as low as `r min(vitals_hourly_24hr$glucose, na.rm=T)` and as high as 999999 are not possible using the blood glucose monitor.
 
 ```{r}
 summary(vitals_hourly_24hr$glucose)
@@ -394,15 +393,10 @@ vitals_hourly_24hr_minmax <- vitals_hourly_24hr_trimmed %>%
   summarise_all(list(min = ~collapse::fmin(., na.rm = TRUE), max = ~collapse::fmax(., na.rm = TRUE)))
 ```
 
-```{r eval=FALSE, include=FALSE}
-# sanity check
-Hmisc::describe(vitals_hourly_24hr_minmax)
-```
-
 I trimmed variables containing unrealistic values with a predefined ranges. Values outside of outlier ranges were marked missing. Non-outlier values outside of physiologically valid ranges were replaced with the nearest valid values. I then obtained maximum and minimum values of each measurement within the first 24 hours and transformed the dataset from a long format into one row per patient.
 
 ```{r echo=TRUE}
-head(vitals_hourly_24hr_minmax)
+summary(vitals_hourly_24hr_minmax)
 ```
 
 ## `labs_hourly` data
@@ -417,7 +411,7 @@ labs_hourly_24hr <- labs_hourly %>%
 Hmisc::describe(labs_hourly_24hr)
 ```
 
-This dataset contains hourly measurement of laboratory tests. A large number of variables originally contained out-of-range values. For example, the minimum hemoglobin is `r min(labs_hourly_24hr$hemoglobin, na.rm=T)`, and the maximum hemoglobin is max(labs_hourly_24hr$hemoglobin, na.rm=T).
+This dataset contains hourly measurement of laboratory tests. A large number of variables originally contained out-of-range values. For example, the minimum hemoglobin is 0, and the maximum hemoglobin is 108.
 
 ```{r echo=TRUE}
 summary(labs_hourly_24hr$hemoglobin)
@@ -450,15 +444,10 @@ labs_hourly_24hr_minmax <- labs_hourly_24hr_trimmed %>%
   summarise_all(list(min = ~collapse::fmin(., na.rm = TRUE), max = ~collapse::fmax(., na.rm = TRUE)))
 ```
 
-```{r eval=FALSE, include=FALSE}
-# sanity check
-Hmisc::describe(labs_hourly_24hr_minmax)
-```
-
-After value trimming, the dataset was transformed from a long format to one row per patient, containing maximum and minimum values within the first 24 hours of each patient. 
+After value trimming, the dataset was transformed from a long format to one row per patient, containing maximum and minimum values within the first 24 hours of each patient.
 
 ```{r echo=TRUE}
-head(labs_hourly_24hr_minmax)
+summary(labs_hourly_24hr_minmax)
 ```
 
 ## `gcs_hourly` data
@@ -511,7 +500,7 @@ Hmisc::describe(gcs_hourly_24hr_minmax)
 This dataset contains data of the Glasgow Coma Scale (GCS) score measured during the admission in a long format. The GCS score was corrected by taking into account the endotrachial intubation. The dataset was summarized into one row per patient, containing minimum and maximum values of the GCS score in the first 24 hours and endotrachial intubation status.
 
 ```{r echo=TRUE}
-head(gcs_hourly_24hr_minmax)
+summary(gcs_hourly_24hr_minmax)
 ```
 
 ## `pt_weight` file
@@ -551,7 +540,6 @@ This dataset contains repeated weight measurements in kilograms. The out-of-rang
 ```{r echo=TRUE}
 describe(pt_weight_summary$weight)
 ```
-
 
 ## `output_hourly` data
 
@@ -678,10 +666,9 @@ This dataset contains information on antibiotics administered during admissions 
 head(antibiotics_24hr)
 ```
 
-
 ## `vasopressors` data
 
-```{r vasopressors}
+```{r vasopressors, include=FALSE}
 # Join dataframes and keep only ICU stays that I need
 # join the ICU admission date from the `pt_icu_outcome_clean` data frame.
 vasopressors_joined <- merge(x = vasopressors, y = pt_icu_outcome_clean, by = "icustay_id") # inner join
@@ -786,7 +773,7 @@ head(pv_mechvent_24hr)
 
 ## `icd9_diag` data
 
-```{r icd9_diag}
+```{r icd9_diag, include=FALSE}
 # Filter to the hospital admission IDs that I need
 icd9_diag_2 <- icd9_diag %>% 
   filter(hadm_id %in% pt_icu_outcome_clean$hadm_id)
@@ -832,7 +819,7 @@ head(icd9_diag_final_wide)
 
 ## Joining everything to a single data set
 
-I joined all datasets above by either subject ID or ICU stay ID to create a single large dataset. I assigned 1 ("yes") to mechanical ventilation for patients who were on endotrachial tube. Percentages of missing values in each variable are shown below. 
+I joined all datasets above by either subject ID or ICU stay ID to create a single large dataset. I assigned 1 ("yes") to mechanical ventilation for patients who were on endotrachial tube. Percentages of missing values in each variable are shown below.
 
 ```{r join, include=FALSE}
 alldata <- pt_icu_outcome_clean %>%
@@ -1028,7 +1015,7 @@ alldata_final %>%
   modify_caption("**Table 1. Characteristics of 32,555 ICU patients by ICU mortality**")  # add a caption
 ```
 
-```{r eval=FALSE, all_plots include=FALSE, include=FALSE}
+```{r eval=FALSE, include=FALSE, include=FALSE}
 # Initialize an empty list to store the plots
 plots <- list()
 
@@ -1056,6 +1043,7 @@ ggpubr::ggarrange(plotlist = plots[28:39], labels = "AUTO")
 From the Figure 1 below, age, length of stay, minimum blood urea nitrogen, minimum GSC score, and maximum GCS score (Fig. 1A-1C, 1E, 1F) seem to differ between patients who died and did not died during their ICU stays. However, the minimum hematocrit (Fig. 1D) seems to not differ between the two categories.
 
 *Figure 1. Box plots of selected variables stratified by ICU mortality*
+
 ```{r selected_plots, echo=FALSE}
 # Initialize an empty list to store the plots
 plots <- list()
@@ -1079,17 +1067,10 @@ ggpubr::ggarrange(plotlist = plots[1:6], labels = "AUTO")
 
 ```
 
-```{r remove_unused}
-# remove large unused datasets to save memory
-#rm(admissions, admissions_2, admissions_3, admissions_4, alldata, alldata_2, alldata_3, alldata_4, alldata_5, antibiotics, bloodculture, gcs_hourly, icd9_diag, icd9_diag_2, icd9_diag_3, icd9_diag_4, icd9_diag_final, labs_hourly, labs_hourly_24hr, output_hourly, patients, pt_icu_outcome, pt_weight, pv_mechvent, read_file, vasopressors, vitals_hourly, vitals_hourly_24hr)
-```
-
 ---
 # Question 1: ICU mortality prediction
-
 The solution to this question is demonstrated in the `HDAT9910_q1.ipynb` file.
-
-------------------------------------------------------------------------
+---
 # Question 2: Weekend effect in ICU
 
 Task: To investigate whether admission to ICU at the weekend increases the risk of ICU mortality
@@ -1102,9 +1083,10 @@ Study Population: First ICU admissions of adults in the MIMIC-III dataset
 
 ## Solution
 
-I have chosen specific variables for plotting survival curves. In Figure 2, the survival rates of ICU patients do not appear to differ between weekend and weekday admissions upon visual inspection. However, with a p-value of 0.018, there's a statistically significant distinction. In the same figure, patients admitted to the ICU electively evidently exhibited higher survival rates compared to those admitted on an emergency or urgent basis (p < 0.0001). While the survival curves for ICU patients stratified by endotracheal intubation seem to overlap, a p-value of 0.00021 indicates a statistically significant difference
+I have chosen specific variables for plotting survival curves. In Figure 2, the survival rates of ICU patients do not appear to differ between weekend and weekday admissions upon visual inspection. However, with a p-value of 0.018, there's a statistically significant distinction. In the same figure, patients admitted to the ICU electively evidently exhibited higher survival rates compared to those admitted on an emergency or urgent basis (p \< 0.0001). While the survival curves for ICU patients stratified by endotracheal intubation seem to overlap, a p-value of 0.00021 indicates a statistically significant difference
 
 *Figure 2. Survival plots of ICU patients stratified by weekend admission, types of admission, and endotracheal intubation*
+
 ```{r survival_plot, echo=FALSE}
 # List of ggsurvplots
 splots <- list()
@@ -1193,7 +1175,7 @@ extractAIC(multi_2)
 # The smaller model provides a smaller AIC value. Thus, the smaller model is preferred.
 ```
 
-Model comparison with ANOVA test showed a nonsignificant p-value (> 0.05) suggesting that the smaller model (`multi_2`, Table 3) is preferred. The smaller model also has a smaller AIC value (42985.95), suggesting that the smaller model is preferred.
+Model comparison with ANOVA test showed a nonsignificant p-value (\> 0.05) suggesting that the smaller model (`multi_2`, Table 3) is preferred. The smaller model also has a smaller AIC value (42985.95), suggesting that the smaller model is preferred.
 
 ```{r echo=TRUE}
 # test for Cox proportional hazards assumption
