@@ -2,7 +2,7 @@
 title: "HDAT9910"
 author: "Supanat Thitipatarakorn (z5383184)"
 date: "`r Sys.Date()`"
-output: 
+output:
   html_document:
     keep_md: true
 ---

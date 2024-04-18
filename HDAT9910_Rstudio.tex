@@ -1,0 +1,2046 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={HDAT9910},
+  pdfauthor={Supanat Thitipatarakorn (z5383184)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{HDAT9910}
+\author{Supanat Thitipatarakorn (z5383184)}
+\date{2024-04-18}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Patients admitted to hospitals are sent to the appropriate wards
+depending on their conditions. Patients with critical conditions in need
+of close monitoring and medical care will be admitted or transferred to
+intensive care units (ICUs). Because of the nature of their conditions,
+patients in ICUs often have a higher mortality rate than patients in
+regular wards.
+
+MIMIC-III is a large database containing deidentified health-related
+data associated with over forty thousand patients who stayed in the
+intensive care units of the Beth Israel Deaconess Medical Center in
+Boston, Massachusetts, between 2001 and 2012. The data was gathered from
+the Philips CareVue Clinical Information System and iMDsoft MetaVision
+ICU. MIMIC-III is available to researchers worldwide for data study
+including performing various data science tasks.
+
+This notebook aims to utilize data science procedures on the MIMIC-III
+data to 1) build a predictive algorithm based on data from the first 24
+hours in the ICU and 2) to investigate whether admission to the ICU on
+weekends increases the risk of ICU mortality.
+
+\hypertarget{characteristic-of-the-mimic-iii-data}{%
+\subsection{Characteristic of the MIMIC-III
+data}\label{characteristic-of-the-mimic-iii-data}}
+
+The MIMIC-III database is a joint database from the CareVue and
+MetaVision systems. The data were collected during routine care, not for
+research purposes. The data were deidentified by removing personally
+identifiable information. Further deidentification was done by
+offsetting dates into the future (2100-2200) and shifting the ages of
+patients older than 89 years to 91.4. The data do not only include adult
+patients, but also newborns.
+
+\hypertarget{research-questions}{%
+\subsection{Research questions}\label{research-questions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Is it possible to accurately predict mortality based on data from the
+  first 24 hours in ICU?
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Study population: Adult patients older than 18 years old admitted to
+  the ICU from January 2006 to December 2014. Only the first ICU
+  admission for each patient is included. ICU stays with length of stay
+  under 24 hours or unknown are not included.
+\item
+  Study outcome: ICU mortality
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Does admission to ICU over the weekend increase the risk of mortality?
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Study population: Adult patients older than 18 years old admitted to
+  the ICU from January 2006 to December 2014. Only the first ICU
+  admission for each patient is included. ICU stays with length of stay
+  under 24 hours or unknown are not included. Only data from the first
+  24 hours in ICU are included.
+\item
+  Intervention: Admission to ICU over the weekend
+\item
+  Comparison: Admission to ICU over the weekdays
+\item
+  Study outcome: ICU mortality
+\end{itemize}
+
+\hypertarget{structure-of-the-report}{%
+\subsection{Structure of the report}\label{structure-of-the-report}}
+
+\begin{itemize}
+\tightlist
+\item
+  Data cleaning and exploration, and Research Question 2 are done using
+  R. Unrendered and rendered versions of the report are in R markdown
+  and HTML files.
+\item
+  Research Question 1 is done using Python. Unrendered and rendered
+  versions of the report are in Jupyter Notebook and PDF files.
+\end{itemize}
+
+\hypertarget{introduction-1}{%
+\subsection{Introduction}\label{introduction-1}}
+
+Patients admitted to hospitals are sent to the appropriate wards
+depending on their conditions. Patients with critical conditions in need
+of close monitoring and medical care will be admitted or transferred to
+intensive care units (ICUs). Because of the nature of their conditions,
+patients in ICUs often have a higher mortality rate than patients in
+regular wards.
+
+MIMIC-III is a large database containing deidentified health-related
+data associated with over forty thousand patients who stayed in the
+intensive care units of the Beth Israel Deaconess Medical Center in
+Boston, Massachusetts, between 2001 and 2012. The data was gathered from
+the Philips CareVue Clinical Information System and iMDsoft MetaVision
+ICU. MIMIC-III is available to researchers worldwide for data study
+including performing various data science tasks.
+
+This notebook aims to utilize data science procedures on the MIMIC-III
+data to 1) build a predictive algorithm based on data from the first 24
+hours in the ICU and 2) to investigate whether admission to the ICU on
+weekends increases the risk of ICU mortality.
+
+\hypertarget{data-cleaning-and-preparation}{%
+\section{Data Cleaning and
+Preparation}\label{data-cleaning-and-preparation}}
+
+\hypertarget{data-dictionary}{%
+\subsection{Data dictionary}\label{data-dictionary}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{var\_ranges}: dataset containing variable ranges from the
+  \texttt{variable\_ranges.csv} file
+\item
+  \texttt{replace\_out\_of\_range}: function for trimming out-of-range
+  values
+\item
+  \texttt{replace\_missing}: function for replacing missing values with
+  0, mean, or median
+\item
+  \texttt{cut\_continuous}: function for categorizing continuous
+  variables using predefined value ranges
+\item
+  \texttt{plot\_boxplot}: function for plotting a boxplot
+\item
+  \texttt{pt\_icu\_outcome}: source data of the admission dates and
+  outcome of the admissions
+\item
+  \texttt{pt\_icu\_outcome\_clean}: cleaned version of
+  \texttt{pt\_icu\_outcome}
+\item
+  \texttt{patients}: source data of patients' profile
+\item
+  \texttt{patients\_2}: dataset subset from \texttt{patients} to the
+  included patients and selected only the gender data
+\item
+  \texttt{admissions}: source data of the characteristics of admissions
+\item
+  \texttt{admissions\_5}: \texttt{admissions} subset to the included
+  patients and collapsed categories of the admission type and ethnicity
+\item
+  \texttt{icustays}: source data of characteristics of ICU stays
+\item
+  \texttt{icustays\_2}: \texttt{icustays} subset to the included ICU
+  stays and selected only the first care unit data
+\item
+  \texttt{vitals\_hourly}: source data of the hourly bedside
+  measurements
+\item
+  \texttt{vitals\_hourly\_24hr}: \texttt{vitals\_hourly} subset to the
+  included patients and subset to measurements in the first 24 hours
+\item
+  \texttt{vitals\_hourly\_24hr\_minmax}: cleaned version of
+  \texttt{vitals\_hourly\_24hr} and transformed from long format to one
+  row per patient
+\item
+  \texttt{labs\_hourly}: source data of the hourly laboratory tests
+\item
+  \texttt{labs\_hourly\_24hr}: \texttt{labs\_hourly} subset to the
+  included patients and subset to the tests in the first 24 hours
+\item
+  \texttt{labs\_hourly\_24hr\_minmax}: cleaned version of
+  \texttt{labs\_hourly\_24hr} and transformed from long format to one
+  row per patient
+\item
+  \texttt{gcs\_hourly}: source data of the hourly Glasgow Coma Scale
+  score measurements
+\item
+  \texttt{gcs\_hourly\_24hr\_minmax}: cleaned version of
+  \texttt{gcs\_hourly} and transformed from long format to one row per
+  patient
+\item
+  \texttt{pt\_weight}: source data containing repeated measurements of
+  weight in kilograms
+\item
+  \texttt{pt\_weight\_summary}: cleaned version of \texttt{pt\_weight}
+  and transformed from long format to one row per patient
+\item
+  \texttt{output\_hourly}: source data of the repeat measurements of
+  uring output
+\item
+  \texttt{output\_hourly\_24hr\_trimmed}: cleaned version of
+  \texttt{output\_hourly} and transformed from long format to one row
+  per patient
+\item
+  \texttt{bloodculture}: source data of the blood culture data
+\item
+  \texttt{bloodculture\_24hr\_summary}: cleaned version of
+  \texttt{bloodculture}, one row per ICU stay
+\item
+  \texttt{antibiotics}: source data of antibiotic administration
+\item
+  \texttt{antibiotics\_24hr}: \texttt{antibiotics} data transformed into
+  one row per patient and keeping only the antibiotic flag
+\item
+  \texttt{vasopressors}: source data of vasopressor administration
+\item
+  \texttt{vasopressors\_24hr\_flag}: \texttt{vasopressors} data
+  transformed into one row per patient and keeping only the antibiotic
+  flag
+\item
+  \texttt{pv\_mechvent}: source data of mechanical ventilation
+\item
+  \texttt{pv\_mechvent\_24hr}: \texttt{pv\_mechvent} data transformed
+  into one row per patient and keeping only the mechanical ventilation
+  flag
+\item
+  \texttt{icd9\_diag}: source data of ICD-9 diagnoses
+\item
+  \texttt{icd9\_diag\_final\_wide}: ICD-9 diagnoses categorized into 10
+  groups and present in wide format
+\item
+  \texttt{alldata\_final}: analysis-ready dataset obtained by joining
+  multiple datasets together
+\item
+  \texttt{alldata\_q2}: analysis-ready dataset for Research Question 2
+  identical to \texttt{alldata\_final}
+\item
+  \texttt{alldata\_q1}: analysis-ready dataset for Research Question 1
+\item
+  \texttt{univariate}: univariate Cox proportional hazards models of all
+  variables and ICU mortality
+\item
+  \texttt{multi\_5}: the final multivariate Cox proportional hazards
+  model of selected variables and ICU mortality with all Cox
+  proportional hazards assumption violation addressed
+\end{itemize}
+
+\hypertarget{setup}{%
+\subsection{Setup}\label{setup}}
+
+Source data come in multiple .csv files. The required files were read
+and imported into data frames.
+
+\hypertarget{pt_icu_outcome-data}{%
+\subsection{\texorpdfstring{\texttt{pt\_icu\_outcome}
+data}{pt\_icu\_outcome data}}\label{pt_icu_outcome-data}}
+
+This dataset contains age, death flag, length of ICU stay, and time of
+hospital and ICU admission and discharge. There are 61533 ICU stays of
+46476 distinct patients. The ICU stay ID should be unique each row.
+However, there is a duplicate ID (\texttt{icustay\_id} count = 61533;
+distinct count = 61532). The age of patients older than 89 years old has
+been shifted to 91.4 as indicated
+\href{https://mimic.mit.edu/docs/iii/tables/patients/}{here}.
+
+\begin{verbatim}
+##   row_id subject_id                 dob hadm_id           admittime
+## 1   6668       5246 2111-10-19 00:00:00  199031 2185-11-14 08:36:00
+## 2   6668       5246 2111-10-19 00:00:00  199031 2185-12-02 23:53:00
+##             dischtime icustay_id age_years              intime
+## 1 2185-12-21 18:15:00     229922        74 2185-12-02 23:53:53
+## 2 2185-12-21 18:15:00     229922        74 2185-12-02 23:53:53
+##               outtime    los hosp_deathtime icu_expire_flag
+## 1 2185-12-10 01:58:40 7.0867           <NA>               0
+## 2 2185-12-10 01:58:40 7.0867           <NA>               0
+##   hospital_expire_flag                 dod expire_flag ttd_days
+## 1                    0 2186-07-20 00:00:00           1      229
+## 2                    0 2186-07-20 00:00:00           1      229
+\end{verbatim}
+
+Patient No.~5246 has duplicated ICU stay ID 229922. Because the only
+difference between the two duplicated observations is the hospital
+admission time, and it is not possible to determine which one is
+correct, both of the entries were excluded.
+
+Only the first ICU stay of each patient that lasted at least 24 hours
+was kept, and patients younger than 18 years old were excluded.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# count patients died in the ICU}
+\FunctionTok{table}\NormalTok{(pt\_icu\_outcome\_adult}\SpecialCharTok{$}\NormalTok{icu\_expire\_flag)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##     0     1 
+## 38293   216
+\end{verbatim}
+
+The ICU expire flag is ``yes'' to only 0.56\% of patients, which is much
+lower than the
+\href{https://www.nature.com/articles/sdata201635/tables/2}{published
+ICU mortality rate} of the data. A new ICU expire flag was created based
+on the original expire flag and the recorded death time. Patients with
+death date occurring during the ICU stay were considered ``yes'' to the
+expire flag. A new weekend flag telling whether ICU admissions occurred
+on weekends was also created.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(pt\_icu\_outcome\_clean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   row_id subject_id                 dob hadm_id icustay_id age_years    los
+## 1      2          3 2025-04-11 00:00:00  145834     211552        76 6.0646
+## 2      3          4 2143-05-12 00:00:00  185777     294638        47 1.6785
+## 3      5          6 2109-06-21 00:00:00  107064     228232        65 3.6729
+## 4      9          9 2108-01-26 00:00:00  150750     220597        41 5.3231
+## 5     11         11 2128-02-22 00:00:00  194540     229441        50 1.5844
+## 6     12         12 2032-03-24 00:00:00  112213     232669        72 7.6348
+##   hospital_expire_flag expire_flag         admittime_d         dischtime_d
+## 1                    0           1 2101-10-20 19:08:00 2101-10-31 13:58:00
+## 2                    0           0 2191-03-16 00:28:00 2191-03-23 18:41:00
+## 3                    0           0 2175-05-30 07:15:00 2175-06-15 16:00:00
+## 4                   NA           1                <NA>                <NA>
+## 5                    0           1 2178-04-16 06:18:00 2178-05-11 19:00:00
+## 6                    1           1 2104-08-07 10:15:00 2104-08-20 02:57:00
+##              intime_d           outtime_d    hosp_deathtime_d      dod_d
+## 1 2101-10-20 19:10:11 2101-10-26 20:43:09                <NA> 2102-06-14
+## 2 2191-03-16 00:29:31 2191-03-17 16:46:31                <NA>       <NA>
+## 3 2175-05-30 21:30:54 2175-06-03 13:39:54                <NA>       <NA>
+## 4 2149-11-09 13:07:02 2149-11-14 20:52:14                <NA> 2149-11-14
+## 5 2178-04-16 06:19:32 2178-04-17 20:21:05                <NA> 2178-11-14
+## 6 2104-08-08 02:08:17 2104-08-15 17:22:25 2104-08-20 02:57:00 2104-08-20
+##   icu_expire_flag_2 weekend
+## 1                 0       0
+## 2                 0       0
+## 3                 0       0
+## 4                 1       1
+## 5                 0       0
+## 6                 0       0
+\end{verbatim}
+
+As a result, 32555 patient aged 18 years old and older with their first
+ICU stay lasting at least 24 hours were included. The ICU mortality rate
+is 7.87\%, comparable to the published rate. The rate here is different
+to the published rate because this is a subset of the published
+population.
+
+\hypertarget{patients-data}{%
+\subsection{\texorpdfstring{\texttt{patients}
+data}{patients data}}\label{patients-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(patients\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   subject_id gender
+## 1        249      F
+## 2        250      F
+## 3        251      M
+## 4        252      M
+## 5        253      F
+## 6        255      M
+\end{verbatim}
+
+I obtained gender of the included patients from this dataset. 56.8\% of
+them were male.
+
+\hypertarget{admissions-data}{%
+\subsection{\texorpdfstring{\texttt{admissions}
+data}{admissions data}}\label{admissions-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(admissions\_5}\SpecialCharTok{$}\NormalTok{admission\_type\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##         ELECTIVE EMERGENCY/URGENT 
+##             5317            27238
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(admissions\_5}\SpecialCharTok{$}\NormalTok{ethnicity\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##         BLACK OTHER/UNKNOWN         WHITE 
+##          2451          6881         23223
+\end{verbatim}
+
+I obtained the admission type and ethnicity from this dataset. The
+admission type was collapse to elective and emergency/urgent. The
+ethnicity was collapse to white, black, and other/unknown.
+
+\hypertarget{icustays-data}{%
+\subsection{\texorpdfstring{\texttt{icustays}
+data}{icustays data}}\label{icustays-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(icustays\_2}\SpecialCharTok{$}\NormalTok{first\_careunit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   CCU  CSRU  MICU  SICU TSICU 
+##  4752  6963 11209  5346  4285
+\end{verbatim}
+
+I obtained the first care unit data from this dataset. Of the included
+patients, the majority of them (34.4\%) were initially admitted to the
+Medical Intensive Care Unit (MICU).
+
+\hypertarget{vitals_hourly-data}{%
+\subsection{\texorpdfstring{\texttt{vitals\_hourly}
+data}{vitals\_hourly data}}\label{vitals_hourly-data}}
+
+This dataset contains hourly data of the bedside measurements. The spO2,
+temperature, respiratory rate, heart rate, systolic blood pressure,
+diastolic blood pressure, glucose, and mean arterial blood pressure have
+unrealistic values. For example, glucose as low as 0.85 and as high as
+999999 are not possible using the blood glucose monitor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(vitals\_hourly\_24hr}\SpecialCharTok{$}\NormalTok{glucose)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+##      0.8    107.0    129.0    147.3    160.0 999999.0   576110
+\end{verbatim}
+
+I trimmed variables containing unrealistic values with a predefined
+ranges. Values outside of outlier ranges were marked missing.
+Non-outlier values outside of physiologically valid ranges were replaced
+with the nearest valid values. I then obtained maximum and minimum
+values of each measurement within the first 24 hours and transformed the
+dataset from a long format into one row per patient.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(vitals\_hourly\_24hr\_minmax)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    icustay_id        spo2_min         fio2_min      temperature_min
+##  Min.   :200003   Min.   :  0.00   Min.   : 21.00   Min.   :26.00  
+##  1st Qu.:225340   1st Qu.: 88.00   1st Qu.: 40.00   1st Qu.:35.72  
+##  Median :250469   Median : 93.00   Median : 40.00   Median :36.17  
+##  Mean   :250270   Mean   : 87.33   Mean   : 46.83   Mean   :36.12  
+##  3rd Qu.:275228   3rd Qu.: 95.00   3rd Qu.: 50.00   3rd Qu.:36.61  
+##  Max.   :299999   Max.   :100.00   Max.   :100.00   Max.   :39.60  
+##                   NA's   :363      NA's   :25103    NA's   :967    
+##   resprate_min   heartrate_min      sysbp_min        diasbp_min    
+##  Min.   : 0.00   Min.   :  0.00   Min.   :  0.00   Min.   :  0.00  
+##  1st Qu.:10.00   1st Qu.: 62.00   1st Qu.: 86.00   1st Qu.: 39.00  
+##  Median :12.50   Median : 71.00   Median : 94.00   Median : 46.00  
+##  Mean   :12.61   Mean   : 72.12   Mean   : 95.32   Mean   : 45.62  
+##  3rd Qu.:15.00   3rd Qu.: 81.00   3rd Qu.:104.00   3rd Qu.: 52.00  
+##  Max.   :36.00   Max.   :145.00   Max.   :180.00   Max.   :114.00  
+##  NA's   :433     NA's   :391      NA's   :425      NA's   :425     
+##   glucose_min    meanarterialpressure_min    spo2_max         fio2_max     
+##  Min.   : 33.0   Min.   : 14.00           Min.   : 72.00   Min.   : 21.00  
+##  1st Qu.: 87.0   1st Qu.: 55.00           1st Qu.:100.00   1st Qu.: 50.00  
+##  Median :103.0   Median : 61.00           Median :100.00   Median :100.00  
+##  Mean   :107.5   Mean   : 61.66           Mean   : 99.81   Mean   : 77.26  
+##  3rd Qu.:123.0   3rd Qu.: 68.00           3rd Qu.:100.00   3rd Qu.:100.00  
+##  Max.   :592.0   Max.   :125.00           Max.   :100.00   Max.   :100.00  
+##  NA's   :649     NA's   :393              NA's   :363      NA's   :25103   
+##  temperature_max  resprate_max    heartrate_max      sysbp_max    
+##  Min.   :31.60   Min.   :  7.00   Min.   : 37.00   Min.   : 25.0  
+##  1st Qu.:37.00   1st Qu.: 22.00   1st Qu.: 88.25   1st Qu.:129.0  
+##  Median :37.50   Median : 25.00   Median :100.00   Median :142.3  
+##  Mean   :37.55   Mean   : 26.22   Mean   :101.65   Mean   :144.6  
+##  3rd Qu.:38.00   3rd Qu.: 29.00   3rd Qu.:114.00   3rd Qu.:158.0  
+##  Max.   :42.22   Max.   :300.00   Max.   :280.00   Max.   :311.0  
+##  NA's   :967     NA's   :433      NA's   :391      NA's   :425    
+##    diasbp_max      glucose_max   meanarterialpressure_max
+##  Min.   : 12.43   Min.   :  45   Min.   : 17.43          
+##  1st Qu.: 68.00   1st Qu.: 129   1st Qu.: 87.00          
+##  Median : 77.00   Median : 159   Median : 96.24          
+##  Mean   : 79.25   Mean   : 177   Mean   : 99.72          
+##  3rd Qu.: 88.00   3rd Qu.: 200   3rd Qu.:108.00          
+##  Max.   :356.50   Max.   :1476   Max.   :330.00          
+##  NA's   :425      NA's   :649    NA's   :393
+\end{verbatim}
+
+\hypertarget{labs_hourly-data}{%
+\subsection{\texorpdfstring{\texttt{labs\_hourly}
+data}{labs\_hourly data}}\label{labs_hourly-data}}
+
+This dataset contains hourly measurement of laboratory tests. A large
+number of variables originally contained out-of-range values. For
+example, the minimum hemoglobin is 0, and the maximum hemoglobin is 108.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(labs\_hourly\_24hr}\SpecialCharTok{$}\NormalTok{hemoglobin)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##    0.00    9.30   10.50   10.61   11.80  108.00   96115
+\end{verbatim}
+
+After value trimming, the dataset was transformed from a long format to
+one row per patient, containing maximum and minimum values within the
+first 24 hours of each patient.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(labs\_hourly\_24hr\_minmax)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    icustay_id     neutrophil_min  creactiveprotein_min whitebloodcell_min
+##  Min.   :200003   Min.   : 0.00   Min.   :  0.12       Min.   :  0.10    
+##  1st Qu.:225363   1st Qu.:74.00   1st Qu.:  7.05       1st Qu.:  7.50    
+##  Median :250495   Median :82.40   Median : 36.10       Median : 10.10    
+##  Mean   :250293   Mean   :78.51   Mean   : 71.68       Mean   : 11.15    
+##  3rd Qu.:275246   3rd Qu.:88.30   3rd Qu.:118.30       3rd Qu.: 13.40    
+##  Max.   :299999   Max.   :99.00   Max.   :299.90       Max.   :442.70    
+##                   NA's   :24053   NA's   :31818        NA's   :566       
+##  partialpressureo2_min bicarbonate_min  lactate_min      troponin_min   
+##  Min.   : 32.0         Min.   : 5.00   Min.   : 0.400   Min.   : 0.010  
+##  1st Qu.: 69.0         1st Qu.:20.00   1st Qu.: 1.100   1st Qu.: 0.030  
+##  Median : 89.0         Median :23.00   Median : 1.500   Median : 0.110  
+##  Mean   :102.5         Mean   :22.92   Mean   : 1.826   Mean   : 0.872  
+##  3rd Qu.:123.0         3rd Qu.:25.00   3rd Qu.: 2.100   3rd Qu.: 0.505  
+##  Max.   :609.0         Max.   :52.00   Max.   :24.600   Max.   :20.850  
+##  NA's   :12242         NA's   :355     NA's   :17357    NA's   :25822   
+##  bloodureanitrogen_min creatinine_min   alaninetransaminase_min
+##  Min.   :  0.00        Min.   : 0.100   Min.   :    2          
+##  1st Qu.: 11.00        1st Qu.: 0.700   1st Qu.:   18          
+##  Median : 17.00        Median : 0.900   Median :   32          
+##  Mean   : 22.49        Mean   : 1.207   Mean   :  142          
+##  3rd Qu.: 26.00        3rd Qu.: 1.200   3rd Qu.:   71          
+##  Max.   :232.00        Max.   :28.000   Max.   :10000          
+##  NA's   :222           NA's   :213      NA's   :21033          
+##  aspartatetransaminase_min hemoglobin_min  intnormalisedratio_min
+##  Min.   :    6.0           Min.   : 0.00   Min.   : 0.00         
+##  1st Qu.:   25.0           1st Qu.: 8.90   1st Qu.: 1.10         
+##  Median :   45.0           Median :10.20   Median : 1.20         
+##  Mean   :  187.9           Mean   :10.34   Mean   : 1.36         
+##  3rd Qu.:  105.0           3rd Qu.:11.70   3rd Qu.: 1.40         
+##  Max.   :13080.0           Max.   :20.50   Max.   :17.60         
+##  NA's   :21042             NA's   :461     NA's   :5940          
+##  platelets_min     albumin_min     chloride_min    glucose_min    
+##  Min.   :   5.0   Min.   :1.000   Min.   : 50.0   Min.   :  33.0  
+##  1st Qu.: 132.0   1st Qu.:2.600   1st Qu.:102.0   1st Qu.:  92.0  
+##  Median : 185.0   Median :3.100   Median :105.0   Median : 109.0  
+##  Mean   : 200.1   Mean   :3.043   Mean   :104.5   Mean   : 116.2  
+##  3rd Qu.: 248.0   3rd Qu.:3.500   3rd Qu.:108.0   3rd Qu.: 131.0  
+##  Max.   :1592.0   Max.   :6.000   Max.   :145.0   Max.   :1016.0  
+##  NA's   :459      NA's   :23319   NA's   :309     NA's   :220     
+##    sodium_min    bilirubin_min   hematocrit_min  neutrophil_max 
+##  Min.   : 50.0   Min.   : 0.10   Min.   : 0.00   Min.   : 0.00  
+##  1st Qu.:136.0   1st Qu.: 0.40   1st Qu.:26.30   1st Qu.:75.00  
+##  Median :138.0   Median : 0.70   Median :30.10   Median :83.40  
+##  Mean   :137.6   Mean   : 1.88   Mean   :30.49   Mean   :79.68  
+##  3rd Qu.:140.0   3rd Qu.: 1.40   3rd Qu.:34.30   3rd Qu.:89.00  
+##  Max.   :225.0   Max.   :55.60   Max.   :66.20   Max.   :99.00  
+##  NA's   :578     NA's   :21162   NA's   :325     NA's   :24053  
+##  creactiveprotein_max whitebloodcell_max partialpressureo2_max bicarbonate_max
+##  Min.   :  0.12       Min.   :  0.10     Min.   : 32.0         Min.   : 6.00  
+##  1st Qu.:  7.30       1st Qu.:  8.70     1st Qu.:127.0         1st Qu.:22.00  
+##  Median : 37.80       Median : 11.80     Median :210.0         Median :24.00  
+##  Mean   : 72.13       Mean   : 13.24     Mean   :237.8         Mean   :24.56  
+##  3rd Qu.:119.45       3rd Qu.: 15.90     3rd Qu.:345.0         3rd Qu.:27.00  
+##  Max.   :299.90       Max.   :528.00     Max.   :700.0         Max.   :52.00  
+##  NA's   :31818        NA's   :566        NA's   :12242         NA's   :355    
+##   lactate_max      troponin_max    bloodureanitrogen_max creatinine_max 
+##  Min.   : 0.400   Min.   : 0.010   Min.   :  1.00        Min.   : 0.10  
+##  1st Qu.: 1.400   1st Qu.: 0.040   1st Qu.: 13.00        1st Qu.: 0.70  
+##  Median : 2.100   Median : 0.140   Median : 18.00        Median : 0.90  
+##  Mean   : 2.778   Mean   : 1.186   Mean   : 25.16        Mean   : 1.36  
+##  3rd Qu.: 3.300   3rd Qu.: 0.760   3rd Qu.: 29.00        3rd Qu.: 1.40  
+##  Max.   :30.000   Max.   :20.850   Max.   :250.00        Max.   :33.20  
+##  NA's   :17357    NA's   :25822    NA's   :222           NA's   :213    
+##  alaninetransaminase_max aspartatetransaminase_max hemoglobin_max 
+##  Min.   :    2.0         Min.   :    6.0           Min.   : 3.50  
+##  1st Qu.:   18.0         1st Qu.:   25.5           1st Qu.:10.10  
+##  Median :   33.0         Median :   48.0           Median :11.20  
+##  Mean   :  193.9         Mean   :  299.6           Mean   :11.38  
+##  3rd Qu.:   78.0         3rd Qu.:  119.0           3rd Qu.:12.50  
+##  Max.   :10000.0         Max.   :20000.0           Max.   :22.10  
+##  NA's   :21033           NA's   :21042             NA's   :461    
+##  intnormalisedratio_max platelets_max     albumin_max     chloride_max  
+##  Min.   : 0.600         Min.   :   6.0   Min.   :1.000   Min.   : 67.0  
+##  1st Qu.: 1.200         1st Qu.: 155.0   1st Qu.:2.600   1st Qu.:104.0  
+##  Median : 1.300         Median : 206.0   Median :3.100   Median :107.0  
+##  Mean   : 1.551         Mean   : 223.9   Mean   :3.095   Mean   :107.1  
+##  3rd Qu.: 1.600         3rd Qu.: 270.0   3rd Qu.:3.600   3rd Qu.:111.0  
+##  Max.   :88.600         Max.   :2000.0   Max.   :6.000   Max.   :175.0  
+##  NA's   :5940           NA's   :459      NA's   :23319   NA's   :309    
+##   glucose_max       sodium_max     bilirubin_max    hematocrit_max 
+##  Min.   :  33.0   Min.   : 72.05   Min.   : 0.100   Min.   :10.00  
+##  1st Qu.: 119.0   1st Qu.:137.00   1st Qu.: 0.400   1st Qu.:30.00  
+##  Median : 147.5   Median :140.00   Median : 0.700   Median :33.00  
+##  Mean   : 163.9   Mean   :140.04   Mean   : 2.103   Mean   :33.48  
+##  3rd Qu.: 185.0   3rd Qu.:142.00   3rd Qu.: 1.600   3rd Qu.:36.60  
+##  Max.   :1638.0   Max.   :225.00   Max.   :55.600   Max.   :71.70  
+##  NA's   :220      NA's   :578      NA's   :21162    NA's   :325
+\end{verbatim}
+
+\hypertarget{gcs_hourly-data}{%
+\subsection{\texorpdfstring{\texttt{gcs\_hourly}
+data}{gcs\_hourly data}}\label{gcs_hourly-data}}
+
+This dataset contains data of the Glasgow Coma Scale (GCS) score
+measured during the admission in a long format. The GCS score was
+corrected by taking into account the endotrachial intubation. The
+dataset was summarized into one row per patient, containing minimum and
+maximum values of the GCS score in the first 24 hours and endotrachial
+intubation status.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(gcs\_hourly\_24hr\_minmax)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    icustay_id        gcs_min          gcs_max      endotrachflag   
+##  Min.   :200003   Min.   : 2.000   Min.   : 2.00   Min.   :0.0000  
+##  1st Qu.:225328   1st Qu.: 3.000   1st Qu.:14.00   1st Qu.:0.0000  
+##  Median :250483   Median : 9.000   Median :15.00   Median :0.0000  
+##  Mean   :250276   Mean   : 9.211   Mean   :13.37   Mean   :0.4921  
+##  3rd Qu.:275240   3rd Qu.:15.000   3rd Qu.:15.00   3rd Qu.:1.0000  
+##  Max.   :299999   Max.   :15.000   Max.   :15.00   Max.   :1.0000
+\end{verbatim}
+
+\hypertarget{pt_weight-file}{%
+\subsection{\texorpdfstring{\texttt{pt\_weight}
+file}{pt\_weight file}}\label{pt_weight-file}}
+
+This dataset contains repeated weight measurements in kilograms. The
+out-of-range values were trimmed, and the first recorded weight was
+included in the cleaned dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{describe}\NormalTok{(pt\_weight\_summary}\SpecialCharTok{$}\NormalTok{weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## pt_weight_summary$weight 
+##        n  missing distinct     Info     Mean      Gmd      .05      .10 
+##    30311     2244     5495        1    80.97    23.98    50.60    56.00 
+##      .25      .50      .75      .90      .95 
+##    65.81    78.10    92.30   108.25   120.00 
+## 
+## lowest :  30.00000  30.18655  30.30000  30.44533  30.67211
+## highest: 241.74619 244.74304 246.00000 248.62466 250.00000
+\end{verbatim}
+
+\hypertarget{output_hourly-data}{%
+\subsection{\texorpdfstring{\texttt{output\_hourly}
+data}{output\_hourly data}}\label{output_hourly-data}}
+
+This dataset contains urine output measurements in a long format. The
+total 24-hour urine output was calculated from the available data, and
+the out-of-range values were trimmed. As a results, 11999 out of 31831
+patients do not have a valid uring output measurement.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(output\_hourly\_24hr\_trimmed}\SpecialCharTok{$}\NormalTok{totalurine24)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##       0     990    1200    1044    1200    1200   11999
+\end{verbatim}
+
+\hypertarget{bloodculture-data}{%
+\subsection{\texorpdfstring{\texttt{bloodculture}
+data}{bloodculture data}}\label{bloodculture-data}}
+
+This dataset contains blood culter data and their results. 54
+observations contains ``virus'', which is not a usual result of blood
+culture. I marked observations containing ``virus'' as missing.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bloodculture\_24hr }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(org\_name) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{str\_detect}\NormalTok{(org\_name, }\StringTok{"VIRUS"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{describe}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## . 
+## 
+##  1  Variables      54  Observations
+## --------------------------------------------------------------------------------
+## org_name 
+##        n  missing distinct 
+##       54        0       14 
+## 
+## lowest : ADENOVIRUS                                     HERPES SIMPLEX VIRUS TYPE 1                    HERPES SIMPLEX VIRUS TYPE 2                    INFLUENZA A VIRUS                              INFLUENZA B VIRUS                             
+## highest: POSITIVE FOR RESPIRATORY SYNCYTIAL VIRUS (RSV) RESPIRATORY SYNCYTIAL VIRUS (RSV)              RHINOVIRUS                                     VARICELLA-ZOSTER VIRUS                         VIRUS                                         
+## --------------------------------------------------------------------------------
+\end{verbatim}
+
+The final dataset summarizes each ICU stay, with one row per stay.
+Included data indicate whether the blood culture tested positive and
+whether there was antibiotic resistance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(bloodculture\_24hr\_summary)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   icustay_id positiveculture antibioticresistance_R
+##        <int>           <dbl>                  <dbl>
+## 1     200003               1                      0
+## 2     200014               1                     NA
+## 3     200019               1                     NA
+## 4     200021               0                     NA
+## 5     200028               0                     NA
+## 6     200033               0                     NA
+\end{verbatim}
+
+\hypertarget{antibiotics-data}{%
+\subsection{\texorpdfstring{\texttt{antibiotics}
+data}{antibiotics data}}\label{antibiotics-data}}
+
+This dataset contains information on antibiotics administered during
+admissions in a long format. I extracted data solely on antibiotic
+administration within the first 24 hours and restructured it to one row
+per patient.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(antibiotics\_24hr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   icustay_id antibiotics_24hr
+##        <int>            <dbl>
+## 1     200033                0
+## 2     200035                1
+## 3     200061                0
+## 4     200063                1
+## 5     200075                1
+## 6     200087                1
+\end{verbatim}
+
+\hypertarget{vasopressors-data}{%
+\subsection{\texorpdfstring{\texttt{vasopressors}
+data}{vasopressors data}}\label{vasopressors-data}}
+
+This dataset contains information on vasopressors administered during
+admissions in a long format. I extracted data solely on vasopressor
+administration within the first 24 hours and restructured it to one row
+per patient.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(vasopressors\_24hr\_flag)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+##   icustay_id norepinephrine_24hr epinephrine_24hr dopamine_24hr dobutamine_24hr
+##        <int>               <dbl>            <dbl>         <dbl>           <dbl>
+## 1     200028                   1               NA            NA              NA
+## 2     200030                  NA               NA            NA               1
+## 3     200075                   1               NA            NA              NA
+## 4     200087                   1               NA            NA              NA
+## 5     200119                   1               NA            NA               1
+## 6     200182                  NA               NA            NA               1
+\end{verbatim}
+
+\hypertarget{pv_mechvent-data}{%
+\subsection{\texorpdfstring{\texttt{pv\_mechvent}
+data}{pv\_mechvent data}}\label{pv_mechvent-data}}
+
+This dataset contains details of mechanical ventilation in a long
+format. I extracted data solely on mechanical ventilation status within
+the first 24 hours and restructured it to one row per patient.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(pv\_mechvent\_24hr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   icustay_id mechvent_24hr
+##        <int>         <dbl>
+## 1     200003             1
+## 2     200009             1
+## 3     200014             0
+## 4     200019             1
+## 5     200021             1
+## 6     200025             1
+\end{verbatim}
+
+\hypertarget{icd9_diag-data}{%
+\subsection{\texorpdfstring{\texttt{icd9\_diag}
+data}{icd9\_diag data}}\label{icd9_diag-data}}
+
+This dataset contains ICD-9 diagnoses of each admission. I categorized
+them into 10 groups and transformed the dataset into the wide format.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(icd9\_diag\_final\_wide)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 13
+##   subject~1 row_id hadm_id Infec~2 Other Genit~3 Circu~4 Endoc~5 Diges~6 Pulmo~7
+##       <int>  <int>   <int>   <dbl> <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+## 1         3     12  145834       1     1       1       1       1       0       0
+## 2         4     21  185777       1     1       0       0       1       1       0
+## 3         6     32  107064       0     1       0       1       1       0       0
+## 4         9     47  150750       0     0       1       1       1       0       1
+## 5        11     53  194540       0     0       0       0       0       0       0
+## 6        12     62  112213       0     1       0       1       0       1       0
+## # ... with 3 more variables: Neoplasms <dbl>, Trauma <dbl>, Poisoning <dbl>,
+## #   and abbreviated variable names 1: subject_id, 2: Infectious,
+## #   3: Genitourinary, 4: Circulatory, 5: Endocrine, 6: Digestive, 7: Pulmonary
+\end{verbatim}
+
+\hypertarget{joining-everything-to-a-single-data-set}{%
+\subsection{Joining everything to a single data
+set}\label{joining-everything-to-a-single-data-set}}
+
+I joined all datasets above by either subject ID or ICU stay ID to
+create a single large dataset. I assigned 1 (``yes'') to mechanical
+ventilation for patients who were on endotrachial tube. Percentages of
+missing values in each variable are shown below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# percentages of missing values in each variable}
+\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(alldata\_3))}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(alldata\_3)}\SpecialCharTok{*}\DecValTok{100}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  row_id.x              subject_id.x                       dob 
+##                  0.000000                  0.000000                  0.000000 
+##                 hadm_id.x                icustay_id                 age_years 
+##                  0.000000                  0.000000                  0.000000 
+##                       los      hospital_expire_flag               expire_flag 
+##                  0.000000                 15.152818                  0.000000 
+##               admittime_d               dischtime_d                  intime_d 
+##                 15.152818                 15.152818                  0.000000 
+##                 outtime_d          hosp_deathtime_d                     dod_d 
+##                  0.000000                 96.141914                 59.013976 
+##         icu_expire_flag_2                   weekend                    gender 
+##                  0.000000                  0.000000                  0.000000 
+##                 hadm_id.y          admission_type_2               ethnicity_2 
+##                  0.000000                  0.000000                  0.000000 
+##                  row_id.y               hadm_id.x.x                Infectious 
+##                  0.000000                  0.000000                  0.000000 
+##                     Other             Genitourinary               Circulatory 
+##                  0.000000                  0.000000                  0.000000 
+##                 Endocrine                 Digestive                 Pulmonary 
+##                  0.000000                  0.000000                  0.000000 
+##                 Neoplasms                    Trauma                 Poisoning 
+##                  0.000000                  0.000000                  0.000000 
+##              subject_id.y               hadm_id.y.y            first_careunit 
+##                  0.000000                  0.000000                  0.000000 
+##                  spo2_min                  fio2_min           temperature_min 
+##                  1.115036                 77.109507                  2.970358 
+##              resprate_min             heartrate_min                 sysbp_min 
+##                  1.330057                  1.201044                  1.305483 
+##                diasbp_min             glucose_min.x  meanarterialpressure_min 
+##                  1.305483                  1.360774                  1.207188 
+##                  spo2_max                  fio2_max           temperature_max 
+##                  1.115036                 77.109507                  2.970358 
+##              resprate_max             heartrate_max                 sysbp_max 
+##                  1.330057                  1.201044                  1.305483 
+##                diasbp_max             glucose_max.x  meanarterialpressure_max 
+##                  1.305483                  1.360774                  1.207188 
+##            neutrophil_min      creactiveprotein_min        whitebloodcell_min 
+##                 75.278759                 99.130702                  3.133159 
+##     partialpressureo2_min           bicarbonate_min               lactate_min 
+##                 38.998618                  2.485025                 54.710490 
+##              troponin_min     bloodureanitrogen_min            creatinine_min 
+##                 80.712640                  2.076486                  2.048840 
+##   alaninetransaminase_min aspartatetransaminase_min            hemoglobin_min 
+##                 66.002150                 66.029796                  2.810628 
+##    intnormalisedratio_min             platelets_min               albumin_min 
+##                 19.640608                  2.804485                 73.024113 
+##              chloride_min             glucose_min.y                sodium_min 
+##                  2.343726                  2.070342                  3.170020 
+##             bilirubin_min            hematocrit_min            neutrophil_max 
+##                 66.398403                  2.392874                 75.278759 
+##      creactiveprotein_max        whitebloodcell_max     partialpressureo2_max 
+##                 99.130702                  3.133159                 38.998618 
+##           bicarbonate_max               lactate_max              troponin_max 
+##                  2.485025                 54.710490                 80.712640 
+##     bloodureanitrogen_max            creatinine_max   alaninetransaminase_max 
+##                  2.076486                  2.048840                 66.002150 
+## aspartatetransaminase_max            hemoglobin_max    intnormalisedratio_max 
+##                 66.029796                  2.810628                 19.640608 
+##             platelets_max               albumin_max              chloride_max 
+##                  2.804485                 73.024113                  2.343726 
+##             glucose_max.y                sodium_max             bilirubin_max 
+##                  2.070342                  3.170020                 66.398403 
+##            hematocrit_max                   gcs_min                   gcs_max 
+##                  2.392874                  1.231762                  1.231762 
+##             endotrachflag                    weight              totalurine24 
+##                  0.000000                  6.892950                 39.081554 
+##           positiveculture    antibioticresistance_R          antibiotics_24hr 
+##                 39.665182                 93.368146                 73.097834 
+##       norepinephrine_24hr          epinephrine_24hr             dopamine_24hr 
+##                 95.309476                 96.292428                 94.993089 
+##           dobutamine_24hr             mechvent_24hr 
+##                 98.617724                 71.190293
+\end{verbatim}
+
+I excluded variables with more than 10\% missing values, replaced
+missing values of continuous variables with the median, and replaced
+missing values of binary variables with 0 (``No''). After excluding time
+variables and ID variables, all remaining variables were included in an
+analysis-ready dataset for Question 2. Meanwhile, the dataset for
+Question 1 was one-hot encoded and lacks variables that could not be
+obtained within the first 24 hours of ICU admission, including the
+length of stay, blood culture, and antibiotic resistance. Additionally,
+variables indicating diagnoses were also removed from the Question 1
+dataset because it is difficult to distinguish between known diagnoses
+and those obtained at discharge. A rough idea of the reason for
+admission can be obtained from the type of admission and the first care
+unit. The dataset for Question 1 was exported as a .csv file for use
+with Google Colab.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exploratory-data-analysis}{%
+\section{Exploratory Data Analysis}\label{exploratory-data-analysis}}
+
+The dataset provides data on 32555 patients aged 18 years or older who
+were admitted to stayed in ICU 24 hours or longer. The dataset contains
+only the first ICU admission of each patient. As shown in Table 1, the
+age ranged from 18 to 91.4 years, with a median of 66 years
+(interquartile range (IQR): 52-77 years), and 56.8\% of patients were
+men. Most patients (71.3\%) were white. 6,897 patients (21.2\%) were
+admitted to ICU on weekends. Most admissions (83.7\%) were either
+emergency or urgent. Most patients were first admitted to medical ICUs
+(MICU) (34.4\%) and cardiac surgery recovery units (CSRU) (21.4\%). Most
+common groups of diagnoses were other (92.8\%) and circulatory disorders
+(83.7\%). 26.5\% of patients were intubated within the first 24 hours.
+Length of stay ranged from 1 to 153.9 days with a median of 2.5 days
+(IQR: 1.6-4.8 days). 2,561 patients (7.87\%) died in their first ICU
+admissions. Patients who died in their ICU stays tended to be older,
+stayed longer, be admitted to ICU for emergency or urgent conditions,
+and undergo endotracheal intubation compared to those those who did not
+die.
+
+\begin{verbatim}
+## Table printed with `knitr::kable()`, not {gt}. Learn why at
+## https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html
+## To suppress this message, include `message = FALSE` in code chunk header.
+\end{verbatim}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3277}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2101}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1765}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1765}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1092}}@{}}
+\caption{\textbf{Table 1. Characteristics of 32,555 ICU patients by ICU
+mortality}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Characteristic}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Overall}, N = 32,555
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{No}, N = 29,994
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Yes}, N = 2,561
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p-value}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Characteristic}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Overall}, N = 32,555
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{No}, N = 29,994
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{Yes}, N = 2,561
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p-value}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Age (years) & & & & \textless0.001 \\
+N & 32,555.0 & 29,994.0 & 2,561.0 & \\
+Median (25\% to 75\%) & 66.0 (52.0 to 77.0) & 65.0 (52.0 to 77.0) & 72.0
+(59.0 to 81.0) & \\
+Range & 18.0 to 91.4 & 18.0 to 91.4 & 18.0 to 91.4 & \\
+Length of stay (days) & & & & \textless0.001 \\
+N & 32,555.0 & 29,994.0 & 2,561.0 & \\
+Median (25\% to 75\%) & 2.5 (1.6 to 4.8) & 2.4 (1.6 to 4.4) & 4.7 (2.3
+to 9.3) & \\
+Range & 1.0 to 153.9 & 1.0 to 153.9 & 1.0 to 97.3 & \\
+Weekend admission & 6,897 (21.2\%) & 6,239 (20.8\%) & 658 (25.7\%) &
+\textless0.001 \\
+Gender & & & & \textless0.001 \\
+Female & 14,057 (43.2\%) & 12,850 (42.8\%) & 1,207 (47.1\%) & \\
+Male & 18,498 (56.8\%) & 17,144 (57.2\%) & 1,354 (52.9\%) & \\
+Admission type & & & & \textless0.001 \\
+ELECTIVE & 5,317 (16.3\%) & 5,221 (17.4\%) & 96 (3.7\%) & \\
+EMERGENCY/URGENT & 27,238 (83.7\%) & 24,773 (82.6\%) & 2,465 (96.3\%)
+& \\
+Ethnicity & & & & \textless0.001 \\
+BLACK & 2,451 (7.5\%) & 2,310 (7.7\%) & 141 (5.5\%) & \\
+OTHER/UNKNOWN & 6,881 (21.1\%) & 6,163 (20.5\%) & 718 (28.0\%) & \\
+WHITE & 23,223 (71.3\%) & 21,521 (71.8\%) & 1,702 (66.5\%) & \\
+Diagnosis: Infectious diseases & 8,565 (26.3\%) & 7,478 (24.9\%) & 1,087
+(42.4\%) & \textless0.001 \\
+Diagnosis: Other & 30,221 (92.8\%) & 27,800 (92.7\%) & 2,421 (94.5\%) &
+\textless0.001 \\
+Diagnosis: Genitourinary disorders & 13,078 (40.2\%) & 11,634 (38.8\%) &
+1,444 (56.4\%) & \textless0.001 \\
+Diagnosis: Circulatory disorders & 27,246 (83.7\%) & 24,995 (83.3\%) &
+2,251 (87.9\%) & \textless0.001 \\
+Diagnosis: Endocrine disorders & 22,411 (68.8\%) & 20,598 (68.7\%) &
+1,813 (70.8\%) & 0.026 \\
+Diagnosis: Digestive disorders & 12,722 (39.1\%) & 11,607 (38.7\%) &
+1,115 (43.5\%) & \textless0.001 \\
+Diagnosis: Pulmonary disorders & 16,234 (49.9\%) & 14,298 (47.7\%) &
+1,936 (75.6\%) & \textless0.001 \\
+Diagnosis: Neoplasms & 5,565 (17.1\%) & 4,975 (16.6\%) & 590 (23.0\%) &
+\textless0.001 \\
+Diagnosis: Trauma & 4,747 (14.6\%) & 4,358 (14.5\%) & 389 (15.2\%) &
+0.364 \\
+Diagnosis: Poisoning & 588 (1.8\%) & 565 (1.9\%) & 23 (0.9\%) &
+\textless0.001 \\
+First care unit & & & & \textless0.001 \\
+CCU & 4,752 (14.6\%) & 4,358 (14.5\%) & 394 (15.4\%) & \\
+CSRU & 6,963 (21.4\%) & 6,782 (22.6\%) & 181 (7.1\%) & \\
+MICU & 11,209 (34.4\%) & 10,038 (33.5\%) & 1,171 (45.7\%) & \\
+SICU & 5,346 (16.4\%) & 4,864 (16.2\%) & 482 (18.8\%) & \\
+TSICU & 4,285 (13.2\%) & 3,952 (13.2\%) & 333 (13.0\%) & \\
+Endotrachial intubation in first 24 hr & 8,624 (26.5\%) & 7,598 (25.3\%)
+& 1,026 (40.1\%) & \textless0.001 \\
+Weight (kg) & & & & \textless0.001 \\
+N & 32,555.0 & 29,994.0 & 2,561.0 & \\
+Median (25\% to 75\%) & 78.1 (66.8 to 90.9) & 78.1 (67.0 to 91.0) & 75.0
+(61.8 to 88.9) & \\
+Range & 30.0 to 250.0 & 30.0 to 250.0 & 30.2 to 210.0 & \\
+Positive blood culture & 4,474 (13.7\%) & 3,764 (12.5\%) & 710 (27.7\%)
+& \textless0.001 \\
+Antibiotic resistance & 1,375 (4.2\%) & 1,142 (3.8\%) & 233 (9.1\%) &
+\textless0.001 \\
+Antibiotics in first 24 hr & 7,405 (22.7\%) & 6,796 (22.7\%) & 609
+(23.8\%) & 0.194 \\
+Norepinephrine in first 24 hr & 1,527 (4.7\%) & 1,176 (3.9\%) & 351
+(13.7\%) & \textless0.001 \\
+Epinephrine in first 24 hr & 1,199 (3.7\%) & 1,101 (3.7\%) & 98 (3.8\%)
+& 0.688 \\
+Dopamine in first 24 hr & 1,621 (5.0\%) & 1,256 (4.2\%) & 365 (14.3\%) &
+\textless0.001 \\
+Dobutamine in first 24 hr & 448 (1.4\%) & 357 (1.2\%) & 91 (3.6\%) &
+\textless0.001 \\
+Mechanical ventilation in first 24 hr & 7,090 (21.8\%) & 6,302 (21.0\%)
+& 788 (30.8\%) & \textless0.001 \\
+\end{longtable}
+
+From the Figure 1 below, age, length of stay, minimum blood urea
+nitrogen, minimum GSC score, and maximum GCS score (Fig. 1A-1C, 1E, 1F)
+seem to differ between patients who died and did not died during their
+ICU stays. However, the minimum hematocrit (Fig. 1D) seems to not differ
+between the two categories.
+
+\emph{Figure 1. Box plots of selected variables stratified by ICU
+mortality}
+
+\includegraphics{HDAT9910_Rstudio_files/figure-latex/selected_plots-1.pdf}
+
+\hypertarget{question-1-icu-mortality-prediction}{%
+\section{Question 1: ICU mortality
+prediction}\label{question-1-icu-mortality-prediction}}
+
+The solution to this question is demonstrated in the
+\texttt{HDAT9910\_q1.ipynb} file.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-2-weekend-effect-in-icu}{%
+\section{Question 2: Weekend effect in
+ICU}\label{question-2-weekend-effect-in-icu}}
+
+Task: To investigate whether admission to ICU at the weekend increases
+the risk of ICU mortality
+
+Objective: To develop a statistical model to estimate the effect of
+weekend admission to ICU on the risk of ICU mortality.
+
+Question: Does admission to ICU over the weekend increase the risk of
+ICU mortality?
+
+Study Population: First ICU admissions of adults in the MIMIC-III
+dataset
+
+\hypertarget{solution}{%
+\subsection{Solution}\label{solution}}
+
+I have chosen specific variables for plotting survival curves. In Figure
+2, the survival rates of ICU patients do not appear to differ between
+weekend and weekday admissions upon visual inspection. However, with a
+p-value of 0.018, there's a statistically significant distinction. In
+the same figure, patients admitted to the ICU electively evidently
+exhibited higher survival rates compared to those admitted on an
+emergency or urgent basis (p \textless{} 0.0001). While the survival
+curves for ICU patients stratified by endotracheal intubation seem to
+overlap, a p-value of 0.00021 indicates a statistically significant
+difference
+
+\emph{Figure 2. Survival plots of ICU patients stratified by weekend
+admission, types of admission, and endotracheal intubation}
+
+\includegraphics{HDAT9910_Rstudio_files/figure-latex/survival_plot-1.pdf}
+
+To develop the best model explaining the effect of the weekend admission
+on the ICU survival, univariate Cox models for each variables in the
+dataset were fitted. A multivariable Cox model including all of the
+variables that were statistically significant in the univariable Cox
+models were consequently fitted. The univariate and multivariate models
+are shown in Table 2. Interestingly, patients admitted to ICU during
+weekends were 11\% more likely to die in ICU (hazard ratio 1.11, 95\%
+confidence interval 1.02-1.22). However, this association was not seen
+in the multivariate model (hazard ratio 0.96, 95\% confidence interval
+0.88-1.05).
+
+\begin{verbatim}
+## Table printed with `knitr::kable()`, not {gt}. Learn why at
+## https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html
+## To suppress this message, include `message = FALSE` in code chunk header.
+\end{verbatim}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2525}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0808}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0808}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1212}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1313}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0808}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1212}}
+  >{\centering\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1313}}@{}}
+\caption{\textbf{Table 2. Univariate Cox proportional hazards regression
+of all variables and ICU mortality}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Characteristic}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{N}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{HR}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{95\% CI}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p-value}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{HR}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{95\% CI}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p-value}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Characteristic}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{N}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{HR}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{95\% CI}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p-value}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{HR}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{95\% CI}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{p-value}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+age\_years & 32,555 & 1.02 & 1.02, 1.02 & \textbf{\textless0.001} & 1.02
+& 1.02, 1.02 & \textbf{\textless0.001} \\
+weekend & 32,555 & 1.11 & 1.02, 1.22 & \textbf{0.018} & 0.96 & 0.88,
+1.05 & 0.4 \\
+gender & 32,555 & & & & & & \\
+F & & & & & & & \\
+M & & 0.87 & 0.80, 0.94 & \textbf{\textless0.001} & 1.01 & 0.93, 1.10 &
+0.9 \\
+admission\_type\_2 & 32,555 & & & & & & \\
+ELECTIVE & & & & & & & \\
+EMERGENCY/URGENT & & 3.43 & 2.79, 4.20 & \textbf{\textless0.001} & 2.31
+& 1.87, 2.85 & \textbf{\textless0.001} \\
+ethnicity\_2 & 32,555 & & & & & & \\
+BLACK & & & & & & & \\
+OTHER/UNKNOWN & & 1.61 & 1.34, 1.93 & \textbf{\textless0.001} & 1.45 &
+1.20, 1.74 & \textbf{\textless0.001} \\
+WHITE & & 1.21 & 1.02, 1.43 & \textbf{0.031} & 1.15 & 0.96, 1.37 &
+0.12 \\
+Infectious & 32,555 & 1.01 & 0.93, 1.09 & 0.85 & & & \\
+Other & 32,555 & 0.86 & 0.73, 1.02 & 0.093 & & & \\
+Genitourinary & 32,555 & 1.26 & 1.16, 1.36 & \textbf{\textless0.001} &
+0.82 & 0.75, 0.90 & \textbf{\textless0.001} \\
+Circulatory & 32,555 & 1.20 & 1.07, 1.35 & \textbf{0.003} & 0.94 & 0.83,
+1.07 & 0.3 \\
+Endocrine & 32,555 & 1.08 & 0.99, 1.17 & 0.089 & & & \\
+Digestive & 32,555 & 0.96 & 0.89, 1.04 & 0.34 & & & \\
+Pulmonary & 32,555 & 1.08 & 0.98, 1.19 & 0.12 & & & \\
+Neoplasms & 32,555 & 1.57 & 1.44, 1.73 & \textbf{\textless0.001} & 1.54
+& 1.40, 1.70 & \textbf{\textless0.001} \\
+Trauma & 32,555 & 0.82 & 0.74, 0.92 & \textbf{\textless0.001} & 0.85 &
+0.75, 0.96 & \textbf{0.010} \\
+Poisoning & 32,555 & 0.71 & 0.47, 1.08 & 0.11 & & & \\
+first\_careunit & 32,555 & & & & & & \\
+CCU & & & & & & & \\
+CSRU & & 0.36 & 0.30, 0.43 & \textbf{\textless0.001} & 0.63 & 0.51, 0.77
+& \textbf{\textless0.001} \\
+MICU & & 1.17 & 1.04, 1.31 & \textbf{0.007} & 1.25 & 1.11, 1.42 &
+\textbf{\textless0.001} \\
+SICU & & 0.84 & 0.74, 0.96 & \textbf{0.012} & 1.22 & 1.05, 1.41 &
+\textbf{0.009} \\
+TSICU & & 0.74 & 0.64, 0.85 & \textbf{\textless0.001} & 1.29 & 1.09,
+1.53 & \textbf{0.003} \\
+spo2\_min & 32,555 & 0.99 & 0.99, 1.00 & \textbf{\textless0.001} & 1.00
+& 0.99, 1.00 & \textbf{\textless0.001} \\
+temperature\_min & 32,555 & 0.88 & 0.86, 0.90 & \textbf{\textless0.001}
+& 0.93 & 0.90, 0.96 & \textbf{\textless0.001} \\
+resprate\_min & 32,555 & 1.03 & 1.02, 1.04 & \textbf{\textless0.001} &
+1.01 & 1.00, 1.02 & 0.058 \\
+heartrate\_min & 32,555 & 1.00 & 1.00, 1.00 & 0.97 & & & \\
+sysbp\_min & 32,555 & 0.98 & 0.98, 0.99 & \textbf{\textless0.001} & 1.00
+& 0.99, 1.00 & \textbf{0.002} \\
+diasbp\_min & 32,555 & 0.98 & 0.97, 0.98 & \textbf{\textless0.001} &
+0.99 & 0.99, 1.00 & \textbf{0.022} \\
+glucose\_min.x & 32,555 & 1.00 & 1.00, 1.01 & \textbf{\textless0.001} &
+1.00 & 1.00, 1.00 & \textbf{\textless0.001} \\
+meanarterialpressure\_min & 32,555 & 0.97 & 0.97, 0.98 &
+\textbf{\textless0.001} & 0.99 & 0.99, 1.00 & \textbf{\textless0.001} \\
+spo2\_max & 32,555 & 0.89 & 0.84, 0.94 & \textbf{\textless0.001} & 0.85
+& 0.80, 0.89 & \textbf{\textless0.001} \\
+temperature\_max & 32,555 & 0.88 & 0.84, 0.92 & \textbf{\textless0.001}
+& 0.89 & 0.85, 0.94 & \textbf{\textless0.001} \\
+resprate\_max & 32,555 & 1.01 & 1.01, 1.02 & \textbf{\textless0.001} &
+1.02 & 1.01, 1.02 & \textbf{\textless0.001} \\
+heartrate\_max & 32,555 & 1.01 & 1.01, 1.01 & \textbf{\textless0.001} &
+1.01 & 1.01, 1.01 & \textbf{\textless0.001} \\
+sysbp\_max & 32,555 & 1.00 & 0.99, 1.00 & \textbf{\textless0.001} & 1.00
+& 1.00, 1.00 & 0.2 \\
+diasbp\_max & 32,555 & 1.00 & 0.99, 1.00 & \textbf{0.037} & 1.00 & 1.00,
+1.00 & 0.4 \\
+glucose\_max.x & 32,555 & 1.00 & 1.00, 1.00 & \textbf{\textless0.001} &
+1.00 & 1.00, 1.00 & 0.5 \\
+meanarterialpressure\_max & 32,555 & 1.00 & 1.00, 1.00 & 0.13 & & & \\
+whitebloodcell\_min & 32,555 & 1.01 & 1.01, 1.01 &
+\textbf{\textless0.001} & 1.01 & 1.00, 1.02 & \textbf{0.005} \\
+bicarbonate\_min & 32,555 & 0.94 & 0.93, 0.94 & \textbf{\textless0.001}
+& 0.96 & 0.94, 0.98 & \textbf{\textless0.001} \\
+bloodureanitrogen\_min & 32,555 & 1.01 & 1.01, 1.01 &
+\textbf{\textless0.001} & 1.02 & 1.01, 1.03 & \textbf{\textless0.001} \\
+creatinine\_min & 32,555 & 1.11 & 1.08, 1.13 & \textbf{\textless0.001} &
+0.96 & 0.83, 1.11 & 0.6 \\
+hemoglobin\_min & 32,555 & 1.00 & 0.98, 1.02 & 0.80 & & & \\
+platelets\_min & 32,555 & 1.00 & 1.00, 1.00 & 0.10 & & & \\
+chloride\_min & 32,555 & 0.98 & 0.97, 0.99 & \textbf{\textless0.001} &
+0.96 & 0.95, 0.97 & \textbf{\textless0.001} \\
+sodium\_min & 32,555 & 1.00 & 0.99, 1.01 & 0.97 & & & \\
+hematocrit\_min & 32,555 & 1.01 & 1.00, 1.02 & \textbf{0.006} & 1.03 &
+1.02, 1.04 & \textbf{\textless0.001} \\
+whitebloodcell\_max & 32,555 & 1.01 & 1.01, 1.01 &
+\textbf{\textless0.001} & 0.99 & 0.99, 1.00 & 0.13 \\
+bicarbonate\_max & 32,555 & 0.94 & 0.94, 0.95 & \textbf{\textless0.001}
+& 0.99 & 0.97, 1.01 & 0.5 \\
+bloodureanitrogen\_max & 32,555 & 1.01 & 1.01, 1.01 &
+\textbf{\textless0.001} & 0.99 & 0.98, 1.00 & \textbf{0.015} \\
+creatinine\_max & 32,555 & 1.09 & 1.07, 1.11 & \textbf{\textless0.001} &
+1.03 & 0.91, 1.17 & 0.6 \\
+hemoglobin\_max & 32,555 & 0.98 & 0.96, 1.00 & 0.070 & & & \\
+platelets\_max & 32,555 & 1.00 & 1.00, 1.00 & 0.52 & & & \\
+chloride\_max & 32,555 & 1.00 & 0.99, 1.00 & 0.36 & & & \\
+sodium\_max & 32,555 & 1.01 & 1.00, 1.01 & \textbf{\textless0.001} &
+1.01 & 1.00, 1.01 & \textbf{\textless0.001} \\
+hematocrit\_max & 32,555 & 1.01 & 1.00, 1.02 & \textbf{0.016} & 0.99 &
+0.97, 1.00 & \textbf{0.038} \\
+gcs\_min & 32,555 & 0.95 & 0.94, 0.96 & \textbf{\textless0.001} & 0.98 &
+0.97, 0.99 & \textbf{0.006} \\
+gcs\_max & 32,555 & 0.89 & 0.88, 0.90 & \textbf{\textless0.001} & 0.88 &
+0.87, 0.89 & \textbf{\textless0.001} \\
+endotrachflag & 32,555 & 1.16 & 1.07, 1.26 & \textbf{\textless0.001} &
+0.83 & 0.72, 0.96 & \textbf{0.012} \\
+weight & 32,555 & 0.99 & 0.99, 0.99 & \textbf{\textless0.001} & 0.99 &
+0.99, 0.99 & \textbf{\textless0.001} \\
+positiveculture & 32,555 & 1.37 & 1.26, 1.50 & \textbf{\textless0.001} &
+0.96 & 0.86, 1.07 & 0.4 \\
+antibioticresistance\_R & 32,555 & 1.30 & 1.14, 1.49 &
+\textbf{\textless0.001} & 1.00 & 0.86, 1.17 & \textgreater0.9 \\
+antibiotics\_24hr & 32,555 & 1.07 & 0.97, 1.17 & 0.17 & & & \\
+norepinephrine\_24hr & 32,555 & 1.86 & 1.66, 2.08 &
+\textbf{\textless0.001} & 1.05 & 0.93, 1.19 & 0.4 \\
+epinephrine\_24hr & 32,555 & 0.72 & 0.58, 0.88 & \textbf{0.001} & 0.84 &
+0.67, 1.05 & 0.13 \\
+dopamine\_24hr & 32,555 & 1.91 & 1.71, 2.13 & \textbf{\textless0.001} &
+1.00 & 0.89, 1.13 & \textgreater0.9 \\
+dobutamine\_24hr & 32,555 & 1.48 & 1.20, 1.82 & \textbf{\textless0.001}
+& 0.91 & 0.73, 1.13 & 0.4 \\
+mechvent\_24hr & 32,555 & 1.12 & 1.03, 1.22 & \textbf{0.008} & 1.24 &
+1.07, 1.45 & \textbf{0.004} \\
+\end{longtable}
+
+Variables with significant p-values in the \texttt{multi\_1} model
+(Table 2) were included in the \texttt{multi\_2} model (Table 3).
+
+\begin{verbatim}
+## Table printed with `knitr::kable()`, not {gt}. Learn why at
+## https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html
+## To suppress this message, include `message = FALSE` in code chunk header.
+\end{verbatim}
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\textbf{Table 3. Multivariate Cox proportional hazards
+regression including variables with p \textless{} 0.05 from Table 2
+model}}\tabularnewline
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+weekend & 0.97 & 0.88, 1.06 & 0.4 \\
+age\_years & 1.02 & 1.02, 1.02 & \textbf{\textless0.001} \\
+admission\_type\_2 & & & \\
+ELECTIVE & & & \\
+EMERGENCY/URGENT & 2.32 & 1.88, 2.87 & \textbf{\textless0.001} \\
+ethnicity\_2 & & & \\
+BLACK & & & \\
+OTHER/UNKNOWN & 1.45 & 1.21, 1.74 & \textbf{\textless0.001} \\
+WHITE & 1.16 & 0.97, 1.38 & 0.10 \\
+Genitourinary & 0.82 & 0.75, 0.89 & \textbf{\textless0.001} \\
+Neoplasms & 1.55 & 1.40, 1.70 & \textbf{\textless0.001} \\
+Trauma & 0.86 & 0.76, 0.97 & \textbf{0.015} \\
+first\_careunit & & & \\
+CCU & & & \\
+CSRU & 0.60 & 0.49, 0.72 & \textbf{\textless0.001} \\
+MICU & 1.27 & 1.13, 1.43 & \textbf{\textless0.001} \\
+SICU & 1.22 & 1.06, 1.41 & \textbf{0.005} \\
+TSICU & 1.30 & 1.10, 1.53 & \textbf{0.002} \\
+spo2\_min & 1.00 & 0.99, 1.00 & \textbf{\textless0.001} \\
+temperature\_min & 0.93 & 0.91, 0.96 & \textbf{\textless0.001} \\
+sysbp\_min & 0.99 & 0.99, 1.00 & \textbf{\textless0.001} \\
+diasbp\_min & 0.99 & 0.99, 1.00 & \textbf{0.033} \\
+glucose\_min.x & 1.00 & 1.00, 1.00 & \textbf{\textless0.001} \\
+meanarterialpressure\_min & 0.99 & 0.99, 1.00 &
+\textbf{\textless0.001} \\
+spo2\_max & 0.84 & 0.80, 0.89 & \textbf{\textless0.001} \\
+temperature\_max & 0.90 & 0.86, 0.94 & \textbf{\textless0.001} \\
+resprate\_max & 1.02 & 1.01, 1.02 & \textbf{\textless0.001} \\
+heartrate\_max & 1.01 & 1.01, 1.01 & \textbf{\textless0.001} \\
+whitebloodcell\_min & 1.01 & 1.00, 1.01 & \textbf{\textless0.001} \\
+bicarbonate\_min & 0.96 & 0.95, 0.96 & \textbf{\textless0.001} \\
+bloodureanitrogen\_min & 1.02 & 1.01, 1.03 & \textbf{\textless0.001} \\
+chloride\_min & 0.96 & 0.96, 0.97 & \textbf{\textless0.001} \\
+hematocrit\_min & 1.03 & 1.02, 1.05 & \textbf{\textless0.001} \\
+bloodureanitrogen\_max & 0.99 & 0.98, 1.00 & \textbf{0.004} \\
+sodium\_max & 1.01 & 1.00, 1.01 & \textbf{\textless0.001} \\
+hematocrit\_max & 0.98 & 0.97, 0.99 & \textbf{0.004} \\
+gcs\_min & 0.99 & 0.97, 1.00 & \textbf{0.023} \\
+gcs\_max & 0.88 & 0.87, 0.89 & \textbf{\textless0.001} \\
+endotrachflag & 0.84 & 0.73, 0.97 & \textbf{0.016} \\
+weight & 0.99 & 0.99, 0.99 & \textbf{\textless0.001} \\
+mechvent\_24hr & 1.23 & 1.06, 1.43 & \textbf{0.006} \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# model comparison with ANOVA test}
+\FunctionTok{anova}\NormalTok{(multi\_2, multi\_1, }\AttributeTok{test=}\StringTok{\textquotesingle{}Chisq\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Deviance Table
+##  Cox model: response is  Surv(los, icu_expire_flag_2)
+##  Model 1: ~ weekend + age_years + admission_type_2 + ethnicity_2 + Genitourinary + Neoplasms + Trauma + first_careunit + spo2_min + temperature_min + sysbp_min + diasbp_min + glucose_min.x + meanarterialpressure_min + spo2_max + temperature_max + resprate_max + heartrate_max + whitebloodcell_min + bicarbonate_min + bloodureanitrogen_min + chloride_min + hematocrit_min + bloodureanitrogen_max + sodium_max + hematocrit_max + gcs_min + gcs_max + endotrachflag + weight + mechvent_24hr
+##  Model 2: ~ age_years + weekend + gender + admission_type_2 + ethnicity_2 + Genitourinary + Circulatory + Neoplasms + Trauma + first_careunit + spo2_min + temperature_min + resprate_min + sysbp_min + diasbp_min + glucose_min.x + meanarterialpressure_min + spo2_max + temperature_max + resprate_max + heartrate_max + sysbp_max + diasbp_max + glucose_max.x + whitebloodcell_min + bicarbonate_min + bloodureanitrogen_min + creatinine_min + chloride_min + hematocrit_min + whitebloodcell_max + bicarbonate_max + bloodureanitrogen_max + 
+##     creatinine_max + sodium_max + hematocrit_max + gcs_min + gcs_max + endotrachflag + weight + positiveculture + antibioticresistance_R + norepinephrine_24hr + epinephrine_24hr + dopamine_24hr + dobutamine_24hr + mechvent_24hr
+##   loglik  Chisq Df Pr(>|Chi|)
+## 1 -21458                     
+## 2 -21450 15.677 16     0.4757
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# A nonsignificant p{-}value (\textgreater{}0.05) indicates that the smaller model is preferred.}
+
+\CommentTok{\# model comparison with AIC values}
+\FunctionTok{extractAIC}\NormalTok{(multi\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]    51.00 43002.27
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{extractAIC}\NormalTok{(multi\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]    35.00 42985.95
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The smaller model provides a smaller AIC value. Thus, the smaller model is preferred.}
+\end{Highlighting}
+\end{Shaded}
+
+Model comparison with ANOVA test showed a nonsignificant p-value
+(\textgreater{} 0.05) suggesting that the smaller model
+(\texttt{multi\_2}, Table 3) is preferred. The smaller model also has a
+smaller AIC value (42985.95), suggesting that the smaller model is
+preferred.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# test for Cox proportional hazards assumption}
+\FunctionTok{cox.zph}\NormalTok{(multi\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            chisq df       p
+## weekend                    1.752  1 0.18567
+## age_years                 10.055  1 0.00152
+## admission_type_2           7.999  1 0.00468
+## ethnicity_2                4.196  2 0.12271
+## Genitourinary             18.932  1 1.4e-05
+## Neoplasms                 10.705  1 0.00107
+## Trauma                     0.297  1 0.58556
+## first_careunit            27.160  4 1.8e-05
+## spo2_min                  31.012  1 2.6e-08
+## temperature_min            1.203  1 0.27265
+## sysbp_min                 91.021  1 < 2e-16
+## diasbp_min                10.759  1 0.00104
+## glucose_min.x              5.055  1 0.02455
+## meanarterialpressure_min  30.960  1 2.6e-08
+## spo2_max                   1.766  1 0.18389
+## temperature_max           13.629  1 0.00022
+## resprate_max               0.414  1 0.51997
+## heartrate_max             52.184  1 5.1e-13
+## whitebloodcell_min         3.694  1 0.05459
+## bicarbonate_min           52.313  1 4.7e-13
+## bloodureanitrogen_min      3.253  1 0.07130
+## chloride_min               0.199  1 0.65582
+## hematocrit_min            12.490  1 0.00041
+## bloodureanitrogen_max      3.662  1 0.05567
+## sodium_max                 8.215  1 0.00415
+## hematocrit_max            26.258  1 3.0e-07
+## gcs_min                  158.988  1 < 2e-16
+## gcs_max                  192.049  1 < 2e-16
+## endotrachflag              7.562  1 0.00596
+## weight                     0.396  1 0.52900
+## mechvent_24hr              3.357  1 0.06693
+## GLOBAL                   512.684 35 < 2e-16
+\end{verbatim}
+
+The test for Cox proportional hazards assumption indicates that the
+proportional hazards assumption is violated for a large portion of
+variables (p \textless{} 0.05). The global test also indicates the
+assumption is invalid (p \textless{} 0.05). To address these issues,
+continuous variables were categorized, and categorical variables were
+stratified (Table 4).
+
+\begin{verbatim}
+## Table printed with `knitr::kable()`, not {gt}. Learn why at
+## https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html
+## To suppress this message, include `message = FALSE` in code chunk header.
+\end{verbatim}
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\textbf{Table 4. Multivariate Cox proportional hazards
+regression from Table 3 with categorization and stratification of
+selected variables}}\tabularnewline
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Weekend admission & 0.94 & 0.86, 1.03 & 0.2 \\
+Age (years) & & & \\
+{[}18,52{]} & & & \\
+(52,66{]} & 1.44 & 1.26, 1.64 & \textbf{\textless0.001} \\
+(66,77{]} & 1.59 & 1.39, 1.82 & \textbf{\textless0.001} \\
+(77,91.4{]} & 2.40 & 2.10, 2.73 & \textbf{\textless0.001} \\
+Ethnicity & & & \\
+BLACK & & & \\
+OTHER/UNKNOWN & 1.56 & 1.29, 1.88 & \textbf{\textless0.001} \\
+WHITE & 1.19 & 1.00, 1.42 & 0.056 \\
+Diagnosis: Trauma & 0.78 & 0.69, 0.89 & \textbf{\textless0.001} \\
+spo2\_min & & & \\
+{[}0,95.99{]} & & & \\
+(95.99,100{]} & 0.89 & 0.81, 0.98 & \textbf{0.013} \\
+temperature\_min & 0.92 & 0.89, 0.94 & \textbf{\textless0.001} \\
+sysbp\_min & & & \\
+{[}0,89.99{]} & & & \\
+(89.99,120{]} & 0.76 & 0.69, 0.83 & \textbf{\textless0.001} \\
+(120,180{]} & 0.88 & 0.71, 1.08 & 0.2 \\
+diasbp\_min & & & \\
+\textless60 & & & \\
+≥60 & 1.17 & 0.98, 1.40 & 0.080 \\
+glucose\_min.x & & & \\
+{[}33,64.99{]} & & & \\
+(64.99,110{]} & 0.82 & 0.71, 0.96 & \textbf{0.014} \\
+(110,1016{]} & 1.03 & 0.88, 1.20 & 0.7 \\
+meanarterialpressure\_min & & & \\
+\textless67 & & & \\
+≥67 & 0.84 & 0.74, 0.96 & \textbf{0.009} \\
+spo2\_max & 0.84 & 0.80, 0.89 & \textbf{\textless0.001} \\
+temperature\_max & & & \\
+{[}31.6,36.49{]} & & & \\
+(36.49,37.3{]} & 0.57 & 0.49, 0.66 & \textbf{\textless0.001} \\
+(37.3,42.222{]} & 0.49 & 0.42, 0.57 & \textbf{\textless0.001} \\
+resprate\_max & 1.02 & 1.01, 1.02 & \textbf{\textless0.001} \\
+heartrate\_max & & & \\
+≤100 & & & \\
+\textgreater100 & 1.29 & 1.18, 1.41 & \textbf{\textless0.001} \\
+whitebloodcell\_min & 1.01 & 1.00, 1.01 & \textbf{\textless0.001} \\
+bicarbonate\_min & & & \\
+{[}5,17.99{]} & & & \\
+(17.99,22{]} & 0.63 & 0.56, 0.70 & \textbf{\textless0.001} \\
+(22,52{]} & 0.56 & 0.50, 0.63 & \textbf{\textless0.001} \\
+bloodureanitrogen\_min & 1.01 & 1.01, 1.02 & \textbf{\textless0.001} \\
+chloride\_min & 0.97 & 0.97, 0.98 & \textbf{\textless0.001} \\
+hematocrit\_min & & & \\
+\textless36 & & & \\
+≥36 & 1.14 & 0.99, 1.31 & 0.062 \\
+bloodureanitrogen\_max & 0.99 & 0.99, 1.00 & \textbf{0.029} \\
+sodium\_max & 1.01 & 1.00, 1.01 & \textbf{0.001} \\
+hematocrit\_max & 1.00 & 0.99, 1.01 & 0.6 \\
+gcs\_min & & & \\
+{[}2,14{]} & & & \\
+(14,15{]} & 0.71 & 0.61, 0.83 & \textbf{\textless0.001} \\
+gcs\_max & & & \\
+{[}2,14{]} & & & \\
+(14,15{]} & 0.52 & 0.47, 0.58 & \textbf{\textless0.001} \\
+Weight (kg) & 0.99 & 0.99, 1.00 & \textbf{\textless0.001} \\
+\end{longtable}
+
+After addressing Cox proportional hazards assumption violation for
+\texttt{multi\_3} model in Table 4, p-values of \texttt{diasbp\_min},
+\texttt{hematocrit\_min}, and \texttt{hematocrit\_max} became
+nonsignificant. Excluding \texttt{diasbp\_min} and
+\texttt{hematocrit\_max} resulted in a lower AIC value
+(\texttt{multi\_4} model, Table 5)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# After categorization, p{-}values of \textasciigrave{}diasbp\_min\textasciigrave{}, \textasciigrave{}hematocrit\_min\textasciigrave{}, and \textasciigrave{}hematocrit\_max\textasciigrave{} became nonsignificant in the multivariate model. I will try excluding them from the model and see their impact on the AIC.}
+\NormalTok{multi\_4 }\OtherTok{\textless{}{-}} \FunctionTok{coxph}\NormalTok{(}\FunctionTok{Surv}\NormalTok{(los, icu\_expire\_flag\_2) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ weekend }\SpecialCharTok{+}\NormalTok{ age\_years }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(admission\_type\_2) }\SpecialCharTok{+}\NormalTok{ ethnicity\_2 }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(Genitourinary) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(Neoplasms) }\SpecialCharTok{+}\NormalTok{ Trauma }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(first\_careunit) }\SpecialCharTok{+}\NormalTok{ spo2\_min }\SpecialCharTok{+}\NormalTok{ temperature\_min }\SpecialCharTok{+}\NormalTok{ sysbp\_min  }\SpecialCharTok{+}\NormalTok{ glucose\_min.x }\SpecialCharTok{+}\NormalTok{ meanarterialpressure\_min }\SpecialCharTok{+}\NormalTok{ spo2\_max }\SpecialCharTok{+}\NormalTok{ temperature\_max }\SpecialCharTok{+}\NormalTok{ resprate\_max }\SpecialCharTok{+}\NormalTok{ heartrate\_max }\SpecialCharTok{+}\NormalTok{ whitebloodcell\_min }\SpecialCharTok{+}\NormalTok{ bicarbonate\_min }\SpecialCharTok{+}\NormalTok{ bloodureanitrogen\_min }\SpecialCharTok{+}\NormalTok{ chloride\_min }\SpecialCharTok{+}\NormalTok{ bloodureanitrogen\_max }\SpecialCharTok{+}\NormalTok{ sodium\_max }\SpecialCharTok{+}\NormalTok{ hematocrit\_min }\SpecialCharTok{+}\NormalTok{ gcs\_min }\SpecialCharTok{+}\NormalTok{ gcs\_max }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(endotrachflag) }\SpecialCharTok{+}\NormalTok{ weight }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(mechvent\_24hr), }\AttributeTok{data =}\NormalTok{ alldata\_q2\_partialcat)}
+
+\FunctionTok{tbl\_regression}\NormalTok{(multi\_4, }
+               \AttributeTok{exponentiate =} \ConstantTok{TRUE}\NormalTok{,}
+               \AttributeTok{label =} \FunctionTok{list}\NormalTok{(age\_years }\SpecialCharTok{\textasciitilde{}} \StringTok{"Age (years)"}\NormalTok{,}
+\NormalTok{                     weekend }\SpecialCharTok{\textasciitilde{}} \StringTok{"Weekend admission"}\NormalTok{,}
+\NormalTok{                     ethnicity\_2 }\SpecialCharTok{\textasciitilde{}} \StringTok{"Ethnicity"}\NormalTok{,}
+\NormalTok{                     Trauma }\SpecialCharTok{\textasciitilde{}} \StringTok{"Diagnosis: Trauma"}\NormalTok{,}
+\NormalTok{                     weight }\SpecialCharTok{\textasciitilde{}} \StringTok{"Weight (kg)"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bold\_p}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{modify\_caption}\NormalTok{(}\StringTok{"**Table 5. Multivariate Cox proportional hazards regression from Table 4 with exclusion of variables with nonsignificant variables**"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Table printed with `knitr::kable()`, not {gt}. Learn why at
+## https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html
+## To suppress this message, include `message = FALSE` in code chunk header.
+\end{verbatim}
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\textbf{Table 5. Multivariate Cox proportional hazards
+regression from Table 4 with exclusion of variables with nonsignificant
+variables}}\tabularnewline
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Weekend admission & 0.94 & 0.86, 1.03 & 0.2 \\
+Age (years) & & & \\
+{[}18,52{]} & & & \\
+(52,66{]} & 1.43 & 1.25, 1.63 & \textbf{\textless0.001} \\
+(66,77{]} & 1.58 & 1.38, 1.81 & \textbf{\textless0.001} \\
+(77,91.4{]} & 2.37 & 2.08, 2.70 & \textbf{\textless0.001} \\
+Ethnicity & & & \\
+BLACK & & & \\
+OTHER/UNKNOWN & 1.56 & 1.29, 1.87 & \textbf{\textless0.001} \\
+WHITE & 1.18 & 0.99, 1.41 & 0.061 \\
+Diagnosis: Trauma & 0.78 & 0.69, 0.89 & \textbf{\textless0.001} \\
+spo2\_min & & & \\
+{[}0,95.99{]} & & & \\
+(95.99,100{]} & 0.89 & 0.81, 0.97 & \textbf{0.012} \\
+temperature\_min & 0.92 & 0.89, 0.94 & \textbf{\textless0.001} \\
+sysbp\_min & & & \\
+{[}0,89.99{]} & & & \\
+(89.99,120{]} & 0.76 & 0.69, 0.84 & \textbf{\textless0.001} \\
+(120,180{]} & 0.90 & 0.73, 1.11 & 0.3 \\
+glucose\_min.x & & & \\
+{[}33,64.99{]} & & & \\
+(64.99,110{]} & 0.82 & 0.71, 0.96 & \textbf{0.014} \\
+(110,1016{]} & 1.03 & 0.88, 1.20 & 0.7 \\
+meanarterialpressure\_min & & & \\
+\textless67 & & & \\
+≥67 & 0.88 & 0.78, 0.99 & \textbf{0.033} \\
+spo2\_max & 0.84 & 0.80, 0.89 & \textbf{\textless0.001} \\
+temperature\_max & & & \\
+{[}31.6,36.49{]} & & & \\
+(36.49,37.3{]} & 0.57 & 0.49, 0.66 & \textbf{\textless0.001} \\
+(37.3,42.222{]} & 0.49 & 0.42, 0.57 & \textbf{\textless0.001} \\
+resprate\_max & 1.02 & 1.01, 1.02 & \textbf{\textless0.001} \\
+heartrate\_max & & & \\
+≤100 & & & \\
+\textgreater100 & 1.29 & 1.18, 1.41 & \textbf{\textless0.001} \\
+whitebloodcell\_min & 1.01 & 1.00, 1.01 & \textbf{\textless0.001} \\
+bicarbonate\_min & & & \\
+{[}5,17.99{]} & & & \\
+(17.99,22{]} & 0.62 & 0.56, 0.69 & \textbf{\textless0.001} \\
+(22,52{]} & 0.56 & 0.50, 0.62 & \textbf{\textless0.001} \\
+bloodureanitrogen\_min & 1.01 & 1.01, 1.02 & \textbf{\textless0.001} \\
+chloride\_min & 0.97 & 0.97, 0.98 & \textbf{\textless0.001} \\
+bloodureanitrogen\_max & 0.99 & 0.99, 1.00 & \textbf{0.029} \\
+sodium\_max & 1.01 & 1.00, 1.01 & \textbf{\textless0.001} \\
+hematocrit\_min & & & \\
+\textless36 & & & \\
+≥36 & 1.18 & 1.06, 1.32 & \textbf{0.002} \\
+gcs\_min & & & \\
+{[}2,14{]} & & & \\
+(14,15{]} & 0.71 & 0.61, 0.83 & \textbf{\textless0.001} \\
+gcs\_max & & & \\
+{[}2,14{]} & & & \\
+(14,15{]} & 0.52 & 0.47, 0.58 & \textbf{\textless0.001} \\
+Weight (kg) & 0.99 & 0.99, 1.00 & \textbf{\textless0.001} \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# model comparison with AIC values}
+\FunctionTok{extractAIC}\NormalTok{(multi\_3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]    32.0 25107.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{extractAIC}\NormalTok{(multi\_4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]    30.00 25106.91
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# AIC became lower when excluding \textasciigrave{}diasbp\_min\textasciigrave{} and \textasciigrave{}hematocrit\_max\textasciigrave{} but including \textasciigrave{}hematocrit\_min\textasciigrave{}. The \textasciigrave{}multi\_4\textasciigrave{} model is preferred.}
+
+\CommentTok{\# test for Cox proportional hazards assumption}
+\FunctionTok{cox.zph}\NormalTok{(multi\_4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            chisq df       p
+## weekend                    1.036  1 0.30871
+## age_years                  2.702  3 0.43993
+## ethnicity_2                4.891  2 0.08669
+## Trauma                     6.984  1 0.00822
+## spo2_min                   6.496  1 0.01081
+## temperature_min            3.971  1 0.04630
+## sysbp_min                 74.923  2 < 2e-16
+## glucose_min.x              7.571  2 0.02270
+## meanarterialpressure_min  11.801  1 0.00059
+## spo2_max                   1.114  1 0.29114
+## temperature_max           10.196  2 0.00611
+## resprate_max               0.957  1 0.32794
+## heartrate_max             37.267  1 1.0e-09
+## whitebloodcell_min         2.039  1 0.15335
+## bicarbonate_min           53.617  2 2.3e-12
+## bloodureanitrogen_min     10.497  1 0.00120
+## chloride_min               1.207  1 0.27187
+## bloodureanitrogen_max     11.385  1 0.00074
+## sodium_max                 8.655  1 0.00326
+## hematocrit_min             3.418  1 0.06450
+## gcs_min                   54.363  1 1.7e-13
+## gcs_max                  106.559  1 < 2e-16
+## weight                     0.262  1 0.60877
+## GLOBAL                   316.181 30 < 2e-16
+\end{verbatim}
+
+There are still some variables that violate the Cox proportional hazards
+assumption. These violations were addressed in \texttt{multi\_5} model
+(Table 6).
+
+\hypertarget{final-model}{%
+\subsection{Final model}\label{final-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# categorize continuous variables that violates the proportional hazards assumption}
+\NormalTok{alldata\_q2\_partialcat\_2 }\OtherTok{\textless{}{-}}\NormalTok{ alldata\_q2\_partialcat }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{temperature\_min =} \FunctionTok{cut\_continuous}\NormalTok{(temperature\_min, }\StringTok{"Temperature"}\NormalTok{),}
+         \AttributeTok{bloodureanitrogen\_min =} \FunctionTok{cut\_continuous}\NormalTok{(bloodureanitrogen\_min, }\StringTok{"Blood urea nitrogen"}\NormalTok{),}
+         \AttributeTok{bloodureanitrogen\_max =} \FunctionTok{cut\_continuous}\NormalTok{(bloodureanitrogen\_max, }\StringTok{"Blood urea nitrogen"}\NormalTok{),}
+         \AttributeTok{sodium\_max =} \FunctionTok{cut\_continuous}\NormalTok{(sodium\_max, }\StringTok{"Sodium"}\NormalTok{))}
+
+\CommentTok{\# stratify categorical variables that violates the proportional hazards assumption}
+\NormalTok{multi\_5 }\OtherTok{\textless{}{-}} \FunctionTok{coxph}\NormalTok{(}\FunctionTok{Surv}\NormalTok{(los, icu\_expire\_flag\_2) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ weekend }\SpecialCharTok{+}\NormalTok{ age\_years }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(admission\_type\_2) }\SpecialCharTok{+}\NormalTok{ ethnicity\_2 }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(Genitourinary) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(Neoplasms) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(Trauma) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(first\_careunit) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(spo2\_min) }\SpecialCharTok{+}\NormalTok{ temperature\_min }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(sysbp\_min)  }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(glucose\_min.x) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(meanarterialpressure\_min) }\SpecialCharTok{+}\NormalTok{ spo2\_max }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(temperature\_max) }\SpecialCharTok{+}\NormalTok{ resprate\_max }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(heartrate\_max) }\SpecialCharTok{+}\NormalTok{ whitebloodcell\_min }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(bicarbonate\_min) }\SpecialCharTok{+}\NormalTok{ bloodureanitrogen\_min }\SpecialCharTok{+}\NormalTok{ chloride\_min }\SpecialCharTok{+}\NormalTok{ bloodureanitrogen\_max }\SpecialCharTok{+}\NormalTok{ sodium\_max }\SpecialCharTok{+}\NormalTok{ hematocrit\_min }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(gcs\_min) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(gcs\_max) }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(endotrachflag) }\SpecialCharTok{+}\NormalTok{ weight }\SpecialCharTok{+} \FunctionTok{strata}\NormalTok{(mechvent\_24hr), }\AttributeTok{data =}\NormalTok{ alldata\_q2\_partialcat\_2)}
+
+\FunctionTok{tbl\_regression}\NormalTok{(multi\_5, }
+               \AttributeTok{exponentiate =} \ConstantTok{TRUE}\NormalTok{,}
+               \AttributeTok{label =} \FunctionTok{list}\NormalTok{(age\_years }\SpecialCharTok{\textasciitilde{}} \StringTok{"Age (years)"}\NormalTok{,}
+\NormalTok{                     weekend }\SpecialCharTok{\textasciitilde{}} \StringTok{"Weekend admission"}\NormalTok{,}
+\NormalTok{                     ethnicity\_2 }\SpecialCharTok{\textasciitilde{}} \StringTok{"Ethnicity"}\NormalTok{,}
+\NormalTok{                     weight }\SpecialCharTok{\textasciitilde{}} \StringTok{"Weight (kg)"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bold\_p}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{modify\_caption}\NormalTok{(}\StringTok{"**Table 6. Multivariate Cox proportional hazards regression from Table 5 without Cox proportional hazards assumption violations**"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Table printed with `knitr::kable()`, not {gt}. Learn why at
+## https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html
+## To suppress this message, include `message = FALSE` in code chunk header.
+\end{verbatim}
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\textbf{Table 6. Multivariate Cox proportional hazards
+regression from Table 5 without Cox proportional hazards assumption
+violations}}\tabularnewline
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{HR} & \textbf{95\% CI} &
+\textbf{p-value} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Weekend admission & 0.88 & 0.74, 1.05 & 0.2 \\
+Age (years) & & & \\
+{[}18,52{]} & & & \\
+(52,66{]} & 1.31 & 1.03, 1.67 & \textbf{0.029} \\
+(66,77{]} & 1.92 & 1.50, 2.46 & \textbf{\textless0.001} \\
+(77,91.4{]} & 2.23 & 1.75, 2.85 & \textbf{\textless0.001} \\
+Ethnicity & & & \\
+BLACK & & & \\
+OTHER/UNKNOWN & 1.61 & 1.14, 2.28 & \textbf{0.006} \\
+WHITE & 1.26 & 0.91, 1.74 & 0.2 \\
+temperature\_min & & & \\
+{[}26,36.49{]} & & & \\
+(36.49,37.3{]} & 0.80 & 0.67, 0.97 & \textbf{0.023} \\
+(37.3,39.6{]} & 0.92 & 0.69, 1.23 & 0.6 \\
+spo2\_max & 0.64 & 0.53, 0.78 & \textbf{\textless0.001} \\
+resprate\_max & 1.02 & 1.01, 1.03 & \textbf{0.002} \\
+whitebloodcell\_min & 1.01 & 1.00, 1.01 & 0.090 \\
+bloodureanitrogen\_min & & & \\
+{[}0,7.99{]} & & & \\
+(7.99,21{]} & 1.89 & 1.05, 3.38 & \textbf{0.032} \\
+(21,232{]} & 1.88 & 0.98, 3.61 & 0.059 \\
+chloride\_min & 0.98 & 0.97, 0.99 & \textbf{0.003} \\
+bloodureanitrogen\_max & & & \\
+{[}1,7.99{]} & & & \\
+(7.99,21{]} & 0.69 & 0.31, 1.51 & 0.4 \\
+(21,250{]} & 0.87 & 0.37, 2.03 & 0.7 \\
+sodium\_max & & & \\
+{[}72.05,134.99{]} & & & \\
+(134.99,145{]} & 0.98 & 0.75, 1.29 & \textgreater0.9 \\
+(145,225{]} & 1.67 & 1.17, 2.38 & \textbf{0.005} \\
+hematocrit\_min & & & \\
+\textless36 & & & \\
+≥36 & 1.42 & 1.16, 1.74 & \textbf{\textless0.001} \\
+Weight (kg) & 0.99 & 0.99, 1.00 & \textbf{0.001} \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# model comparison with AIC values}
+\FunctionTok{extractAIC}\NormalTok{(multi\_4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]    30.00 25106.91
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{extractAIC}\NormalTok{(multi\_5)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]   20.000 2591.418
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# test for Cox proportional hazards assumption}
+\FunctionTok{cox.zph}\NormalTok{(multi\_5)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                         chisq df    p
+## weekend                0.3267  1 0.57
+## age_years              2.6481  3 0.45
+## ethnicity_2            2.8140  2 0.24
+## temperature_min        1.7997  2 0.41
+## spo2_max               2.6693  1 0.10
+## resprate_max           0.0037  1 0.95
+## whitebloodcell_min     0.0197  1 0.89
+## bloodureanitrogen_min  3.8377  2 0.15
+## chloride_min           0.0817  1 0.78
+## bloodureanitrogen_max  2.0889  2 0.35
+## sodium_max             1.3154  2 0.52
+## hematocrit_min         0.2289  1 0.63
+## weight                 0.3798  1 0.54
+## GLOBAL                16.0039 20 0.72
+\end{verbatim}
+
+The AIC value of the final model (\texttt{multi\_5}) notably decreased
+compared to that of the \texttt{multi\_4} model, down to 2591.418. The
+global test for Cox proportional hazards assumptions confirms no
+violations, with a p-value greater than 0.05. As shown in Table 6, this
+model suggests that weekend admission is not associated with ICU
+mortality (hazard ratio 0.88, 95\% confidence interval 0.74-1.05).
+
+\hypertarget{conclusion}{%
+\subsection{Conclusion}\label{conclusion}}
+
+In conclusion, according to the univariate Cox proportional hazards
+model, patients admitted to the ICU on weekends were more likely to pass
+away in the ICU compared to those admitted on weekdays. However, in the
+multivariate Cox proportional hazards model, which included variable
+selection, categorization, and stratification, weekend admission was not
+found to be associated with ICU mortality.
+
+\end{document}

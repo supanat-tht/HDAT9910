@@ -2,9 +2,10 @@
 title: "HDAT9910"
 author: "Supanat Thitipatarakorn (z5383184)"
 date: "2024-04-18"
-output: 
+output:
   html_document:
     keep_md: true
+  pdf_document: default
 ---
 
 # Introduction
@@ -750,12 +751,12 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
 
 
 ```{=html}
-<div id="xrvnjiirtx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="joxzawwpej" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xrvnjiirtx .gt_table {
+#joxzawwpej .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -780,7 +781,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-left-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_heading {
+#joxzawwpej .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -792,7 +793,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-right-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_title {
+#joxzawwpej .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -804,7 +805,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-bottom-width: 0;
 }
 
-#xrvnjiirtx .gt_subtitle {
+#joxzawwpej .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -816,13 +817,13 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-top-width: 0;
 }
 
-#xrvnjiirtx .gt_bottom_border {
+#joxzawwpej .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_col_headings {
+#joxzawwpej .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -837,7 +838,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-right-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_col_heading {
+#joxzawwpej .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -857,7 +858,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   overflow-x: hidden;
 }
 
-#xrvnjiirtx .gt_column_spanner_outer {
+#joxzawwpej .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -869,15 +870,15 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   padding-right: 4px;
 }
 
-#xrvnjiirtx .gt_column_spanner_outer:first-child {
+#joxzawwpej .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xrvnjiirtx .gt_column_spanner_outer:last-child {
+#joxzawwpej .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xrvnjiirtx .gt_column_spanner {
+#joxzawwpej .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -889,7 +890,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   width: 100%;
 }
 
-#xrvnjiirtx .gt_group_heading {
+#joxzawwpej .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -914,7 +915,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   vertical-align: middle;
 }
 
-#xrvnjiirtx .gt_empty_group_heading {
+#joxzawwpej .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -929,15 +930,15 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   vertical-align: middle;
 }
 
-#xrvnjiirtx .gt_from_md > :first-child {
+#joxzawwpej .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xrvnjiirtx .gt_from_md > :last-child {
+#joxzawwpej .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xrvnjiirtx .gt_row {
+#joxzawwpej .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -956,7 +957,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   overflow-x: hidden;
 }
 
-#xrvnjiirtx .gt_stub {
+#joxzawwpej .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -969,7 +970,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   padding-right: 5px;
 }
 
-#xrvnjiirtx .gt_stub_row_group {
+#joxzawwpej .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -983,11 +984,11 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   vertical-align: top;
 }
 
-#xrvnjiirtx .gt_row_group_first td {
+#joxzawwpej .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xrvnjiirtx .gt_summary_row {
+#joxzawwpej .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -997,16 +998,16 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   padding-right: 5px;
 }
 
-#xrvnjiirtx .gt_first_summary_row {
+#joxzawwpej .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_first_summary_row.thick {
+#joxzawwpej .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xrvnjiirtx .gt_last_summary_row {
+#joxzawwpej .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1016,7 +1017,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-bottom-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_grand_summary_row {
+#joxzawwpej .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1026,7 +1027,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   padding-right: 5px;
 }
 
-#xrvnjiirtx .gt_first_grand_summary_row {
+#joxzawwpej .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1036,11 +1037,11 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-top-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_striped {
+#joxzawwpej .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xrvnjiirtx .gt_table_body {
+#joxzawwpej .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1049,7 +1050,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-bottom-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_footnotes {
+#joxzawwpej .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1063,7 +1064,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-right-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_footnote {
+#joxzawwpej .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1072,7 +1073,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   padding-right: 5px;
 }
 
-#xrvnjiirtx .gt_sourcenotes {
+#joxzawwpej .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1086,7 +1087,7 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   border-right-color: #D3D3D3;
 }
 
-#xrvnjiirtx .gt_sourcenote {
+#joxzawwpej .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1094,36 +1095,36 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   padding-right: 5px;
 }
 
-#xrvnjiirtx .gt_left {
+#joxzawwpej .gt_left {
   text-align: left;
 }
 
-#xrvnjiirtx .gt_center {
+#joxzawwpej .gt_center {
   text-align: center;
 }
 
-#xrvnjiirtx .gt_right {
+#joxzawwpej .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xrvnjiirtx .gt_font_normal {
+#joxzawwpej .gt_font_normal {
   font-weight: normal;
 }
 
-#xrvnjiirtx .gt_font_bold {
+#joxzawwpej .gt_font_bold {
   font-weight: bold;
 }
 
-#xrvnjiirtx .gt_font_italic {
+#joxzawwpej .gt_font_italic {
   font-style: italic;
 }
 
-#xrvnjiirtx .gt_super {
+#joxzawwpej .gt_super {
   font-size: 65%;
 }
 
-#xrvnjiirtx .gt_two_val_uncert {
+#joxzawwpej .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1132,31 +1133,31 @@ The dataset provides data on 32555 patients aged 18 years or older who were admi
   margin-left: 0.1em;
 }
 
-#xrvnjiirtx .gt_footnote_marks {
+#joxzawwpej .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#xrvnjiirtx .gt_asterisk {
+#joxzawwpej .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xrvnjiirtx .gt_slash_mark {
+#joxzawwpej .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#xrvnjiirtx .gt_fraction_numerator {
+#joxzawwpej .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#xrvnjiirtx .gt_fraction_denominator {
+#joxzawwpej .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1475,12 +1476,12 @@ To develop the best model explaining the effect of the weekend admission on the 
 
 
 ```{=html}
-<div id="btsyjdxsws" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="exfrzthsig" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#btsyjdxsws .gt_table {
+#exfrzthsig .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1505,7 +1506,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-left-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_heading {
+#exfrzthsig .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1517,7 +1518,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-right-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_title {
+#exfrzthsig .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1529,7 +1530,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-bottom-width: 0;
 }
 
-#btsyjdxsws .gt_subtitle {
+#exfrzthsig .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1541,13 +1542,13 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-top-width: 0;
 }
 
-#btsyjdxsws .gt_bottom_border {
+#exfrzthsig .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_col_headings {
+#exfrzthsig .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1562,7 +1563,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-right-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_col_heading {
+#exfrzthsig .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1582,7 +1583,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   overflow-x: hidden;
 }
 
-#btsyjdxsws .gt_column_spanner_outer {
+#exfrzthsig .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1594,15 +1595,15 @@ To develop the best model explaining the effect of the weekend admission on the 
   padding-right: 4px;
 }
 
-#btsyjdxsws .gt_column_spanner_outer:first-child {
+#exfrzthsig .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#btsyjdxsws .gt_column_spanner_outer:last-child {
+#exfrzthsig .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#btsyjdxsws .gt_column_spanner {
+#exfrzthsig .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1614,7 +1615,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   width: 100%;
 }
 
-#btsyjdxsws .gt_group_heading {
+#exfrzthsig .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1639,7 +1640,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   vertical-align: middle;
 }
 
-#btsyjdxsws .gt_empty_group_heading {
+#exfrzthsig .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1654,15 +1655,15 @@ To develop the best model explaining the effect of the weekend admission on the 
   vertical-align: middle;
 }
 
-#btsyjdxsws .gt_from_md > :first-child {
+#exfrzthsig .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#btsyjdxsws .gt_from_md > :last-child {
+#exfrzthsig .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#btsyjdxsws .gt_row {
+#exfrzthsig .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1681,7 +1682,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   overflow-x: hidden;
 }
 
-#btsyjdxsws .gt_stub {
+#exfrzthsig .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1694,7 +1695,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   padding-right: 5px;
 }
 
-#btsyjdxsws .gt_stub_row_group {
+#exfrzthsig .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1708,11 +1709,11 @@ To develop the best model explaining the effect of the weekend admission on the 
   vertical-align: top;
 }
 
-#btsyjdxsws .gt_row_group_first td {
+#exfrzthsig .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#btsyjdxsws .gt_summary_row {
+#exfrzthsig .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1722,16 +1723,16 @@ To develop the best model explaining the effect of the weekend admission on the 
   padding-right: 5px;
 }
 
-#btsyjdxsws .gt_first_summary_row {
+#exfrzthsig .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_first_summary_row.thick {
+#exfrzthsig .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#btsyjdxsws .gt_last_summary_row {
+#exfrzthsig .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1741,7 +1742,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-bottom-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_grand_summary_row {
+#exfrzthsig .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1751,7 +1752,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   padding-right: 5px;
 }
 
-#btsyjdxsws .gt_first_grand_summary_row {
+#exfrzthsig .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1761,11 +1762,11 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-top-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_striped {
+#exfrzthsig .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#btsyjdxsws .gt_table_body {
+#exfrzthsig .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1774,7 +1775,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-bottom-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_footnotes {
+#exfrzthsig .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1788,7 +1789,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-right-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_footnote {
+#exfrzthsig .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1797,7 +1798,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   padding-right: 5px;
 }
 
-#btsyjdxsws .gt_sourcenotes {
+#exfrzthsig .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1811,7 +1812,7 @@ To develop the best model explaining the effect of the weekend admission on the 
   border-right-color: #D3D3D3;
 }
 
-#btsyjdxsws .gt_sourcenote {
+#exfrzthsig .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1819,36 +1820,36 @@ To develop the best model explaining the effect of the weekend admission on the 
   padding-right: 5px;
 }
 
-#btsyjdxsws .gt_left {
+#exfrzthsig .gt_left {
   text-align: left;
 }
 
-#btsyjdxsws .gt_center {
+#exfrzthsig .gt_center {
   text-align: center;
 }
 
-#btsyjdxsws .gt_right {
+#exfrzthsig .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#btsyjdxsws .gt_font_normal {
+#exfrzthsig .gt_font_normal {
   font-weight: normal;
 }
 
-#btsyjdxsws .gt_font_bold {
+#exfrzthsig .gt_font_bold {
   font-weight: bold;
 }
 
-#btsyjdxsws .gt_font_italic {
+#exfrzthsig .gt_font_italic {
   font-style: italic;
 }
 
-#btsyjdxsws .gt_super {
+#exfrzthsig .gt_super {
   font-size: 65%;
 }
 
-#btsyjdxsws .gt_two_val_uncert {
+#exfrzthsig .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1857,31 +1858,31 @@ To develop the best model explaining the effect of the weekend admission on the 
   margin-left: 0.1em;
 }
 
-#btsyjdxsws .gt_footnote_marks {
+#exfrzthsig .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#btsyjdxsws .gt_asterisk {
+#exfrzthsig .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#btsyjdxsws .gt_slash_mark {
+#exfrzthsig .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#btsyjdxsws .gt_fraction_numerator {
+#exfrzthsig .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#btsyjdxsws .gt_fraction_denominator {
+#exfrzthsig .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2518,12 +2519,12 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
 
 
 ```{=html}
-<div id="rqpvjaakay" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hghrskobid" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rqpvjaakay .gt_table {
+#hghrskobid .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2548,7 +2549,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-left-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_heading {
+#hghrskobid .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2560,7 +2561,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-right-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_title {
+#hghrskobid .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2572,7 +2573,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-bottom-width: 0;
 }
 
-#rqpvjaakay .gt_subtitle {
+#hghrskobid .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2584,13 +2585,13 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-top-width: 0;
 }
 
-#rqpvjaakay .gt_bottom_border {
+#hghrskobid .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_col_headings {
+#hghrskobid .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2605,7 +2606,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-right-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_col_heading {
+#hghrskobid .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2625,7 +2626,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   overflow-x: hidden;
 }
 
-#rqpvjaakay .gt_column_spanner_outer {
+#hghrskobid .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2637,15 +2638,15 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   padding-right: 4px;
 }
 
-#rqpvjaakay .gt_column_spanner_outer:first-child {
+#hghrskobid .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rqpvjaakay .gt_column_spanner_outer:last-child {
+#hghrskobid .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rqpvjaakay .gt_column_spanner {
+#hghrskobid .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2657,7 +2658,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   width: 100%;
 }
 
-#rqpvjaakay .gt_group_heading {
+#hghrskobid .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2682,7 +2683,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   vertical-align: middle;
 }
 
-#rqpvjaakay .gt_empty_group_heading {
+#hghrskobid .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2697,15 +2698,15 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   vertical-align: middle;
 }
 
-#rqpvjaakay .gt_from_md > :first-child {
+#hghrskobid .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rqpvjaakay .gt_from_md > :last-child {
+#hghrskobid .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rqpvjaakay .gt_row {
+#hghrskobid .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2724,7 +2725,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   overflow-x: hidden;
 }
 
-#rqpvjaakay .gt_stub {
+#hghrskobid .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2737,7 +2738,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   padding-right: 5px;
 }
 
-#rqpvjaakay .gt_stub_row_group {
+#hghrskobid .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2751,11 +2752,11 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   vertical-align: top;
 }
 
-#rqpvjaakay .gt_row_group_first td {
+#hghrskobid .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rqpvjaakay .gt_summary_row {
+#hghrskobid .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2765,16 +2766,16 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   padding-right: 5px;
 }
 
-#rqpvjaakay .gt_first_summary_row {
+#hghrskobid .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_first_summary_row.thick {
+#hghrskobid .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rqpvjaakay .gt_last_summary_row {
+#hghrskobid .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2784,7 +2785,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-bottom-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_grand_summary_row {
+#hghrskobid .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2794,7 +2795,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   padding-right: 5px;
 }
 
-#rqpvjaakay .gt_first_grand_summary_row {
+#hghrskobid .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2804,11 +2805,11 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-top-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_striped {
+#hghrskobid .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rqpvjaakay .gt_table_body {
+#hghrskobid .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2817,7 +2818,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-bottom-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_footnotes {
+#hghrskobid .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2831,7 +2832,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-right-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_footnote {
+#hghrskobid .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2840,7 +2841,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   padding-right: 5px;
 }
 
-#rqpvjaakay .gt_sourcenotes {
+#hghrskobid .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2854,7 +2855,7 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   border-right-color: #D3D3D3;
 }
 
-#rqpvjaakay .gt_sourcenote {
+#hghrskobid .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2862,36 +2863,36 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   padding-right: 5px;
 }
 
-#rqpvjaakay .gt_left {
+#hghrskobid .gt_left {
   text-align: left;
 }
 
-#rqpvjaakay .gt_center {
+#hghrskobid .gt_center {
   text-align: center;
 }
 
-#rqpvjaakay .gt_right {
+#hghrskobid .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rqpvjaakay .gt_font_normal {
+#hghrskobid .gt_font_normal {
   font-weight: normal;
 }
 
-#rqpvjaakay .gt_font_bold {
+#hghrskobid .gt_font_bold {
   font-weight: bold;
 }
 
-#rqpvjaakay .gt_font_italic {
+#hghrskobid .gt_font_italic {
   font-style: italic;
 }
 
-#rqpvjaakay .gt_super {
+#hghrskobid .gt_super {
   font-size: 65%;
 }
 
-#rqpvjaakay .gt_two_val_uncert {
+#hghrskobid .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -2900,31 +2901,31 @@ Variables with significant p-values in the `multi_1` model (Table 2) were includ
   margin-left: 0.1em;
 }
 
-#rqpvjaakay .gt_footnote_marks {
+#hghrskobid .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#rqpvjaakay .gt_asterisk {
+#hghrskobid .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rqpvjaakay .gt_slash_mark {
+#hghrskobid .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#rqpvjaakay .gt_fraction_numerator {
+#hghrskobid .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#rqpvjaakay .gt_fraction_denominator {
+#hghrskobid .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -3205,12 +3206,12 @@ The test for Cox proportional hazards assumption indicates that the proportional
 
 
 ```{=html}
-<div id="ukushjcdri" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="yusymoihhp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ukushjcdri .gt_table {
+#yusymoihhp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3235,7 +3236,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-left-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_heading {
+#yusymoihhp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3247,7 +3248,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-right-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_title {
+#yusymoihhp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3259,7 +3260,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-bottom-width: 0;
 }
 
-#ukushjcdri .gt_subtitle {
+#yusymoihhp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3271,13 +3272,13 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-top-width: 0;
 }
 
-#ukushjcdri .gt_bottom_border {
+#yusymoihhp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_col_headings {
+#yusymoihhp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3292,7 +3293,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-right-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_col_heading {
+#yusymoihhp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3312,7 +3313,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   overflow-x: hidden;
 }
 
-#ukushjcdri .gt_column_spanner_outer {
+#yusymoihhp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3324,15 +3325,15 @@ The test for Cox proportional hazards assumption indicates that the proportional
   padding-right: 4px;
 }
 
-#ukushjcdri .gt_column_spanner_outer:first-child {
+#yusymoihhp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ukushjcdri .gt_column_spanner_outer:last-child {
+#yusymoihhp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ukushjcdri .gt_column_spanner {
+#yusymoihhp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3344,7 +3345,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   width: 100%;
 }
 
-#ukushjcdri .gt_group_heading {
+#yusymoihhp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3369,7 +3370,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   vertical-align: middle;
 }
 
-#ukushjcdri .gt_empty_group_heading {
+#yusymoihhp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3384,15 +3385,15 @@ The test for Cox proportional hazards assumption indicates that the proportional
   vertical-align: middle;
 }
 
-#ukushjcdri .gt_from_md > :first-child {
+#yusymoihhp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ukushjcdri .gt_from_md > :last-child {
+#yusymoihhp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ukushjcdri .gt_row {
+#yusymoihhp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3411,7 +3412,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   overflow-x: hidden;
 }
 
-#ukushjcdri .gt_stub {
+#yusymoihhp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3424,7 +3425,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   padding-right: 5px;
 }
 
-#ukushjcdri .gt_stub_row_group {
+#yusymoihhp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3438,11 +3439,11 @@ The test for Cox proportional hazards assumption indicates that the proportional
   vertical-align: top;
 }
 
-#ukushjcdri .gt_row_group_first td {
+#yusymoihhp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ukushjcdri .gt_summary_row {
+#yusymoihhp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3452,16 +3453,16 @@ The test for Cox proportional hazards assumption indicates that the proportional
   padding-right: 5px;
 }
 
-#ukushjcdri .gt_first_summary_row {
+#yusymoihhp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_first_summary_row.thick {
+#yusymoihhp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ukushjcdri .gt_last_summary_row {
+#yusymoihhp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3471,7 +3472,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-bottom-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_grand_summary_row {
+#yusymoihhp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3481,7 +3482,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   padding-right: 5px;
 }
 
-#ukushjcdri .gt_first_grand_summary_row {
+#yusymoihhp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3491,11 +3492,11 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-top-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_striped {
+#yusymoihhp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ukushjcdri .gt_table_body {
+#yusymoihhp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3504,7 +3505,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-bottom-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_footnotes {
+#yusymoihhp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3518,7 +3519,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-right-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_footnote {
+#yusymoihhp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3527,7 +3528,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   padding-right: 5px;
 }
 
-#ukushjcdri .gt_sourcenotes {
+#yusymoihhp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3541,7 +3542,7 @@ The test for Cox proportional hazards assumption indicates that the proportional
   border-right-color: #D3D3D3;
 }
 
-#ukushjcdri .gt_sourcenote {
+#yusymoihhp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3549,36 +3550,36 @@ The test for Cox proportional hazards assumption indicates that the proportional
   padding-right: 5px;
 }
 
-#ukushjcdri .gt_left {
+#yusymoihhp .gt_left {
   text-align: left;
 }
 
-#ukushjcdri .gt_center {
+#yusymoihhp .gt_center {
   text-align: center;
 }
 
-#ukushjcdri .gt_right {
+#yusymoihhp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ukushjcdri .gt_font_normal {
+#yusymoihhp .gt_font_normal {
   font-weight: normal;
 }
 
-#ukushjcdri .gt_font_bold {
+#yusymoihhp .gt_font_bold {
   font-weight: bold;
 }
 
-#ukushjcdri .gt_font_italic {
+#yusymoihhp .gt_font_italic {
   font-style: italic;
 }
 
-#ukushjcdri .gt_super {
+#yusymoihhp .gt_super {
   font-size: 65%;
 }
 
-#ukushjcdri .gt_two_val_uncert {
+#yusymoihhp .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -3587,31 +3588,31 @@ The test for Cox proportional hazards assumption indicates that the proportional
   margin-left: 0.1em;
 }
 
-#ukushjcdri .gt_footnote_marks {
+#yusymoihhp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ukushjcdri .gt_asterisk {
+#yusymoihhp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ukushjcdri .gt_slash_mark {
+#yusymoihhp .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ukushjcdri .gt_fraction_numerator {
+#yusymoihhp .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ukushjcdri .gt_fraction_denominator {
+#yusymoihhp .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -3891,12 +3892,12 @@ tbl_regression(multi_4,
 ```
 
 ```{=html}
-<div id="oxdqxwyeli" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dgfsjemcyc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#oxdqxwyeli .gt_table {
+#dgfsjemcyc .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3921,7 +3922,7 @@ tbl_regression(multi_4,
   border-left-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_heading {
+#dgfsjemcyc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3933,7 +3934,7 @@ tbl_regression(multi_4,
   border-right-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_title {
+#dgfsjemcyc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3945,7 +3946,7 @@ tbl_regression(multi_4,
   border-bottom-width: 0;
 }
 
-#oxdqxwyeli .gt_subtitle {
+#dgfsjemcyc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3957,13 +3958,13 @@ tbl_regression(multi_4,
   border-top-width: 0;
 }
 
-#oxdqxwyeli .gt_bottom_border {
+#dgfsjemcyc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_col_headings {
+#dgfsjemcyc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3978,7 +3979,7 @@ tbl_regression(multi_4,
   border-right-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_col_heading {
+#dgfsjemcyc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3998,7 +3999,7 @@ tbl_regression(multi_4,
   overflow-x: hidden;
 }
 
-#oxdqxwyeli .gt_column_spanner_outer {
+#dgfsjemcyc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4010,15 +4011,15 @@ tbl_regression(multi_4,
   padding-right: 4px;
 }
 
-#oxdqxwyeli .gt_column_spanner_outer:first-child {
+#dgfsjemcyc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oxdqxwyeli .gt_column_spanner_outer:last-child {
+#dgfsjemcyc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oxdqxwyeli .gt_column_spanner {
+#dgfsjemcyc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4030,7 +4031,7 @@ tbl_regression(multi_4,
   width: 100%;
 }
 
-#oxdqxwyeli .gt_group_heading {
+#dgfsjemcyc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4055,7 +4056,7 @@ tbl_regression(multi_4,
   vertical-align: middle;
 }
 
-#oxdqxwyeli .gt_empty_group_heading {
+#dgfsjemcyc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4070,15 +4071,15 @@ tbl_regression(multi_4,
   vertical-align: middle;
 }
 
-#oxdqxwyeli .gt_from_md > :first-child {
+#dgfsjemcyc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oxdqxwyeli .gt_from_md > :last-child {
+#dgfsjemcyc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oxdqxwyeli .gt_row {
+#dgfsjemcyc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4097,7 +4098,7 @@ tbl_regression(multi_4,
   overflow-x: hidden;
 }
 
-#oxdqxwyeli .gt_stub {
+#dgfsjemcyc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4110,7 +4111,7 @@ tbl_regression(multi_4,
   padding-right: 5px;
 }
 
-#oxdqxwyeli .gt_stub_row_group {
+#dgfsjemcyc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4124,11 +4125,11 @@ tbl_regression(multi_4,
   vertical-align: top;
 }
 
-#oxdqxwyeli .gt_row_group_first td {
+#dgfsjemcyc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oxdqxwyeli .gt_summary_row {
+#dgfsjemcyc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4138,16 +4139,16 @@ tbl_regression(multi_4,
   padding-right: 5px;
 }
 
-#oxdqxwyeli .gt_first_summary_row {
+#dgfsjemcyc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_first_summary_row.thick {
+#dgfsjemcyc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oxdqxwyeli .gt_last_summary_row {
+#dgfsjemcyc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4157,7 +4158,7 @@ tbl_regression(multi_4,
   border-bottom-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_grand_summary_row {
+#dgfsjemcyc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4167,7 +4168,7 @@ tbl_regression(multi_4,
   padding-right: 5px;
 }
 
-#oxdqxwyeli .gt_first_grand_summary_row {
+#dgfsjemcyc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4177,11 +4178,11 @@ tbl_regression(multi_4,
   border-top-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_striped {
+#dgfsjemcyc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oxdqxwyeli .gt_table_body {
+#dgfsjemcyc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4190,7 +4191,7 @@ tbl_regression(multi_4,
   border-bottom-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_footnotes {
+#dgfsjemcyc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4204,7 +4205,7 @@ tbl_regression(multi_4,
   border-right-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_footnote {
+#dgfsjemcyc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -4213,7 +4214,7 @@ tbl_regression(multi_4,
   padding-right: 5px;
 }
 
-#oxdqxwyeli .gt_sourcenotes {
+#dgfsjemcyc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4227,7 +4228,7 @@ tbl_regression(multi_4,
   border-right-color: #D3D3D3;
 }
 
-#oxdqxwyeli .gt_sourcenote {
+#dgfsjemcyc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4235,36 +4236,36 @@ tbl_regression(multi_4,
   padding-right: 5px;
 }
 
-#oxdqxwyeli .gt_left {
+#dgfsjemcyc .gt_left {
   text-align: left;
 }
 
-#oxdqxwyeli .gt_center {
+#dgfsjemcyc .gt_center {
   text-align: center;
 }
 
-#oxdqxwyeli .gt_right {
+#dgfsjemcyc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oxdqxwyeli .gt_font_normal {
+#dgfsjemcyc .gt_font_normal {
   font-weight: normal;
 }
 
-#oxdqxwyeli .gt_font_bold {
+#dgfsjemcyc .gt_font_bold {
   font-weight: bold;
 }
 
-#oxdqxwyeli .gt_font_italic {
+#dgfsjemcyc .gt_font_italic {
   font-style: italic;
 }
 
-#oxdqxwyeli .gt_super {
+#dgfsjemcyc .gt_super {
   font-size: 65%;
 }
 
-#oxdqxwyeli .gt_two_val_uncert {
+#dgfsjemcyc .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -4273,31 +4274,31 @@ tbl_regression(multi_4,
   margin-left: 0.1em;
 }
 
-#oxdqxwyeli .gt_footnote_marks {
+#dgfsjemcyc .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#oxdqxwyeli .gt_asterisk {
+#dgfsjemcyc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oxdqxwyeli .gt_slash_mark {
+#dgfsjemcyc .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#oxdqxwyeli .gt_fraction_numerator {
+#dgfsjemcyc .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#oxdqxwyeli .gt_fraction_denominator {
+#dgfsjemcyc .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -4622,12 +4623,12 @@ tbl_regression(multi_5,
 ```
 
 ```{=html}
-<div id="ybrmsaseox" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="uuqstlvmje" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ybrmsaseox .gt_table {
+#uuqstlvmje .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4652,7 +4653,7 @@ tbl_regression(multi_5,
   border-left-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_heading {
+#uuqstlvmje .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4664,7 +4665,7 @@ tbl_regression(multi_5,
   border-right-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_title {
+#uuqstlvmje .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4676,7 +4677,7 @@ tbl_regression(multi_5,
   border-bottom-width: 0;
 }
 
-#ybrmsaseox .gt_subtitle {
+#uuqstlvmje .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4688,13 +4689,13 @@ tbl_regression(multi_5,
   border-top-width: 0;
 }
 
-#ybrmsaseox .gt_bottom_border {
+#uuqstlvmje .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_col_headings {
+#uuqstlvmje .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4709,7 +4710,7 @@ tbl_regression(multi_5,
   border-right-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_col_heading {
+#uuqstlvmje .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4729,7 +4730,7 @@ tbl_regression(multi_5,
   overflow-x: hidden;
 }
 
-#ybrmsaseox .gt_column_spanner_outer {
+#uuqstlvmje .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4741,15 +4742,15 @@ tbl_regression(multi_5,
   padding-right: 4px;
 }
 
-#ybrmsaseox .gt_column_spanner_outer:first-child {
+#uuqstlvmje .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ybrmsaseox .gt_column_spanner_outer:last-child {
+#uuqstlvmje .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ybrmsaseox .gt_column_spanner {
+#uuqstlvmje .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4761,7 +4762,7 @@ tbl_regression(multi_5,
   width: 100%;
 }
 
-#ybrmsaseox .gt_group_heading {
+#uuqstlvmje .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4786,7 +4787,7 @@ tbl_regression(multi_5,
   vertical-align: middle;
 }
 
-#ybrmsaseox .gt_empty_group_heading {
+#uuqstlvmje .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4801,15 +4802,15 @@ tbl_regression(multi_5,
   vertical-align: middle;
 }
 
-#ybrmsaseox .gt_from_md > :first-child {
+#uuqstlvmje .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ybrmsaseox .gt_from_md > :last-child {
+#uuqstlvmje .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ybrmsaseox .gt_row {
+#uuqstlvmje .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4828,7 +4829,7 @@ tbl_regression(multi_5,
   overflow-x: hidden;
 }
 
-#ybrmsaseox .gt_stub {
+#uuqstlvmje .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4841,7 +4842,7 @@ tbl_regression(multi_5,
   padding-right: 5px;
 }
 
-#ybrmsaseox .gt_stub_row_group {
+#uuqstlvmje .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4855,11 +4856,11 @@ tbl_regression(multi_5,
   vertical-align: top;
 }
 
-#ybrmsaseox .gt_row_group_first td {
+#uuqstlvmje .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ybrmsaseox .gt_summary_row {
+#uuqstlvmje .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4869,16 +4870,16 @@ tbl_regression(multi_5,
   padding-right: 5px;
 }
 
-#ybrmsaseox .gt_first_summary_row {
+#uuqstlvmje .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_first_summary_row.thick {
+#uuqstlvmje .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ybrmsaseox .gt_last_summary_row {
+#uuqstlvmje .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4888,7 +4889,7 @@ tbl_regression(multi_5,
   border-bottom-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_grand_summary_row {
+#uuqstlvmje .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4898,7 +4899,7 @@ tbl_regression(multi_5,
   padding-right: 5px;
 }
 
-#ybrmsaseox .gt_first_grand_summary_row {
+#uuqstlvmje .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4908,11 +4909,11 @@ tbl_regression(multi_5,
   border-top-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_striped {
+#uuqstlvmje .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ybrmsaseox .gt_table_body {
+#uuqstlvmje .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4921,7 +4922,7 @@ tbl_regression(multi_5,
   border-bottom-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_footnotes {
+#uuqstlvmje .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4935,7 +4936,7 @@ tbl_regression(multi_5,
   border-right-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_footnote {
+#uuqstlvmje .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -4944,7 +4945,7 @@ tbl_regression(multi_5,
   padding-right: 5px;
 }
 
-#ybrmsaseox .gt_sourcenotes {
+#uuqstlvmje .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4958,7 +4959,7 @@ tbl_regression(multi_5,
   border-right-color: #D3D3D3;
 }
 
-#ybrmsaseox .gt_sourcenote {
+#uuqstlvmje .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4966,36 +4967,36 @@ tbl_regression(multi_5,
   padding-right: 5px;
 }
 
-#ybrmsaseox .gt_left {
+#uuqstlvmje .gt_left {
   text-align: left;
 }
 
-#ybrmsaseox .gt_center {
+#uuqstlvmje .gt_center {
   text-align: center;
 }
 
-#ybrmsaseox .gt_right {
+#uuqstlvmje .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ybrmsaseox .gt_font_normal {
+#uuqstlvmje .gt_font_normal {
   font-weight: normal;
 }
 
-#ybrmsaseox .gt_font_bold {
+#uuqstlvmje .gt_font_bold {
   font-weight: bold;
 }
 
-#ybrmsaseox .gt_font_italic {
+#uuqstlvmje .gt_font_italic {
   font-style: italic;
 }
 
-#ybrmsaseox .gt_super {
+#uuqstlvmje .gt_super {
   font-size: 65%;
 }
 
-#ybrmsaseox .gt_two_val_uncert {
+#uuqstlvmje .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -5004,31 +5005,31 @@ tbl_regression(multi_5,
   margin-left: 0.1em;
 }
 
-#ybrmsaseox .gt_footnote_marks {
+#uuqstlvmje .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ybrmsaseox .gt_asterisk {
+#uuqstlvmje .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ybrmsaseox .gt_slash_mark {
+#uuqstlvmje .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ybrmsaseox .gt_fraction_numerator {
+#uuqstlvmje .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ybrmsaseox .gt_fraction_denominator {
+#uuqstlvmje .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
