@@ -2,7 +2,9 @@
 title: "HDAT9910"
 author: "Supanat Thitipatarakorn (z5383184)"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
 # Introduction
@@ -24,7 +26,7 @@ The MIMIC-III database is a joint database from the CareVue and MetaVision syste
 -   Study population: Adult patients older than 18 years old admitted to the ICU from January 2006 to December 2014. Only the first ICU admission for each patient is included. ICU stays with length of stay under 24 hours or unknown are not included.
 -   Study outcome: ICU mortality
 
-1.  Does admission to ICU over the weekend increase the risk of mortality?
+2.  Does admission to ICU over the weekend increase the risk of mortality?
 
 -   Study population: Adult patients older than 18 years old admitted to the ICU from January 2006 to December 2014. Only the first ICU admission for each patient is included. ICU stays with length of stay under 24 hours or unknown are not included. Only data from the first 24 hours in ICU are included.
 -   Intervention: Admission to ICU over the weekend
@@ -179,7 +181,8 @@ plot_boxplot <- function(data, x, y, x_label, y_label) {
   ggplot(data, aes(x = {{x}}, y = {{y}})) + 
     geom_boxplot() +
     aes(group = {{y}}) +
-    labs(x = x_label, y = y_label) 
+    labs(x = x_label, y = y_label) +
+    theme_light()
 }
 ```
 
@@ -223,7 +226,7 @@ Only the first ICU stay of each patient that lasted at least 24 hours was kept, 
 table(pt_icu_outcome_adult$icu_expire_flag)
 ```
 
-The ICU expire flag is "yes" to only `r round(216*100/(38293+216), 2)`% of patients, which is much lower than the [published ICU mortality rate](https://www.nature.com/articles/sdata201635/tables/2) of the data. A new ICU expire flag was created based on the original expire flag and the recorded death time. Patients with death date occurring during the ICU stay were considered "yes" to the expire flag. A new weekend flag telling which ICU admissions occurred on weekends was also created.
+The ICU expire flag is "yes" to only `r round(216*100/(38293+216), 2)`% of patients, which is much lower than the [published ICU mortality rate](https://www.nature.com/articles/sdata201635/tables/2) of the data. A new ICU expire flag was created based on the original expire flag and the recorded death time. Patients with death date occurring during the ICU stay were considered "yes" to the expire flag. A new weekend flag telling whether ICU admissions occurred on weekends was also created.
 
 ```{r include=FALSE}
 # Create my own ICU expire flag
@@ -1068,8 +1071,11 @@ ggpubr::ggarrange(plotlist = plots[1:6], labels = "AUTO")
 ```
 
 ---
+---
 # Question 1: ICU mortality prediction
+
 The solution to this question is demonstrated in the `HDAT9910_q1.ipynb` file.
+
 ---
 # Question 2: Weekend effect in ICU
 
@@ -1098,7 +1104,7 @@ splots[[1]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ weekend, data=a
               xlab = "Survival (days)",
               surv.median.line = 'hv',
               pval=TRUE,
-              title = "Survival plot of ICU admissions stratified by weekend admission")
+              title = "Stratified by weekend admission") # "Survival plot of…" was removed from the title due to space restriction
 
 splots[[2]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ admission_type_2, data=alldata_q2), 
               data = alldata_q2,
@@ -1107,7 +1113,7 @@ splots[[2]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ admission_type_
               xlab = "Survival (days)",
               surv.median.line = 'hv',
               pval=TRUE,
-              title = "Survival plot of ICU admissions stratified by types of admission")
+              title = "Stratified by types of admission")
 
 splots[[3]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ endotrachflag, data=alldata_q2), 
               data = alldata_q2,
@@ -1116,7 +1122,7 @@ splots[[3]] <- ggsurvplot(survfit(Surv(los, icu_expire_flag_2) ~ endotrachflag, 
               xlab = "Survival (days)",
               surv.median.line = 'hv',
               pval=TRUE,
-              title = "Survival plot of ICU admissions stratified by endotracheal intubation")
+              title = "Stratified by endotracheal intubation")
 
 # Plot arrangement
 arrange_ggsurvplots(splots, nrow = 2, ncol = 2)
@@ -1288,7 +1294,7 @@ extractAIC(multi_5)
 cox.zph(multi_5)
 ```
 
-The AIC value of the final model (multi_5) notably decreased compared to that of the multi_4 model, down to 2591.418. The global test for Cox proportional hazards assumptions confirms no violations, with a p-value greater than 0.05. As shown in Table 6, this model suggests that weekend admission is not associated with ICU mortality (hazard ratio 0.88, 95% confidence interval 0.74-1.05).
+The AIC value of the final model (`multi_5`) notably decreased compared to that of the `multi_4` model, down to 2591.418. The global test for Cox proportional hazards assumptions confirms no violations, with a p-value greater than 0.05. As shown in Table 6, this model suggests that weekend admission is not associated with ICU mortality (hazard ratio 0.88, 95% confidence interval 0.74-1.05).
 
 ## Conclusion
 
